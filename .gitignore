@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+# downloaded embedding model cache (re-downloaded automatically on first build)
+app/data/models/
+# empty CRM upload templates downloaded during the crawl (kept locally, not versioned)
+*.xlsx
