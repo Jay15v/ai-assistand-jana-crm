@@ -1,4 +1,4 @@
 pydantic>=2.8
 pydantic-settings>=2.4
 chromadb>=1.5
-fastembed>=0.5
+google-genai>=3.3

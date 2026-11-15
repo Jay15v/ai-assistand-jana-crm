@@ -1,0 +1,1 @@
+invalid type: string "{\"id\":\"detail.customers.details\",\"type\":\"detail_view\",\"group\":{\"en\":\"Customers\",\"ar\":\"العملاء\"},\"screen\":{\"en\":\"Customer Details\",\"ar\":\"تفاصيل العميل\",\"ar_source\":\"composed:the details page has no title (H1 = customer's name); pattern of 'تفاصيل الوحدة' + 'العميل' as in 'اسم العميل'\"},\"path\":{\"en

@@ -1,0 +1,1249 @@
+{
+    "result": [
+        {
+            "menuName": "Dashboard",
+            "id": 1,
+            "menuitems": [
+                {
+                    "id": 128,
+                    "name": "Complaints",
+                    "href": "/dashboard/complaints",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 1,
+                    "name": "Statistics",
+                    "href": "/dashboard/statistics",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 127,
+                    "name": "Tickets",
+                    "href": "/dashboard/tickets",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Definition",
+            "id": 3,
+            "menuitems": [
+                {
+                    "id": 8,
+                    "name": "Department",
+                    "href": "/definitions/department",
+                    "privileges": [
+                        {
+                            "id": 13,
+                            "name": "Delete",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 129,
+                    "name": "ERP Codes",
+                    "href": "/definitions/erp-codes",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 18,
+                    "name": "Invoice Types",
+                    "href": "/definitions/invoice-types",
+                    "privileges": [
+                        {
+                            "id": 13,
+                            "name": "Delete",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 21,
+                            "name": "Export",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 12,
+                    "name": "Location",
+                    "href": "/definitions/location",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 13,
+                            "name": "Delete",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 7,
+                    "name": "Location Type",
+                    "href": "/definitions/location-type",
+                    "privileges": [
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 13,
+                            "name": "Delete",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "name": "Positions",
+                    "href": "/definitions/positions",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 124,
+                    "name": "Rental Companies",
+                    "href": "/definitions/rental-companies",
+                    "privileges": [
+                        {
+                            "id": 13,
+                            "name": "Delete",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 17,
+                    "name": "Sister Companies",
+                    "href": "/definitions/sister-companies",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 13,
+                            "name": "Delete",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 138,
+                    "name": "Unit Block Categories",
+                    "href": "/definitions/unit-block-categories",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 13,
+                            "name": "Delete",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 21,
+                            "name": "Export",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Unit",
+            "id": 7,
+            "menuitems": [
+                {
+                    "id": 49,
+                    "name": "Search Unit",
+                    "href": "/units/search",
+                    "privileges": [
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 21,
+                            "name": "Export",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Customers",
+            "id": 8,
+            "menuitems": [
+                {
+                    "id": 130,
+                    "name": "Relative Requests",
+                    "href": "/customers/relative-requests",
+                    "privileges": [
+                        {
+                            "id": 54,
+                            "name": "Reject",
+                            "status": 1
+                        },
+                        {
+                            "id": 60,
+                            "name": "Delete Accept Request",
+                            "status": 1
+                        },
+                        {
+                            "id": 53,
+                            "name": "Accept",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 56,
+                    "name": "Search Customer",
+                    "href": "/customers/search",
+                    "privileges": [
+                        {
+                            "id": 21,
+                            "name": "Export",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Services",
+            "id": 10,
+            "menuitems": [
+                {
+                    "id": 54,
+                    "name": "Add Service",
+                    "href": "/services/add",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 53,
+                    "name": "Service Search",
+                    "href": "/services/search",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 21,
+                            "name": "Export",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 13,
+                            "name": "Delete",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Rental",
+            "id": 14,
+            "menuitems": [
+                {
+                    "id": 61,
+                    "name": "Add Rental",
+                    "href": "/rentals/add",
+                    "privileges": [
+                        {
+                            "id": 18,
+                            "name": "Edit Price",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 13,
+                            "name": "Delete",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 35,
+                            "name": "Read All",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 33,
+                            "name": "Pending Tickets",
+                            "status": 1
+                        },
+                        {
+                            "id": 25,
+                            "name": "History",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 126,
+                    "name": "Broker Attachments",
+                    "href": "/rentals/rentals-walk-in",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 125,
+                    "name": "Rental Requests",
+                    "href": "/rentals/rental-requests",
+                    "privileges": [
+                        {
+                            "id": 53,
+                            "name": "Accept",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 54,
+                            "name": "Reject",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 62,
+                    "name": "Search Rentals",
+                    "href": "/rentals/search",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 13,
+                            "name": "Delete",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 21,
+                            "name": "Export",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Tickets",
+            "id": 16,
+            "menuitems": [
+                {
+                    "id": 72,
+                    "name": "Add CTS",
+                    "href": "/tickets/cts/add",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 35,
+                            "name": "Read All",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 7,
+                            "name": "Collect Invoice",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 66,
+                    "name": "Add Ticket",
+                    "href": "/tickets/add",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 123,
+                    "name": "Search CTS",
+                    "href": "/tickets/cts/search",
+                    "privileges": [
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 67,
+                    "name": "Search Tickets",
+                    "href": "/tickets/search",
+                    "privileges": [
+                        {
+                            "id": 21,
+                            "name": "Export",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Inquiries",
+            "id": 17,
+            "menuitems": [
+                {
+                    "id": 75,
+                    "name": "Add Inquiry",
+                    "href": "/inquiries/add",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 74,
+                    "name": "Search Inquiry",
+                    "href": "/inquiries/search",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Complaints & Suggestions",
+            "id": 18,
+            "menuitems": [
+                {
+                    "id": 77,
+                    "name": "Add Complaint",
+                    "href": "/complaints/add",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76,
+                    "name": "Search Complaint",
+                    "href": "/complaints/search",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Invoices",
+            "id": 19,
+            "menuitems": [
+                {
+                    "id": 79,
+                    "name": "Add Invoice",
+                    "href": "/invoices/create",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 84,
+                    "name": "End Of Day",
+                    "href": "/invoices/end-of-day",
+                    "privileges": [
+                        {
+                            "id": 19,
+                            "name": "End Of Day",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 85,
+                    "name": "Full End Of Day",
+                    "href": "/invoices/full-end-of-day",
+                    "privileges": [
+                        {
+                            "id": 23,
+                            "name": "FullEnd Of Day",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 131,
+                    "name": "Refund",
+                    "href": "/invoices/refund",
+                    "privileges": [
+                        {
+                            "id": 56,
+                            "name": "Refund Requests",
+                            "status": 1
+                        },
+                        {
+                            "id": 57,
+                            "name": "Reject Refund Request",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 59,
+                            "name": "Accept Void Request",
+                            "status": 1
+                        },
+                        {
+                            "id": 58,
+                            "name": "Accept Refund Request",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81,
+                    "name": "Search Invoices",
+                    "href": "/invoices/search",
+                    "privileges": [
+                        {
+                            "id": 58,
+                            "name": "Accept Refund Request",
+                            "status": 1
+                        },
+                        {
+                            "id": 7,
+                            "name": "Collect Invoice",
+                            "status": 1
+                        },
+                        {
+                            "id": 21,
+                            "name": "Export",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 49,
+                            "name": "Void",
+                            "status": 1
+                        },
+                        {
+                            "id": 50,
+                            "name": "Void Requests",
+                            "status": 1
+                        },
+                        {
+                            "id": 52,
+                            "name": "Reject Void Request",
+                            "status": 1
+                        },
+                        {
+                            "id": 55,
+                            "name": "Refund",
+                            "status": 1
+                        },
+                        {
+                            "id": 56,
+                            "name": "Refund Requests",
+                            "status": 1
+                        },
+                        {
+                            "id": 57,
+                            "name": "Reject Refund Request",
+                            "status": 1
+                        },
+                        {
+                            "id": 59,
+                            "name": "Accept Void Request",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Reports",
+            "id": 22,
+            "menuitems": [
+                {
+                    "id": 99,
+                    "name": "Daily Invoices",
+                    "href": "/reports/daily-invoices",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 9,
+                            "name": "Current Work Orders",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 105,
+                    "name": "Department Service End Of Day Report",
+                    "href": "/reports/departmental-services",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 101,
+                    "name": "End Of Day Report",
+                    "href": "/reports/end-of-day",
+                    "privileges": [
+                        {
+                            "id": 15,
+                            "name": "Deprecated Assets",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Users",
+            "id": 23,
+            "menuitems": [
+                {
+                    "id": 136,
+                    "name": "Add Legal Users",
+                    "href": "/users/legal-users-add",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 113,
+                    "name": "Add User",
+                    "href": "/users/add",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 137,
+                    "name": "Manage Legal Users",
+                    "href": "/users/legal-users-manage",
+                    "privileges": [
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 21,
+                            "name": "Export",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 112,
+                    "name": "Manage Users",
+                    "href": "/users/manage",
+                    "privileges": [
+                        {
+                            "id": 21,
+                            "name": "Export",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 13,
+                            "name": "Delete",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Roles",
+            "id": 24,
+            "menuitems": [
+                {
+                    "id": 117,
+                    "name": "Add Role",
+                    "href": "/roles/add",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 116,
+                    "name": "Manage Roles",
+                    "href": "/roles/manage",
+                    "privileges": [
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 21,
+                            "name": "Export",
+                            "status": 1
+                        },
+                        {
+                            "id": 13,
+                            "name": "Delete",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 3,
+                            "name": "Assign Employee",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "DocumentLibrary",
+            "id": 25,
+            "menuitems": [
+                {
+                    "id": 58,
+                    "name": "Document Library",
+                    "href": "/document-library",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Settings",
+            "id": 26,
+            "menuitems": [
+                {
+                    "id": 118,
+                    "name": "System Settings",
+                    "href": "/settings/search",
+                    "privileges": [
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Ownership Managment",
+            "id": 27,
+            "menuitems": [
+                {
+                    "id": 132,
+                    "name": "Add Request",
+                    "href": "/ownership-management/add",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 133,
+                    "name": "Search Request",
+                    "href": "/ownership-management/search",
+                    "privileges": [
+                        {
+                            "id": 61,
+                            "name": "Close Ownership Request",
+                            "status": 1
+                        },
+                        {
+                            "id": 21,
+                            "name": "Export",
+                            "status": 1
+                        },
+                        {
+                            "id": 62,
+                            "name": "Invalid",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Unit Blocks",
+            "id": 28,
+            "menuitems": [
+                {
+                    "id": 134,
+                    "name": "Add Block",
+                    "href": "/unit-blocks/add",
+                    "privileges": [
+                        {
+                            "id": 63,
+                            "name": "Finance Block",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 64,
+                            "name": "Legal Block",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 135,
+                    "name": "Search Block",
+                    "href": "/unit-blocks/search",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 21,
+                            "name": "Export",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 65,
+                            "name": "UnBlock",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Imports",
+            "id": 29,
+            "menuitems": [
+                {
+                    "id": 140,
+                    "name": "Import Customers",
+                    "href": "/imports/customers",
+                    "privileges": [
+                        {
+                            "id": 66,
+                            "name": "Import",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 142,
+                    "name": "Import History",
+                    "href": "/imports/history",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 141,
+                    "name": "Import Relatives",
+                    "href": "/imports/relatives",
+                    "privileges": [
+                        {
+                            "id": 66,
+                            "name": "Import",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 139,
+                    "name": "Import Units",
+                    "href": "/imports/units",
+                    "privileges": [
+                        {
+                            "id": 66,
+                            "name": "Import",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Notifications",
+            "id": 30,
+            "menuitems": [
+                {
+                    "id": 143,
+                    "name": "Send Notifications",
+                    "href": "/notifications/send",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "success": true,
+    "statusCode": 200,
+    "is_maintenance": false
+}

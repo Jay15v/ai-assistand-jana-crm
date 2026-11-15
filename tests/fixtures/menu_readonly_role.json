@@ -1,0 +1,30 @@
+{
+    "result": [
+        {
+            "menuName": "Dashboard",
+            "id": 1,
+            "menuitems": [
+                {"id": 128, "name": "Complaints", "href": "/dashboard/complaints", "privileges": [{"id": 34, "name": "Read", "status": 1}]},
+                {"id": 1, "name": "Statistics", "href": "/dashboard/statistics", "privileges": [{"id": 34, "name": "Read", "status": 1}]},
+                {"id": 127, "name": "Tickets", "href": "/dashboard/tickets", "privileges": [{"id": 34, "name": "Read", "status": 1}]}
+            ]
+        },
+        {
+            "menuName": "Tickets",
+            "id": 16,
+            "menuitems": [
+                {"id": 67, "name": "Search Tickets", "href": "/tickets/search", "privileges": [{"id": 34, "name": "Read", "status": 1}]}
+            ]
+        },
+        {
+            "menuName": "Complaints & Suggestions",
+            "id": 18,
+            "menuitems": [
+                {"id": 76, "name": "Search Complaint", "href": "/complaints/search", "privileges": [{"id": 34, "name": "Read", "status": 1}]}
+            ]
+        }
+    ],
+    "success": true,
+    "statusCode": 200,
+    "is_maintenance": false
+}

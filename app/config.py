@@ -1,8 +1,9 @@
-"""Environment-driven configuration for the vector DB layer."""
+"""Environment-driven configuration for the vector DB layer. Values come from .env (see .env.example)."""
 
 from functools import lru_cache
 from pathlib import Path
 
+from pydantic import AliasChoices, Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
@@ -21,14 +22,22 @@ class Settings(BaseSettings):
     chroma_path: str = str(DATA_DIR / "chroma")
     chroma_collection: str = "crm_knowledge"
 
-    # Local multilingual embedding model (fastembed / ONNX, CPU). One model for EN + AR,
-    # so an Arabic question can match an English record and vice versa.
-    embedding_model: str = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-    embedding_cache_dir: str = str(DATA_DIR / "models")
+    # Embeddings: Google Gemini API. One multilingual model for EN + AR, so an Arabic question can
+    # match an English record and vice versa. Accepts GEMINI_API_KEY or GOOGLE_API_KEY from .env.
+    gemini_api_key: SecretStr | None = Field(
+        default=None, validation_alias=AliasChoices("GEMINI_API_KEY", "GOOGLE_API_KEY")
+    )
+    embedding_model: str = "gemini-embedding-2"
+    # 3072 = the model's full size (best quality); 1536 / 768 are smaller with a small quality loss.
+    # Changing the model or the dimension requires a rebuild (scripts/build_vector_db.py).
+    embedding_dim: int = 3072
+    embedding_batch_size: int = 50  # texts per API request when building the DB
+    embedding_timeout_s: float = 30.0  # per API request
+    embedding_max_retries: int = 4  # on rate limits (429), server errors (5xx) and network errors
 
-    # Retrieval + scope gate. Score = cosine + name/path bonus, capped at 1.0.
-    # Measured 2026-11-12 (scripts/query_vector_db.py): 16 CRM questions EN/AR scored
-    # 0.74-1.00; off-topic questions scored 0.23-0.36. Re-check when the docs change.
+    # Retrieval + scope gate. Score = Gemini cosine similarity only (no bonuses).
+    # NOTE: 0.45 was measured with the previous local model (MiniLM). Gemini scores sit on a
+    # different scale, so re-measure with scripts/query_vector_db.py after the first Gemini build.
     retrieval_top_k: int = 5
     scope_min_score: float = 0.45
 

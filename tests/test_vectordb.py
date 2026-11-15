@@ -8,7 +8,7 @@ import pytest
 from app.config import Settings
 from app.lang.normalize import search_tokens
 from app.vectordb.schema import CrmDoc, href_from_url, title_text
-from app.vectordb.store import VectorStore, _name_match, _path_coverage, _query_words, load_docs
+from app.vectordb.store import VectorStore, load_docs
 
 
 class FakeEmbedder:
@@ -21,7 +21,7 @@ class FakeEmbedder:
         n = math.sqrt(sum(x * x for x in v)) or 1.0
         return [x / n for x in v]
 
-    def embed_documents(self, texts):
+    def embed_documents(self, texts, titles=None):
         return [self._vec(t) for t in texts]
 
     def embed_query(self, text):
@@ -78,23 +78,6 @@ def test_real_source_file_loads():
     docs = load_docs(Settings().vector_docs_path)
     assert len(docs) == 119
     assert all(d.text_en and d.text_ar for d in docs)
-
-
-# --- scoring -----------------------------------------------------------------------
-def test_generic_verb_does_not_count_as_name_match():
-    meta = {"screen_en": "Add Role", "screen_ar": "إضافة دور"}
-    assert _name_match(_query_words("اضافة قسم جديد"), meta) == 0.0
-    assert _name_match(_query_words("add a role"), meta) == 1.0
-
-
-def test_arabic_name_match_ignores_letter_variants():
-    meta = {"screen_en": "Department", "screen_ar": "القسم"}
-    assert _name_match(_query_words("إضافة قسم جديد"), meta) == 1.0
-
-
-def test_path_coverage_prefers_specific_screen():
-    q = _query_words("refund an invoice")
-    assert _path_coverage(q, {"path_en": "Invoices > Refund"}) > _path_coverage(q, {"path_en": "Invoices"})
 
 
 # --- store -------------------------------------------------------------------------

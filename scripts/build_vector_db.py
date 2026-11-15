@@ -13,6 +13,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app.config import get_settings  # noqa: E402
+from app.vectordb.embedding import EmbeddingError  # noqa: E402
 from app.vectordb.store import VectorStore, load_docs  # noqa: E402
 
 
@@ -29,7 +30,12 @@ def main() -> int:
     gaps = {d.id: d.missing_ar_labels() for d in docs if d.missing_ar_labels()}
     print(f"Arabic gaps: {len(gaps)} docs have {sum(gaps.values())} labels with no Arabic (kept as null)")
 
-    n = VectorStore(settings).rebuild(docs)
+    print(f"Embedding with {settings.embedding_model} (dim {settings.embedding_dim}) via the Gemini API ...")
+    try:
+        n = VectorStore(settings).rebuild(docs)
+    except EmbeddingError as exc:
+        print(f"ERROR: {exc}\nThe existing vector DB was not changed.")
+        return 1
     print(f"Chroma: {n} records -> {settings.chroma_path} (collection '{settings.chroma_collection}')")
     return 0
 

@@ -1,0 +1,131 @@
+{
+    "result": [
+        {
+            "menuName": "Tickets",
+            "id": 16,
+            "menuitems": [
+                {
+                    "id": 72,
+                    "name": "Add CTS",
+                    "href": "/tickets/cts/add",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 35,
+                            "name": "Read All",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 7,
+                            "name": "Collect Invoice",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 66,
+                    "name": "Add Ticket",
+                    "href": "/tickets/add",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 123,
+                    "name": "Search CTS",
+                    "href": "/tickets/cts/search",
+                    "privileges": [
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 67,
+                    "name": "Search Tickets",
+                    "href": "/tickets/search",
+                    "privileges": [
+                        {
+                            "id": 21,
+                            "name": "Export",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "menuName": "Complaints & Suggestions",
+            "id": 18,
+            "menuitems": [
+                {
+                    "id": 77,
+                    "name": "Add Complaint",
+                    "href": "/complaints/add",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 76,
+                    "name": "Search Complaint",
+                    "href": "/complaints/search",
+                    "privileges": [
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "success": true,
+    "statusCode": 200,
+    "is_maintenance": false
+}
