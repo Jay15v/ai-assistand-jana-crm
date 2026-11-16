@@ -23,6 +23,12 @@ from app.models.chat import ChatRequest  # noqa: E402
 
 def main() -> None:
     sys.stdout.reconfigure(encoding="utf-8")
+    out_lines: list[str] = []
+
+    def emit(text: str = "") -> None:
+        print(text)
+        out_lines.append(text)
+
     if len(sys.argv) < 3:
         print(__doc__)
         return
@@ -48,22 +54,29 @@ def main() -> None:
             path.append(node)
             final.update(values or {})
 
-    print(f"question : {message}  (ui_lang {ui_lang!r} -> {request.ui_lang})")
-    print(f"path     : START -> {' -> '.join(path)} -> END")
+    emit(f"question : {message}  (ui_lang {ui_lang!r} -> {request.ui_lang})")
+    emit(f"path     : START -> {' -> '.join(path)} -> END")
     if final.get("error"):
-        print(f"error    : {final['error']}")
+        emit(f"error    : {final['error']}")
     else:
-        print(f"allowed  : {len(final['allowed_tabs'])}  ->  " + ", ".join(t.name_en for t in final["allowed_tabs"]))
-        print(f"not allowed: {len(final['not_allowed_tabs'])}")
+        emit(f"allowed  : {len(final['allowed_tabs'])}  ->  " + ", ".join(t.name_en for t in final["allowed_tabs"]))
+        emit(f"not allowed: {len(final['not_allowed_tabs'])}")
         if final.get("unknown_tabs"):
-            print(f"unknown  : {final['unknown_tabs']}")
+            emit(f"unknown  : {final['unknown_tabs']}")
     if final.get("scope"):
-        print(f"decision : {final['scope']}   ({final.get('scope_reason', '')})")
+        emit(f"decision : {final['scope']}   ({final.get('scope_reason', '')})")
         if final["scope"] == "partial":
-            print(f"  answerable part : {final.get('allowed_question')}")
-            print(f"  blocked part    : {final.get('not_allowed_question')}")
+            emit(f"  answerable part : {final.get('allowed_question')}")
+            emit(f"  blocked part    : {final.get('not_allowed_question')}")
+    if final.get("sections") is not None:
+        emit("sections : " + (", ".join(c.question_en for c in final["sections"]) or "(none)"))
     if final.get("answer"):
-        print(f"answer   : {final['answer']}")
+        emit(f"\nANSWER:\n{final['answer']}")
+
+    # Arabic does not render in Windows terminals (no RTL shaping) - read it from this file instead.
+    out = Path(__file__).resolve().parent.parent / "last_run.txt"
+    out.write_text("\n".join(out_lines) + "\n", encoding="utf-8")
+    print(f"\n(saved to {out.name} - open it in VSCode to read Arabic properly)")
 
 
 if __name__ == "__main__":

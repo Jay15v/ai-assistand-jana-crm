@@ -9,12 +9,19 @@ from pydantic import ValidationError
 from app.config import get_settings
 from app.graph import build as build_module
 from app.graph.build import build_graph
-from app.graph.nodes import ERROR_MESSAGES, NOT_ALLOWED_MESSAGES, OFF_TOPIC_MESSAGES
+from app.graph.nodes import (
+    ERROR_MESSAGES,
+    NO_DOCS_MESSAGES,
+    NOT_ALLOWED_MESSAGES,
+    OFF_TOPIC_MESSAGES,
+    PARTIAL_NOTICES,
+)
 from app.graph.state import initial_state
+from app.manual.chunks import load_chunks
 from app.models.chat import ChatRequest
 from app.scope.decide import ScopeDecision
 from app.scope.tabs import TabCatalog
-from tests.conftest import FakeLLM
+from tests.conftest import FakeIndex, FakeLLM
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -32,14 +39,24 @@ def catalog():
     return TabCatalog.from_settings(get_settings())
 
 
+@pytest.fixture(scope="module")
+def ticket_chunk():
+    return next(c for c in load_chunks() if c.question_en == "How do I search for tickets?")
+
+
 @pytest.fixture
 def fake_llm():
     return FakeLLM(ScopeDecision(decision="allowed", reason="test default"))
 
 
 @pytest.fixture
-def graph(catalog, fake_llm):
-    return build_graph(catalog, llm=fake_llm)
+def fake_index(ticket_chunk):
+    return FakeIndex(hits=[(ticket_chunk, 0.9)])
+
+
+@pytest.fixture
+def graph(catalog, fake_llm, fake_index):
+    return build_graph(catalog, llm=fake_llm, index=fake_index)
 
 
 def run(graph, menu: dict, ui_lang: str = "en", message: str = "how do I add a ticket?") -> dict:
@@ -48,13 +65,18 @@ def run(graph, menu: dict, ui_lang: str = "en", message: str = "how do I add a t
 
 # --- step 1 through the pipeline -------------------------------------------------------------
 
-def test_admin_tabs_resolved_and_scope_checked(graph, fake_llm):
+def test_admin_allowed_question_gets_an_answer(graph, fake_llm, fake_index):
     out = run(graph, menu_json("menu_admin.json"))
     assert len(out["allowed_tabs"]) == 54
-    assert out["not_allowed_tabs"] == []
     assert out["scope"] == "allowed"
-    assert "answer" not in out  # allowed -> END (step 3 will answer)
-    assert len(fake_llm.calls) == 1  # the scope LLM ran once
+    assert len(out["sections"]) == 1
+    assert out["answer"] == "FAKE STEPS"  # retrieve -> generate ran
+    assert len(fake_llm.calls) == 1  # scope
+    assert len(fake_llm.answer_calls) == 1  # generate
+    # retrieval was called with the raw message and THIS user's tab names
+    query, allowed_names, _ = fake_index.searches[0]
+    assert query == "how do I add a ticket?"
+    assert "Search Invoices" in allowed_names  # admin has everything
 
 def test_real_readonly_role_tabs(graph):
     out = run(graph, menu_json("menu_readonly_role.json"))
@@ -88,19 +110,42 @@ def test_off_topic_routes_to_fixed_reply(catalog, ui_lang):
     out = run(build_graph(catalog, llm=fake), menu_json("menu_readonly_role.json"), ui_lang, "hello!")
     assert out["answer"] == OFF_TOPIC_MESSAGES[ui_lang]
 
-def test_partial_reaches_end_with_both_parts(catalog):
+@pytest.mark.parametrize("ui_lang", ["en", "ar"])
+def test_partial_answers_allowed_part_plus_fixed_notice(catalog, ticket_chunk, ui_lang):
     fake = FakeLLM(ScopeDecision(
         decision="partial",
         allowed_question="How do I search for a ticket?",
         not_allowed_question="How do I create a ticket?",
         reason="search allowed, add not",
     ))
-    out = run(build_graph(catalog, llm=fake), menu_json("menu_readonly_role.json"),
-              message="find a ticket then create one")
+    index = FakeIndex(hits=[(ticket_chunk, 0.9)])
+    out = run(build_graph(catalog, llm=fake, index=index), menu_json("menu_readonly_role.json"),
+              ui_lang, "find a ticket then create one")
     assert out["scope"] == "partial"
-    assert out["allowed_question"] == "How do I search for a ticket?"
-    assert out["not_allowed_question"] == "How do I create a ticket?"
-    assert "answer" not in out  # step 3 will answer the allowed part + the notice
+    # retrieval searched ONLY the allowed part - the blocked part never reaches the index
+    assert index.searches[0][0] == "How do I search for a ticket?"
+    # the answer is the steps + the code-appended notice naming the blocked part
+    expected_notice = PARTIAL_NOTICES[ui_lang].format(blocked="How do I create a ticket?")
+    assert out["answer"] == "FAKE STEPS" + expected_notice
+
+
+@pytest.mark.parametrize("ui_lang", ["en", "ar"])
+def test_no_eligible_section_gives_no_docs_reply(catalog, fake_llm, ui_lang):
+    out = run(build_graph(catalog, llm=fake_llm, index=FakeIndex(hits=[])),
+              menu_json("menu_readonly_role.json"), ui_lang)
+    assert out["sections"] == []
+    assert out["answer"] == NO_DOCS_MESSAGES[ui_lang]
+    assert fake_llm.answer_calls == []  # generator never ran
+
+
+@pytest.mark.parametrize("ui_lang", ["en", "ar"])
+def test_answer_llm_failure_fails_closed(catalog, ticket_chunk, ui_lang):
+    fake = FakeLLM(ScopeDecision(decision="allowed", reason="ok"),
+                   answer_exc=TimeoutError("gemini down"))
+    out = run(build_graph(catalog, llm=fake, index=FakeIndex(hits=[(ticket_chunk, 0.9)])),
+              menu_json("menu_readonly_role.json"), ui_lang)
+    assert out["error"]
+    assert out["answer"] == ERROR_MESSAGES[ui_lang]
 
 @pytest.mark.parametrize("ui_lang", ["en", "ar"])
 def test_scope_llm_failure_fails_closed(catalog, ui_lang):
@@ -139,7 +184,7 @@ def test_missing_ui_lang_or_menu_is_rejected():
         ChatRequest(user_id="u1", session_id="s1", message="hi", ui_lang="en")
 
 
-def test_catalog_loaded_once(monkeypatch, fake_llm):
+def test_catalog_loaded_once(monkeypatch, fake_llm, fake_index):
     calls = []
     real = TabCatalog.from_settings
 
@@ -148,7 +193,7 @@ def test_catalog_loaded_once(monkeypatch, fake_llm):
         return real(settings)
 
     monkeypatch.setattr(build_module.TabCatalog, "from_settings", staticmethod(counting))
-    g = build_graph(llm=fake_llm)
+    g = build_graph(llm=fake_llm, index=fake_index)
     for _ in range(3):
         run(g, menu_json("menu_limited.json"))
     assert len(calls) == 1

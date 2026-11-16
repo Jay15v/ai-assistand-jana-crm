@@ -1,0 +1,939 @@
+[
+  {
+    "section": "2. نظرة عامة على النظام",
+    "question": "خريطة القائمة الجانبية",
+    "line": 88,
+    "general": true,
+    "tabs": [],
+    "require": "any",
+    "en_question": "Main navigation map"
+  },
+  {
+    "section": "3. البداية",
+    "question": "إزاي أسجّل دخول على النظام؟",
+    "line": 114,
+    "general": true,
+    "tabs": [],
+    "require": "any",
+    "en_question": "How do I log in to the CRM?"
+  },
+  {
+    "section": "3. البداية",
+    "question": "شكل الشاشة عامل إزاي؟",
+    "line": 137,
+    "general": true,
+    "tabs": [],
+    "require": "any",
+    "en_question": "How is the screen laid out?"
+  },
+  {
+    "section": "3. البداية",
+    "question": "إزاي أدوّر بسرعة على عميل برقم الموبايل؟",
+    "line": 147,
+    "general": true,
+    "tabs": [],
+    "require": "any",
+    "en_question": "How do I quickly find a customer by phone number?"
+  },
+  {
+    "section": "3. البداية",
+    "question": "إزاي أدوّر بسرعة على وحدة؟",
+    "line": 156,
+    "general": true,
+    "tabs": [],
+    "require": "any",
+    "en_question": "How do I quickly find a unit?"
+  },
+  {
+    "section": "3. البداية",
+    "question": "إزاي أشوف الإشعارات؟",
+    "line": 164,
+    "general": true,
+    "tabs": [],
+    "require": "any",
+    "en_question": "How do I view notifications?"
+  },
+  {
+    "section": "3. البداية",
+    "question": "إزاي أغيّر لغة الواجهة؟",
+    "line": 170,
+    "general": true,
+    "tabs": [],
+    "require": "any",
+    "en_question": "How do I switch the interface language?"
+  },
+  {
+    "section": "3. البداية",
+    "question": "إزاي أغيّر الباسورد أو أعمل تسجيل خروج؟",
+    "line": 176,
+    "general": true,
+    "tabs": [],
+    "require": "any",
+    "en_question": "How do I change my password or log out?"
+  },
+  {
+    "section": "3. البداية",
+    "question": "صفحات البحث والقوائم بتشتغل إزاي؟",
+    "line": 215,
+    "general": true,
+    "tabs": [],
+    "require": "any",
+    "en_question": "How do the search and list pages work?"
+  },
+  {
+    "section": "4. الشكاوى والمقترحات",
+    "question": "إزاي أسجّل شكوى جديدة؟",
+    "line": 247,
+    "general": false,
+    "tabs": [
+      "Add Complaint"
+    ],
+    "require": "any",
+    "en_question": "How do I file a new complaint?"
+  },
+  {
+    "section": "4. الشكاوى والمقترحات",
+    "question": "إزاي أدوّر على شكوى؟",
+    "line": 285,
+    "general": false,
+    "tabs": [
+      "Search Complaint"
+    ],
+    "require": "any",
+    "en_question": "How do I search for a complaint?"
+  },
+  {
+    "section": "4. الشكاوى والمقترحات",
+    "question": "إزاي أشوف مرفقات شكوى من صفحة البحث؟",
+    "line": 299,
+    "general": false,
+    "tabs": [
+      "Search Complaint"
+    ],
+    "require": "any",
+    "en_question": "How do I view a complaint's attachments from the search list?"
+  },
+  {
+    "section": "4. الشكاوى والمقترحات",
+    "question": "إزاي أفتح تفاصيل شكوى؟",
+    "line": 307,
+    "general": false,
+    "tabs": [
+      "Search Complaint"
+    ],
+    "require": "any",
+    "en_question": "How do I open a complaint's details?"
+  },
+  {
+    "section": "4. الشكاوى والمقترحات",
+    "question": "إزاي أضيف رد على شكوى؟",
+    "line": 320,
+    "general": false,
+    "tabs": [
+      "Search Complaint"
+    ],
+    "require": "any",
+    "en_question": "How do I add a response to a complaint?"
+  },
+  {
+    "section": "4. الشكاوى والمقترحات",
+    "question": "إزاي أغيّر حالة الشكوى (مثلاً أقفلها)؟",
+    "line": 330,
+    "general": false,
+    "tabs": [
+      "Search Complaint"
+    ],
+    "require": "any",
+    "en_question": "How do I change a complaint's status (e.g. mark it Resolved)?"
+  },
+  {
+    "section": "4. الشكاوى والمقترحات",
+    "question": "إزاي أرفع مستند على شكوى؟",
+    "line": 347,
+    "general": false,
+    "tabs": [
+      "Search Complaint"
+    ],
+    "require": "any",
+    "en_question": "How do I attach a document to a complaint?"
+  },
+  {
+    "section": "5. لوحة التحكم (Dashboard)",
+    "question": "فين أشوف الشكاوى المفتوحة؟",
+    "line": 360,
+    "general": false,
+    "tabs": [
+      "Complaints"
+    ],
+    "require": "any",
+    "en_question": "Where do I see all open (live) complaints?"
+  },
+  {
+    "section": "5. لوحة التحكم (Dashboard)",
+    "question": "فين أشوف التذاكر المفتوحة وحالة الـ SLA؟",
+    "line": 368,
+    "general": false,
+    "tabs": [
+      "Tickets"
+    ],
+    "require": "any",
+    "en_question": "Where do I see live tickets and their SLA status?"
+  },
+  {
+    "section": "5. لوحة التحكم (Dashboard)",
+    "question": "إزاي أشوف الإحصائيات؟",
+    "line": 379,
+    "general": false,
+    "tabs": [
+      "Statistics"
+    ],
+    "require": "any",
+    "en_question": "How do I view statistics charts?"
+  },
+  {
+    "section": "6. التذاكر و CTS",
+    "question": "إزاي أعمل تذكرة جديدة؟",
+    "line": 396,
+    "general": false,
+    "tabs": [
+      "Add Ticket"
+    ],
+    "require": "any",
+    "en_question": "How do I create a new ticket?"
+  },
+  {
+    "section": "6. التذاكر و CTS",
+    "question": "إزاي أدوّر على التذاكر؟",
+    "line": 424,
+    "general": false,
+    "tabs": [
+      "Search Tickets"
+    ],
+    "require": "any",
+    "en_question": "How do I search for tickets?"
+  },
+  {
+    "section": "6. التذاكر و CTS",
+    "question": "أيقونات Status و SLA و Delayed و Urgent معناها إيه؟",
+    "line": 436,
+    "general": false,
+    "tabs": [
+      "Search Tickets"
+    ],
+    "require": "any",
+    "en_question": "What do the Status, SLA, Delayed and Urgent icons mean?"
+  },
+  {
+    "section": "6. التذاكر و CTS",
+    "question": "إزاي أعدّل تذكرة؟",
+    "line": 451,
+    "general": false,
+    "tabs": [
+      "Search Tickets"
+    ],
+    "require": "any",
+    "en_question": "How do I edit a ticket?"
+  },
+  {
+    "section": "6. التذاكر و CTS",
+    "question": "إزاي أغيّر حالة التذكرة؟",
+    "line": 461,
+    "general": false,
+    "tabs": [
+      "Search Tickets"
+    ],
+    "require": "any",
+    "en_question": "How do I change a ticket's status?"
+  },
+  {
+    "section": "6. التذاكر و CTS",
+    "question": "إزاي أضيف تعليق على تذكرة؟",
+    "line": 484,
+    "general": false,
+    "tabs": [
+      "Search Tickets"
+    ],
+    "require": "any",
+    "en_question": "How do I add a comment to a ticket?"
+  },
+  {
+    "section": "6. التذاكر و CTS",
+    "question": "إزاي أرفع مستند على تذكرة؟",
+    "line": 492,
+    "general": false,
+    "tabs": [
+      "Search Tickets"
+    ],
+    "require": "any",
+    "en_question": "How do I attach documents to a ticket?"
+  },
+  {
+    "section": "6. التذاكر و CTS",
+    "question": "إزاي أطبع تذكرة؟",
+    "line": 498,
+    "general": false,
+    "tabs": [
+      "Search Tickets"
+    ],
+    "require": "any",
+    "en_question": "How do I print a ticket?"
+  },
+  {
+    "section": "6. التذاكر و CTS",
+    "question": "إزاي أعمل سجل CTS؟",
+    "line": 504,
+    "general": false,
+    "tabs": [
+      "Add CTS"
+    ],
+    "require": "any",
+    "en_question": "How do I create a CTS record?"
+  },
+  {
+    "section": "6. التذاكر و CTS",
+    "question": "إزاي أدوّر على سجلات CTS وأعدّلها؟",
+    "line": 517,
+    "general": false,
+    "tabs": [
+      "Search CTS"
+    ],
+    "require": "any",
+    "en_question": "How do I search CTS records?"
+  },
+  {
+    "section": "7. الاستفسارات",
+    "question": "إزاي أسجّل استفسار عميل؟",
+    "line": 532,
+    "general": false,
+    "tabs": [
+      "Add Inquiry"
+    ],
+    "require": "any",
+    "en_question": "How do I log a customer inquiry?"
+  },
+  {
+    "section": "7. الاستفسارات",
+    "question": "إزاي أدوّر على الاستفسارات؟",
+    "line": 543,
+    "general": false,
+    "tabs": [
+      "Search Inquiry"
+    ],
+    "require": "any",
+    "en_question": "How do I search inquiries?"
+  },
+  {
+    "section": "8. العملاء",
+    "question": "إزاي ألاقي عميل؟",
+    "line": 557,
+    "general": false,
+    "tabs": [
+      "Search Customer"
+    ],
+    "require": "any",
+    "en_question": "How do I find a customer?"
+  },
+  {
+    "section": "8. العملاء",
+    "question": "صفحة تفاصيل العميل فيها إيه؟",
+    "line": 565,
+    "general": false,
+    "tabs": [
+      "Search Customer"
+    ],
+    "require": "any",
+    "en_question": "What is on the customer details page?"
+  },
+  {
+    "section": "8. العملاء",
+    "question": "إزاي أعدّل بيانات تواصل عميل؟",
+    "line": 571,
+    "general": false,
+    "tabs": [
+      "Search Customer"
+    ],
+    "require": "any",
+    "en_question": "How do I edit a customer's contact details?"
+  },
+  {
+    "section": "8. العملاء",
+    "question": "إزاي أشوف أو أرفع مستندات عميل؟",
+    "line": 585,
+    "general": false,
+    "tabs": [
+      "Search Customer"
+    ],
+    "require": "any",
+    "en_question": "How do I upload or view a customer's documents?"
+  },
+  {
+    "section": "8. العملاء",
+    "question": "إزاي أطلّع كل المستأجرين أو الملاك أو أقارب الملاك؟",
+    "line": 595,
+    "general": false,
+    "tabs": [
+      "Search Customer"
+    ],
+    "require": "any",
+    "en_question": "How do I list all renters, owners or owner relatives?"
+  },
+  {
+    "section": "9. الوحدات",
+    "question": "إزاي أدوّر على الوحدات؟",
+    "line": 606,
+    "general": false,
+    "tabs": [
+      "Unit"
+    ],
+    "require": "any",
+    "en_question": "How do I search for units?"
+  },
+  {
+    "section": "9. الوحدات",
+    "question": "إيه اللي أقدر أعمله في صفحة تفاصيل الوحدة؟",
+    "line": 614,
+    "general": false,
+    "tabs": [
+      "Unit"
+    ],
+    "require": "any",
+    "en_question": "What can I do on the Unit Details page?"
+  },
+  {
+    "section": "9. الوحدات",
+    "question": "إزاي أخلي الوحدة متاحة للإيجار (أو ألغيها)؟",
+    "line": 638,
+    "general": false,
+    "tabs": [
+      "Unit"
+    ],
+    "require": "any",
+    "en_question": "How do I mark a unit as eligible (or not) for rent?"
+  },
+  {
+    "section": "9. الوحدات",
+    "question": "ليه مش قادر أضيف إيجار لوحدة؟",
+    "line": 650,
+    "general": false,
+    "tabs": [
+      "Unit"
+    ],
+    "require": "any",
+    "en_question": "Why can't I add a rental to a unit?"
+  },
+  {
+    "section": "9. الوحدات",
+    "question": "إزاي ألاقي الوحدات المقفولة؟",
+    "line": 661,
+    "general": false,
+    "tabs": [
+      "Unit"
+    ],
+    "require": "any",
+    "en_question": "How do I find locked (blocked) units?"
+  },
+  {
+    "section": "9. الوحدات",
+    "question": "إزاي أشوف الملاك أو المستأجرين القدام لوحدة؟",
+    "line": 671,
+    "general": false,
+    "tabs": [
+      "Unit"
+    ],
+    "require": "any",
+    "en_question": "How do I see a unit's previous owners or renters?"
+  },
+  {
+    "section": "9. الوحدات",
+    "question": "إزاي أرفع مستند على وحدة؟",
+    "line": 680,
+    "general": false,
+    "tabs": [
+      "Unit"
+    ],
+    "require": "any",
+    "en_question": "How do I upload a document to a unit?"
+  },
+  {
+    "section": "9. الوحدات",
+    "question": "إزاي أحدد موقع لوحدة؟",
+    "line": 690,
+    "general": false,
+    "tabs": [
+      "Unit"
+    ],
+    "require": "any",
+    "en_question": "How do I assign a location to a unit?"
+  },
+  {
+    "section": "10. الخدمات",
+    "question": "إزاي أضيف خدمة جديدة؟",
+    "line": 701,
+    "general": false,
+    "tabs": [
+      "Add Service"
+    ],
+    "require": "any",
+    "en_question": "How do I add a new service?"
+  },
+  {
+    "section": "10. الخدمات",
+    "question": "إزاي أدوّر على خدمة أو أعدّلها أو أوقفها أو أمسحها؟",
+    "line": 713,
+    "general": false,
+    "tabs": [
+      "Service Search"
+    ],
+    "require": "any",
+    "en_question": "How do I find, edit, activate or delete a service?"
+  },
+  {
+    "section": "11. الإيجار",
+    "question": "إزاي أعمل حجز إيجار؟",
+    "line": 738,
+    "general": false,
+    "tabs": [
+      "Add Rental"
+    ],
+    "require": "any",
+    "en_question": "How do I add a rental reservation?"
+  },
+  {
+    "section": "11. الإيجار",
+    "question": "إزاي أراجع طلب إيجار (قبول أو رفض)؟",
+    "line": 771,
+    "general": false,
+    "tabs": [
+      "Rental Requests"
+    ],
+    "require": "any",
+    "en_question": "How do I review a rental request (accept or reject)?"
+  },
+  {
+    "section": "11. الإيجار",
+    "question": "إزاي أعدّل طلب إيجار قبل القبول؟",
+    "line": 793,
+    "general": false,
+    "tabs": [
+      "Rental Requests"
+    ],
+    "require": "any",
+    "en_question": "How do I edit a rental request before accepting it?"
+  },
+  {
+    "section": "11. الإيجار",
+    "question": "إزاي أدوّر على الإيجارات؟",
+    "line": 801,
+    "general": false,
+    "tabs": [
+      "Search Rentals"
+    ],
+    "require": "any",
+    "en_question": "How do I search rentals?"
+  },
+  {
+    "section": "11. الإيجار",
+    "question": "صفحة تفاصيل الإيجار فيها إيه؟",
+    "line": 811,
+    "general": false,
+    "tabs": [
+      "Search Rentals"
+    ],
+    "require": "any",
+    "en_question": "What is on a rental's details page?"
+  },
+  {
+    "section": "11. الإيجار",
+    "question": "إزاي أعدّل بيانات إيجار؟",
+    "line": 836,
+    "general": false,
+    "tabs": [
+      "Search Rentals"
+    ],
+    "require": "any",
+    "en_question": "How do I edit a rental's details?"
+  },
+  {
+    "section": "11. الإيجار",
+    "question": "إزاي أمدّ إيجار (Change Reservation)؟",
+    "line": 848,
+    "general": false,
+    "tabs": [
+      "Search Rentals"
+    ],
+    "require": "any",
+    "en_question": "How do I extend a rental (Change Reservation)?"
+  },
+  {
+    "section": "11. الإيجار",
+    "question": "إزاي أطلّع فاتورة على إيجار؟",
+    "line": 860,
+    "general": false,
+    "tabs": [
+      "Search Rentals"
+    ],
+    "require": "any",
+    "en_question": "How do I issue an invoice on a rental?"
+  },
+  {
+    "section": "11. الإيجار",
+    "question": "إزاي أعمل Check-in للمستأجر؟",
+    "line": 880,
+    "general": false,
+    "tabs": [
+      "Search Rentals"
+    ],
+    "require": "any",
+    "en_question": "How do I check a tenant in?"
+  },
+  {
+    "section": "11. الإيجار",
+    "question": "إزاي أعمل Check-out للمستأجر؟",
+    "line": 894,
+    "general": false,
+    "tabs": [
+      "Search Rentals"
+    ],
+    "require": "any",
+    "en_question": "How do I check a tenant out?"
+  },
+  {
+    "section": "11. الإيجار",
+    "question": "إزاي أنهي إيجار بدري (Terminate)؟",
+    "line": 923,
+    "general": false,
+    "tabs": [
+      "Search Rentals"
+    ],
+    "require": "any",
+    "en_question": "How do I terminate a rental early?"
+  },
+  {
+    "section": "11. الإيجار",
+    "question": "إزاي أطبع عقد الإيجار (Print RC)؟",
+    "line": 940,
+    "general": false,
+    "tabs": [
+      "Search Rentals"
+    ],
+    "require": "any",
+    "en_question": "How do I print the rental contract (Print RC)?"
+  },
+  {
+    "section": "11. الإيجار",
+    "question": "إزاي أعمل تذكرة لمستأجر؟",
+    "line": 948,
+    "general": false,
+    "tabs": [
+      "Search Rentals",
+      "Add Ticket"
+    ],
+    "require": "all",
+    "en_question": "How do I create a ticket for a tenant?"
+  },
+  {
+    "section": "11. الإيجار",
+    "question": "دورة حياة الإيجار ماشية إزاي؟",
+    "line": 956,
+    "general": false,
+    "tabs": [
+      "Add Rental",
+      "Search Rentals"
+    ],
+    "require": "any",
+    "en_question": "What is the life cycle of a rental?"
+  },
+  {
+    "section": "11. الإيجار",
+    "question": "إزاي أرفع إيجارات البروكر مرة واحدة؟",
+    "line": 968,
+    "general": false,
+    "tabs": [
+      "Broker Attachments"
+    ],
+    "require": "any",
+    "en_question": "How do I upload broker rentals in bulk (Broker Attachments)?"
+  },
+  {
+    "section": "12. الفواتير",
+    "question": "إزاي أعمل فاتورة يدوي؟",
+    "line": 1005,
+    "general": false,
+    "tabs": [
+      "Add Invoice"
+    ],
+    "require": "any",
+    "en_question": "How do I create a manual invoice?"
+  },
+  {
+    "section": "12. الفواتير",
+    "question": "إزاي أدوّر على فاتورة؟",
+    "line": 1019,
+    "general": false,
+    "tabs": [
+      "Search Invoices"
+    ],
+    "require": "any",
+    "en_question": "How do I search for an invoice?"
+  },
+  {
+    "section": "12. الفواتير",
+    "question": "صفحة الفاتورة فيها إيه؟",
+    "line": 1025,
+    "general": false,
+    "tabs": [
+      "Search Invoices"
+    ],
+    "require": "any",
+    "en_question": "What is on the invoice details page?"
+  },
+  {
+    "section": "12. الفواتير",
+    "question": "إزاي أحصّل فاتورة Pending؟",
+    "line": 1031,
+    "general": false,
+    "tabs": [
+      "Search Invoices"
+    ],
+    "require": "any",
+    "en_question": "How do I collect payment for a pending invoice?"
+  },
+  {
+    "section": "12. الفواتير",
+    "question": "إزاي أطلب إلغاء فاتورة؟",
+    "line": 1048,
+    "general": false,
+    "tabs": [
+      "Search Invoices"
+    ],
+    "require": "any",
+    "en_question": "How do I request an invoice void?"
+  },
+  {
+    "section": "12. الفواتير",
+    "question": "إزاي ألغي فاتورة مباشرة؟",
+    "line": 1060,
+    "general": false,
+    "tabs": [
+      "Search Invoices"
+    ],
+    "require": "any",
+    "en_question": "How do I void an invoice directly?"
+  },
+  {
+    "section": "12. الفواتير",
+    "question": "إزاي أراجع نهاية اليوم بتاعتي؟",
+    "line": 1072,
+    "general": false,
+    "tabs": [
+      "End Of Day"
+    ],
+    "require": "any",
+    "en_question": "How do I review my End of Day?"
+  },
+  {
+    "section": "12. الفواتير",
+    "question": "إزاي أراجع نهاية اليوم لكل الموظفين؟",
+    "line": 1105,
+    "general": false,
+    "tabs": [
+      "Full End Of Day"
+    ],
+    "require": "any",
+    "en_question": "How do I review the Full End of Day for all employees?"
+  },
+  {
+    "section": "13. التقارير",
+    "question": "تقرير الفواتير اليومية",
+    "line": 1115,
+    "general": false,
+    "tabs": [
+      "Daily Invoices"
+    ],
+    "require": "any",
+    "en_question": "How do I run the Daily Invoices report?"
+  },
+  {
+    "section": "13. التقارير",
+    "question": "تقرير خدمات الأقسام",
+    "line": 1123,
+    "general": false,
+    "tabs": [
+      "Department Service End Of Day Report"
+    ],
+    "require": "any",
+    "en_question": "How do I run the Departmental Services report?"
+  },
+  {
+    "section": "13. التقارير",
+    "question": "تقرير نهاية اليوم لفترة",
+    "line": 1129,
+    "general": false,
+    "tabs": [
+      "End Of Day Report"
+    ],
+    "require": "any",
+    "en_question": "How do I run the End Of Day report for a period?"
+  },
+  {
+    "section": "14. التعريفات (البيانات الأساسية)",
+    "question": "إزاي أضيف عنصر جديد في التعريفات؟",
+    "line": 1151,
+    "general": false,
+    "tabs": [
+      "Department",
+      "ERP Codes",
+      "Invoice Types",
+      "Location",
+      "Location Type",
+      "Positions",
+      "Rental Companies",
+      "Sister Companies",
+      "Unit Block Categories"
+    ],
+    "require": "any",
+    "en_question": "How do I add a new Definition item (e.g. a Department)?"
+  },
+  {
+    "section": "14. التعريفات (البيانات الأساسية)",
+    "question": "إزاي أضيف موقع أو موقع فرعي؟",
+    "line": 1162,
+    "general": false,
+    "tabs": [
+      "Location"
+    ],
+    "require": "any",
+    "en_question": "How do I add a location or sub-location?"
+  },
+  {
+    "section": "14. التعريفات (البيانات الأساسية)",
+    "question": "إزاي أعدّل أو أوقف أو أمسح عنصر؟",
+    "line": 1172,
+    "general": false,
+    "tabs": [
+      "Department",
+      "ERP Codes",
+      "Invoice Types",
+      "Location",
+      "Location Type",
+      "Positions",
+      "Rental Companies",
+      "Sister Companies",
+      "Unit Block Categories"
+    ],
+    "require": "any",
+    "en_question": "How do I delete a Definition item?"
+  },
+  {
+    "section": "15. المستخدمين",
+    "question": "إزاي أضيف مستخدم جديد؟",
+    "line": 1191,
+    "general": false,
+    "tabs": [
+      "Add User"
+    ],
+    "require": "any",
+    "en_question": "How do I add a new user?"
+  },
+  {
+    "section": "15. المستخدمين",
+    "question": "إزاي ألاقي مستخدم أو أعدّله أو أوقفه؟",
+    "line": 1211,
+    "general": false,
+    "tabs": [
+      "Manage Users"
+    ],
+    "require": "any",
+    "en_question": "How do I find, edit or deactivate a user?"
+  },
+  {
+    "section": "15. المستخدمين",
+    "question": "إزاي أبعت إيميل إعادة تعيين الباسورد؟",
+    "line": 1220,
+    "general": false,
+    "tabs": [
+      "Manage Users"
+    ],
+    "require": "any",
+    "en_question": "How do I send a password reset email to a user?"
+  },
+  {
+    "section": "16. الأدوار والصلاحيات",
+    "question": "إزاي أعمل دور وأديله صلاحيات؟",
+    "line": 1232,
+    "general": false,
+    "tabs": [
+      "Add Role"
+    ],
+    "require": "any",
+    "en_question": "How do I create a role and assign permissions?"
+  },
+  {
+    "section": "16. الأدوار والصلاحيات",
+    "question": "إزاي أعدّل دور أو أمسحه؟",
+    "line": 1246,
+    "general": false,
+    "tabs": [
+      "Manage Roles"
+    ],
+    "require": "any",
+    "en_question": "How do I edit or delete a role?"
+  },
+  {
+    "section": "16. الأدوار والصلاحيات",
+    "question": "الدور ممكن ياخد أنهي موديولات وصلاحيات؟",
+    "line": 1262,
+    "general": false,
+    "tabs": [
+      "Add Role",
+      "Manage Roles"
+    ],
+    "require": "any",
+    "en_question": "Which modules and permissions can a role have?"
+  },
+  {
+    "section": "16. الأدوار والصلاحيات",
+    "question": "إزاي أدي حد صلاحية قراءة بس؟",
+    "line": 1324,
+    "general": false,
+    "tabs": [
+      "Add Role",
+      "Manage Roles"
+    ],
+    "require": "any",
+    "en_question": "How do I give someone read-only access?"
+  },
+  {
+    "section": "16. الأدوار والصلاحيات",
+    "question": "ليه مستخدم مش شايف قايمة أو زرار؟",
+    "line": 1328,
+    "general": false,
+    "tabs": [
+      "Manage Roles"
+    ],
+    "require": "any",
+    "en_question": "Why can't a user see a menu entry or a button?"
+  },
+  {
+    "section": "17. مكتبة المستندات",
+    "question": "إزاي ألاقي مستند اترفع على النظام؟",
+    "line": 1336,
+    "general": false,
+    "tabs": [
+      "DocumentLibrary"
+    ],
+    "require": "any",
+    "en_question": "How do I find an uploaded document?"
+  },
+  {
+    "section": "18. الإعدادات",
+    "question": "إزاي أغيّر أوقات الـ SLA وباقي الإعدادات؟",
+    "line": 1357,
+    "general": false,
+    "tabs": [
+      "Settings"
+    ],
+    "require": "any",
+    "en_question": "How do I change SLA times and other system settings?"
+  }
+]

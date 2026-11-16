@@ -29,6 +29,9 @@ class ChatState(TypedDict, total=False):
     not_allowed_question: str | None  # partial only: the part outside their permissions
     scope_reason: str  # LLM's one-line reason, for logs only
 
+    # --- step 3: retrieve_section ---
+    sections: list  # list[ManualChunk]: the eligible manual sections for this question
+
     # --- output ---
     answer: str  # the text returned to the user
 

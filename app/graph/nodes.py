@@ -8,10 +8,13 @@ import logging
 from collections.abc import Callable
 
 from app.graph.state import ChatState
+from app.manual.generate import AnswerError, generate_answer
 from app.scope.decide import ScopeDecisionError, decide_scope
 from app.scope.tabs import MenuUnavailableError, TabCatalog, resolve_user_tabs
 
 log = logging.getLogger("crm_ai.graph")
+
+RETRIEVE_TOP_K = 2  # sections handed to the generator
 
 ERROR_MESSAGES = {
     "en": "The CRM assistant is temporarily unavailable. Please try again in a few minutes.",
@@ -25,6 +28,18 @@ NOT_ALLOWED_MESSAGES = {
 OFF_TOPIC_MESSAGES = {
     "en": "I can help you with how to use the CRM screens. What would you like to do?",
     "ar": "أقدر أساعدك في طريقة استخدام شاشات النظام. تحب تعمل إيه؟",
+}
+NO_DOCS_MESSAGES = {
+    "en": "I don't have step-by-step instructions for this screen yet. "
+    "Please contact your administrator or check back later.",
+    "ar": "لسه مفيش خطوات جاهزة للشاشة دي. برجاء التواصل مع مسؤول النظام أو المحاولة لاحقًا.",
+}
+# Appended BY CODE (not the LLM) after a partial answer, with the blocked part filled in.
+PARTIAL_NOTICES = {
+    "en": '\n\nRegarding the other part of your request ("{blocked}"): it isn\'t available under '
+    "your current permissions. Please contact your system administrator if you need access.",
+    "ar": "\n\nبخصوص الجزء التاني من طلبك ({blocked}): الخاصية دي مش متاحة ضمن صلاحياتك الحالية. "
+    "برجاء التواصل مع مسؤول النظام إذا كنت تحتاجها.",
 }
 
 
@@ -77,6 +92,52 @@ def make_check_scope(get_llm: Callable[[], object], descriptions: dict[str, str]
         }
 
     return check_scope
+
+
+def make_retrieve_section(get_index: Callable[[], object]) -> Callable[[ChatState], dict]:
+    """Step 3a: find the manual sections that answer the question, ONLY among the user's tabs.
+
+    For a partial decision, only the allowed part of the question is searched; the blocked part
+    never reaches retrieval.
+    """
+    cache: list = []
+
+    def retrieve_section(state: ChatState) -> dict:
+        if not cache:
+            cache.append(get_index())
+        query = state["allowed_question"] if state["scope"] == "partial" else state["message"]
+        allowed_names = {t.name_en for t in state["allowed_tabs"]}
+        hits = cache[0].search(query, allowed_names, top_k=RETRIEVE_TOP_K)
+        return {"sections": [c for c, _ in hits]}
+
+    return retrieve_section
+
+
+def make_generate_steps(get_llm: Callable[[], object]) -> Callable[[ChatState], dict]:
+    """Step 3b: Gemini writes the steps from the retrieved sections; code appends the partial
+    notice. Fail closed: an LLM failure sets `error` -> error_reply."""
+    cache: list = []
+
+    def generate_steps(state: ChatState) -> dict:
+        if not cache:
+            cache.append(get_llm())
+        lang = state["ui_lang"]
+        query = state["allowed_question"] if state["scope"] == "partial" else state["message"]
+        try:
+            answer = generate_answer(cache[0], query, state["sections"], lang)
+        except AnswerError as exc:
+            log.error("%s", exc)
+            return {"error": str(exc)}
+        if state["scope"] == "partial":
+            answer += PARTIAL_NOTICES[lang].format(blocked=state["not_allowed_question"])
+        return {"answer": answer}
+
+    return generate_steps
+
+
+def no_docs_reply(state: ChatState) -> dict:
+    """Allowed, but no manual section exists for the user's tabs (coverage gap, e.g. Imports)."""
+    return {"answer": NO_DOCS_MESSAGES[state["ui_lang"]]}
 
 
 def error_reply(state: ChatState) -> dict:
