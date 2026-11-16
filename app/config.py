@@ -35,6 +35,12 @@ class Settings(BaseSettings):
     embedding_timeout_s: float = 30.0  # per API request
     embedding_max_retries: int = 4  # on rate limits (429), server errors (5xx) and network errors
 
+    # Chat LLM (scope decision now, answer generation in step 3). Same Gemini key as embeddings.
+    llm_model: str = "gemini-2.5-flash"
+    llm_temperature: float = 0.0  # deterministic: same question -> same decision
+    llm_timeout_s: float = 20.0
+    llm_max_retries: int = 2
+
     # Retrieval + scope gate. Score = Gemini cosine similarity only (no bonuses).
     # NOTE: 0.45 was measured with the previous local model (MiniLM). Gemini scores sit on a
     # different scale, so re-measure with scripts/query_vector_db.py after the first Gemini build.

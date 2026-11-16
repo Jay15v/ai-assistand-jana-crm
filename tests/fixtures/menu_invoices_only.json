@@ -1,0 +1,148 @@
+{
+    "result": [
+        {
+            "menuName": "Invoices",
+            "id": 19,
+            "menuitems": [
+                {
+                    "id": 79,
+                    "name": "Add Invoice",
+                    "href": "/invoices/create",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 84,
+                    "name": "End Of Day",
+                    "href": "/invoices/end-of-day",
+                    "privileges": [
+                        {
+                            "id": 19,
+                            "name": "End Of Day",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 85,
+                    "name": "Full End Of Day",
+                    "href": "/invoices/full-end-of-day",
+                    "privileges": [
+                        {
+                            "id": 23,
+                            "name": "FullEnd Of Day",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 131,
+                    "name": "Refund",
+                    "href": "/invoices/refund",
+                    "privileges": [
+                        {
+                            "id": 56,
+                            "name": "Refund Requests",
+                            "status": 1
+                        },
+                        {
+                            "id": 57,
+                            "name": "Reject Refund Request",
+                            "status": 1
+                        },
+                        {
+                            "id": 17,
+                            "name": "Edit",
+                            "status": 1
+                        },
+                        {
+                            "id": 59,
+                            "name": "Accept Void Request",
+                            "status": 1
+                        },
+                        {
+                            "id": 58,
+                            "name": "Accept Refund Request",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 81,
+                    "name": "Search Invoices",
+                    "href": "/invoices/search",
+                    "privileges": [
+                        {
+                            "id": 58,
+                            "name": "Accept Refund Request",
+                            "status": 1
+                        },
+                        {
+                            "id": 7,
+                            "name": "Collect Invoice",
+                            "status": 1
+                        },
+                        {
+                            "id": 21,
+                            "name": "Export",
+                            "status": 1
+                        },
+                        {
+                            "id": 34,
+                            "name": "Read",
+                            "status": 1
+                        },
+                        {
+                            "id": 49,
+                            "name": "Void",
+                            "status": 1
+                        },
+                        {
+                            "id": 50,
+                            "name": "Void Requests",
+                            "status": 1
+                        },
+                        {
+                            "id": 52,
+                            "name": "Reject Void Request",
+                            "status": 1
+                        },
+                        {
+                            "id": 55,
+                            "name": "Refund",
+                            "status": 1
+                        },
+                        {
+                            "id": 56,
+                            "name": "Refund Requests",
+                            "status": 1
+                        },
+                        {
+                            "id": 57,
+                            "name": "Reject Refund Request",
+                            "status": 1
+                        },
+                        {
+                            "id": 59,
+                            "name": "Accept Void Request",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "success": true,
+    "statusCode": 200,
+    "is_maintenance": false
+}

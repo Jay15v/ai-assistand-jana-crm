@@ -1,0 +1,37 @@
+{
+    "result": [
+        {
+            "menuName": "Tickets",
+            "id": 16,
+            "menuitems": [
+                {
+                    "id": 1,
+                    "name": "add  TICKET",
+                    "href": "/tickets/add",
+                    "privileges": []
+                },
+                {
+                    "id": 2,
+                    "name": "search tickets",
+                    "href": "/tickets/search",
+                    "privileges": []
+                },
+                {
+                    "id": 3,
+                    "name": "Search Tickets",
+                    "href": "/tickets/search",
+                    "privileges": []
+                },
+                {
+                    "id": 4,
+                    "name": "Brand New Feature",
+                    "href": "/new/thing",
+                    "privileges": []
+                }
+            ]
+        }
+    ],
+    "success": true,
+    "statusCode": 200,
+    "is_maintenance": false
+}

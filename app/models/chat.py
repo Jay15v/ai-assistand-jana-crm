@@ -4,6 +4,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from app.lang.locale import parse_ui_lang
 from app.models.common import Lang
+from app.models.menu import MenuResponse
 
 
 class ChatRequest(BaseModel):
@@ -16,6 +17,9 @@ class ChatRequest(BaseModel):
     # Decides the reply language AND which label (en/ar) is used for tab names.
     # Required: a missing or unknown value is rejected (HTTP 422) instead of silently guessed.
     ui_lang: Lang
+    # The user's menu JSON from the NestJS backend (get-role-privileges), sent with every message.
+    # Decides which CRM tabs the user is allowed to ask about.
+    menu: MenuResponse
 
     @field_validator("ui_lang", mode="before")
     @classmethod

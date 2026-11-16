@@ -1,0 +1,25 @@
+{
+    "result": [
+        {
+            "menuName": "Tickets",
+            "id": 16,
+            "menuitems": [
+                {
+                    "id": 66,
+                    "name": "Add Ticket",
+                    "href": "/tickets/add",
+                    "privileges": [
+                        {
+                            "id": 1,
+                            "name": "Add",
+                            "status": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "success": true,
+    "statusCode": 200,
+    "is_maintenance": false
+}

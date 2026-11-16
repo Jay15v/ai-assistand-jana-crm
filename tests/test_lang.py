@@ -30,7 +30,13 @@ def test_unsupported_or_missing_locale_is_none(value):
 
 
 def _req(**overrides):
-    data = {"user_id": "u1", "session_id": "s1", "message": "how do I add a department", "ui_lang": "en"}
+    data = {
+        "user_id": "u1",
+        "session_id": "s1",
+        "message": "how do I add a department",
+        "ui_lang": "en",
+        "menu": {"result": []},
+    }
     data.update(overrides)
     return ChatRequest(**data)
 
@@ -58,7 +64,7 @@ def test_chat_request_rejects_unknown_ui_lang(bad):
 
 
 def test_chat_request_requires_ui_lang():
-    data = {"user_id": "u1", "session_id": "s1", "message": "hi"}
+    data = {"user_id": "u1", "session_id": "s1", "message": "hi", "menu": {"result": []}}
     with pytest.raises(ValidationError):
         ChatRequest(**data)
 
