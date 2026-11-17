@@ -776,6 +776,20 @@ In **Search Tickets** and **Dashboard → Tickets**:
 
 ---
 
+### How do I review a relative request (accept or reject)?
+
+**Keywords:** relative request, owner relative, accept relative, reject relative, family member
+
+1. Go to **Customers → Relative Requests**.
+2. Filter by **Request #**, **Owner ID**, **Unit Number**, **Owner Phone Number**, **Relative ID Number**, **Project**, **Status**. Click **Search**.
+3. Review the request: **Owner Name**, **Owner Code**, **Unit Number**, **Relative Name**, **Relation**, **ID Type**, **Relative ID #**, **Phone**, **Email**. Click **Show Media** to see the attached documents.
+4. Click **Accept** or **Reject**.
+5. **Cancel** removes a request that was already accepted (permission **Delete Accept Request**).
+
+**Export to Excel** and **Columns** work as on other search pages.
+
+---
+
 ## 9. Unit
 
 **Purpose:** search units and see everything about one unit: owners, invoices, tickets, debt, documents and location.
@@ -1421,6 +1435,19 @@ Each file must have at least one data row under the headers.
 
 ---
 
+### How do I review refund requests?
+
+**Keywords:** refund, refund request, approve refund, reject refund, money back
+
+1. Go to **Invoices → Refund**.
+2. Filter by **Invoice Number**, **Invoice Item Number**, **Status**, **ERP Reference**, **ERP Refund Reference**, **Date From**, **Date To**. Click **Search**.
+3. Each row shows **Invoice Number**, **Invoice Item Number**, **Customer**, **Unit**, **Total Amount**, **Payment Type**, **ERP Reference**, **ERP Refund Reference**, **Refund Status**, **Refund Requested By**, **Refunded By**, **Refund Request Reason** and **Refund Reason**.
+4. Use the row actions to approve (**Refund**) or reject the request.
+
+The related invoice statuses are **Refund Requested**, **Refunded** and **Partially Refund** (see the invoice statuses at the start of this section).
+
+---
+
 ## 13. Reports
 
 **Purpose:** financial and operational reports for a date range, printable and exportable.
@@ -1562,6 +1589,26 @@ Other Add dialogs:
 ![Reset password](images/15-user-reset-password-error.png)
 
 > If this shows *"Internal server error"*, ask IT to check that email sending is configured.
+
+---
+
+### How do I add a legal user?
+
+**Keywords:** legal user, add lawyer, legal employee
+
+1. Go to **Users → Add Legal Users**. The page is titled **Legal Employees - Add**.
+2. Enter **Full Name** and **Mobile Number**.
+3. Click **Add** (or **Cancel**).
+
+---
+
+### How do I find or edit legal users?
+
+**Keywords:** manage legal users, edit lawyer, deactivate legal user
+
+1. Go to **Users → Manage Legal Users** (**Legal Employees - Search**).
+2. Filter by **Full Name**, **Mobile Number**, **Status**. Click **Search**.
+3. The results show **Status**, **Full Name**, **Mobile Number** and **Project**. Click **Edit** in the row to change the user.
 
 ---
 
@@ -1739,6 +1786,110 @@ Their role does not include that module or permission (for example **Accept** on
 **Validation:** every number must be 1 or more (*Value must be greater than or equal to 1.*). If any field is 0, **Save** is blocked until you correct it.
 
 ![Settings validation](images/18-settings-validation.png)
+
+---
+
+## Unit Blocks
+
+**Purpose:** lock a unit for **finance** or **legal** reasons so it is flagged across the system, and lift the lock when the issue is resolved.
+**Menu:** **Unit Blocks → Add Block / Search Block**.
+
+### How do I block a unit (finance or legal block)?
+
+**Keywords:** block unit, lock unit, finance block, legal block, stop unit
+
+1. Go to **Unit Blocks → Add Block**. The page is titled **Block Unit**.
+2. Enter the **Unit Number** (or **Unit ID**). Tick **Exact Match** to match the number exactly. Click **Search**.
+3. Click the unit row in the results. The **Unit Blocks - Block Details** page opens and shows **Unit Number**, **Project Name**, **Unit Type**, **Customer Name** and **Mobile Number**.
+4. Choose the tab for the block type: **Finance** or **Legal**.
+5. Enter the **Reason**. Optionally add **Attachments** (**Show Attachments** lists files already attached).
+6. Click **Block Unit** (or **Cancel**).
+
+Locked units then appear in **Unit → Search** with the **Locked** filter (see section 9).
+
+---
+
+### How do I find blocked units?
+
+**Keywords:** search block, blocked units, block list, legal blocks, finance blocks
+
+1. Go to **Unit Blocks → Search Block**.
+2. Choose a tab:
+    - **All**: every unit with its block flags. Filters: **Unit Number**, **Unit ID**, **Block Type**, **Exact Match**.
+    - **Finance**: finance blocks. Filters: **Unit Number**, **Unit ID**, **Project**, **Customer Name**, **Customer Mobile**, **From Date**, **To Date**, **Exact Match**.
+    - **Legal**: legal blocks. Same filters as Finance plus **Category** and **Assigned Lawyer**.
+3. Click **Search**. Use **Clear** to reset and **Columns** to show or hide columns.
+
+| Tab | Main columns |
+|---|---|
+| All | Unit Number, Blocked, Legal Block, Finance Block, Project Name, Unit Type, Blocked By, Customer Name, Mobile Number, Sign Date |
+| Finance | ID, Unit Number, History, Project Name, Reason, Blocked By, Blocked Date, Unblocked By, Unblocked Date, Status |
+| Legal | ID, Unit Number, History, Project Name, Category, Reason, Blocked By, Blocked Date, Unblocked By, Unblocked Date, Status |
+
+---
+
+### How do I unblock a unit?
+
+**Keywords:** unblock unit, lift block, remove block, release unit
+
+1. Go to **Unit Blocks → Search Block** and open the **Finance** or **Legal** tab.
+2. Search for the unit and find its active block row.
+3. Use the row's **UnBlock** action and confirm.
+4. The row then shows **Unblocked By** and **Unblocked Date**; the unit is no longer locked.
+
+---
+
+## Ownership Management
+
+**Purpose:** record and follow up ownership requests on a unit, each with a category, a description and attachments, until it is closed. The time allowed is the **Ownership Management SLA** in **Settings**.
+**Menu:** **Ownership Management → Add Request / Search Request**.
+
+### How do I add an ownership request?
+
+**Keywords:** ownership request, new ownership request, ownership transfer, unit ownership
+
+1. Go to **Ownership Management → Add Request**.
+2. Enter the **Unit Number** (or **Unit ID**), tick **Exact Match** if needed, and click **Search**.
+3. Click the unit row. The **New Ownership Management Request** form opens.
+4. Choose the **Category**, write the **Description**, and optionally add **Attachments**.
+5. Click **Add** (or **Cancel**).
+
+---
+
+### How do I find, close or invalidate an ownership request?
+
+**Keywords:** search ownership request, close ownership request, invalid request, ownership status
+
+1. Go to **Ownership Management → Search Request**.
+2. Filter by **Unit Number**, **Unit ID** (with **Exact Match**), **Category**, **Status**, **Created By**, **Date From**, **Date To**. Click **Search**.
+3. The results show **Request ID**, **Unit Number**, **Category**, **Description**, **Status**, **Attachments**, **Created By**, **Created At**, **Closed By**, **Closed Date**.
+4. To finish a request, use **Close Ownership Request**. To reject a wrong or duplicate request, mark it **Invalid**. **Closed By** and **Closed Date** are filled in.
+
+---
+
+## Imports
+
+**Purpose:** add or update many customers, owner relatives or units at once from an Excel file, and check each import's result.
+**Menu:** **Imports → Import Customers / Import Relatives / Import Units / Import History**.
+
+### How do I import customers, relatives or units from Excel?
+
+**Keywords:** import excel, bulk upload, import customers, import relatives, import units, upload sheet
+
+1. Go to **Imports** and choose **Import Customers**, **Import Relatives** or **Import Units**.
+2. Choose the **Excel sheet** file.
+3. Click **Upload**.
+4. Check the result in **Imports → Import History**.
+
+---
+
+### How do I check the result of an import?
+
+**Keywords:** import history, import result, rejected rows, failed import
+
+1. Go to **Imports → Import History**.
+2. Each import shows **ID**, **Type**, **File**, **Status**, **Inserted**, **Updated**, **Skipped**, **Uploaded by**, **Uploaded at** and **Rejected rows**.
+3. Click **Refresh** to update the status of an import still running.
 
 ---
 

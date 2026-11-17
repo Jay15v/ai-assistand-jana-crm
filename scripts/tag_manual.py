@@ -124,6 +124,21 @@ QUESTION_TABS: dict[str, list[str]] = {
     "Which modules and permissions can a role have?": ["Add Role", "Manage Roles"],
     "How do I give someone read-only access?": ["Add Role", "Manage Roles"],
     "Why can't a user see a menu entry or a button?": ["Manage Roles"],
+    # Unit Blocks (added from the 2026-11-17 draft; business verification pending)
+    "How do I block a unit (finance or legal block)?": ["Add Block"],
+    "How do I find blocked units?": ["Search Block"],
+    "How do I unblock a unit?": ["Search Block"],
+    # Ownership Management
+    "How do I add an ownership request?": ["Add Request"],
+    "How do I find, close or invalidate an ownership request?": ["Search Request"],
+    # Imports
+    "How do I import customers, relatives or units from Excel?": ["Import Customers", "Import Relatives", "Import Units"],
+    "How do I check the result of an import?": ["Import History"],
+    # Additions to existing sections
+    "How do I review a relative request (accept or reject)?": ["Relative Requests"],
+    "How do I review refund requests?": ["Refund"],
+    "How do I add a legal user?": ["Add Legal Users"],
+    "How do I find or edit legal users?": ["Manage Legal Users"],
 }
 
 

@@ -378,9 +378,20 @@
     "en_question": "How do I list all renters, owners or owner relatives?"
   },
   {
+    "section": "8. العملاء",
+    "question": "إزاي أراجع طلب قريب (قبول أو رفض)؟",
+    "line": 604,
+    "general": false,
+    "tabs": [
+      "Relative Requests"
+    ],
+    "require": "any",
+    "en_question": "How do I review a relative request (accept or reject)?"
+  },
+  {
     "section": "9. الوحدات",
     "question": "إزاي أدوّر على الوحدات؟",
-    "line": 606,
+    "line": 616,
     "general": false,
     "tabs": [
       "Unit"
@@ -391,7 +402,7 @@
   {
     "section": "9. الوحدات",
     "question": "إيه اللي أقدر أعمله في صفحة تفاصيل الوحدة؟",
-    "line": 614,
+    "line": 624,
     "general": false,
     "tabs": [
       "Unit"
@@ -402,7 +413,7 @@
   {
     "section": "9. الوحدات",
     "question": "إزاي أخلي الوحدة متاحة للإيجار (أو ألغيها)؟",
-    "line": 638,
+    "line": 648,
     "general": false,
     "tabs": [
       "Unit"
@@ -413,7 +424,7 @@
   {
     "section": "9. الوحدات",
     "question": "ليه مش قادر أضيف إيجار لوحدة؟",
-    "line": 650,
+    "line": 660,
     "general": false,
     "tabs": [
       "Unit"
@@ -424,7 +435,7 @@
   {
     "section": "9. الوحدات",
     "question": "إزاي ألاقي الوحدات المقفولة؟",
-    "line": 661,
+    "line": 671,
     "general": false,
     "tabs": [
       "Unit"
@@ -435,7 +446,7 @@
   {
     "section": "9. الوحدات",
     "question": "إزاي أشوف الملاك أو المستأجرين القدام لوحدة؟",
-    "line": 671,
+    "line": 681,
     "general": false,
     "tabs": [
       "Unit"
@@ -446,7 +457,7 @@
   {
     "section": "9. الوحدات",
     "question": "إزاي أرفع مستند على وحدة؟",
-    "line": 680,
+    "line": 690,
     "general": false,
     "tabs": [
       "Unit"
@@ -457,7 +468,7 @@
   {
     "section": "9. الوحدات",
     "question": "إزاي أحدد موقع لوحدة؟",
-    "line": 690,
+    "line": 700,
     "general": false,
     "tabs": [
       "Unit"
@@ -468,7 +479,7 @@
   {
     "section": "10. الخدمات",
     "question": "إزاي أضيف خدمة جديدة؟",
-    "line": 701,
+    "line": 711,
     "general": false,
     "tabs": [
       "Add Service"
@@ -479,7 +490,7 @@
   {
     "section": "10. الخدمات",
     "question": "إزاي أدوّر على خدمة أو أعدّلها أو أوقفها أو أمسحها؟",
-    "line": 713,
+    "line": 723,
     "general": false,
     "tabs": [
       "Service Search"
@@ -490,7 +501,7 @@
   {
     "section": "11. الإيجار",
     "question": "إزاي أعمل حجز إيجار؟",
-    "line": 738,
+    "line": 748,
     "general": false,
     "tabs": [
       "Add Rental"
@@ -501,7 +512,7 @@
   {
     "section": "11. الإيجار",
     "question": "إزاي أراجع طلب إيجار (قبول أو رفض)؟",
-    "line": 771,
+    "line": 781,
     "general": false,
     "tabs": [
       "Rental Requests"
@@ -512,7 +523,7 @@
   {
     "section": "11. الإيجار",
     "question": "إزاي أعدّل طلب إيجار قبل القبول؟",
-    "line": 793,
+    "line": 803,
     "general": false,
     "tabs": [
       "Rental Requests"
@@ -523,7 +534,7 @@
   {
     "section": "11. الإيجار",
     "question": "إزاي أدوّر على الإيجارات؟",
-    "line": 801,
+    "line": 811,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -534,7 +545,7 @@
   {
     "section": "11. الإيجار",
     "question": "صفحة تفاصيل الإيجار فيها إيه؟",
-    "line": 811,
+    "line": 821,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -545,7 +556,7 @@
   {
     "section": "11. الإيجار",
     "question": "إزاي أعدّل بيانات إيجار؟",
-    "line": 836,
+    "line": 846,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -556,7 +567,7 @@
   {
     "section": "11. الإيجار",
     "question": "إزاي أمدّ إيجار (Change Reservation)؟",
-    "line": 848,
+    "line": 858,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -567,7 +578,7 @@
   {
     "section": "11. الإيجار",
     "question": "إزاي أطلّع فاتورة على إيجار؟",
-    "line": 860,
+    "line": 870,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -578,7 +589,7 @@
   {
     "section": "11. الإيجار",
     "question": "إزاي أعمل Check-in للمستأجر؟",
-    "line": 880,
+    "line": 890,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -589,7 +600,7 @@
   {
     "section": "11. الإيجار",
     "question": "إزاي أعمل Check-out للمستأجر؟",
-    "line": 894,
+    "line": 904,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -600,7 +611,7 @@
   {
     "section": "11. الإيجار",
     "question": "إزاي أنهي إيجار بدري (Terminate)؟",
-    "line": 923,
+    "line": 933,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -611,7 +622,7 @@
   {
     "section": "11. الإيجار",
     "question": "إزاي أطبع عقد الإيجار (Print RC)؟",
-    "line": 940,
+    "line": 950,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -622,7 +633,7 @@
   {
     "section": "11. الإيجار",
     "question": "إزاي أعمل تذكرة لمستأجر؟",
-    "line": 948,
+    "line": 958,
     "general": false,
     "tabs": [
       "Search Rentals",
@@ -634,7 +645,7 @@
   {
     "section": "11. الإيجار",
     "question": "دورة حياة الإيجار ماشية إزاي؟",
-    "line": 956,
+    "line": 966,
     "general": false,
     "tabs": [
       "Add Rental",
@@ -646,7 +657,7 @@
   {
     "section": "11. الإيجار",
     "question": "إزاي أرفع إيجارات البروكر مرة واحدة؟",
-    "line": 968,
+    "line": 978,
     "general": false,
     "tabs": [
       "Broker Attachments"
@@ -657,7 +668,7 @@
   {
     "section": "12. الفواتير",
     "question": "إزاي أعمل فاتورة يدوي؟",
-    "line": 1005,
+    "line": 1015,
     "general": false,
     "tabs": [
       "Add Invoice"
@@ -668,7 +679,7 @@
   {
     "section": "12. الفواتير",
     "question": "إزاي أدوّر على فاتورة؟",
-    "line": 1019,
+    "line": 1029,
     "general": false,
     "tabs": [
       "Search Invoices"
@@ -679,7 +690,7 @@
   {
     "section": "12. الفواتير",
     "question": "صفحة الفاتورة فيها إيه؟",
-    "line": 1025,
+    "line": 1035,
     "general": false,
     "tabs": [
       "Search Invoices"
@@ -690,7 +701,7 @@
   {
     "section": "12. الفواتير",
     "question": "إزاي أحصّل فاتورة Pending؟",
-    "line": 1031,
+    "line": 1041,
     "general": false,
     "tabs": [
       "Search Invoices"
@@ -701,7 +712,7 @@
   {
     "section": "12. الفواتير",
     "question": "إزاي أطلب إلغاء فاتورة؟",
-    "line": 1048,
+    "line": 1058,
     "general": false,
     "tabs": [
       "Search Invoices"
@@ -712,7 +723,7 @@
   {
     "section": "12. الفواتير",
     "question": "إزاي ألغي فاتورة مباشرة؟",
-    "line": 1060,
+    "line": 1070,
     "general": false,
     "tabs": [
       "Search Invoices"
@@ -723,7 +734,7 @@
   {
     "section": "12. الفواتير",
     "question": "إزاي أراجع نهاية اليوم بتاعتي؟",
-    "line": 1072,
+    "line": 1082,
     "general": false,
     "tabs": [
       "End Of Day"
@@ -734,7 +745,7 @@
   {
     "section": "12. الفواتير",
     "question": "إزاي أراجع نهاية اليوم لكل الموظفين؟",
-    "line": 1105,
+    "line": 1115,
     "general": false,
     "tabs": [
       "Full End Of Day"
@@ -743,9 +754,20 @@
     "en_question": "How do I review the Full End of Day for all employees?"
   },
   {
+    "section": "12. الفواتير",
+    "question": "إزاي أراجع طلبات الاسترداد؟",
+    "line": 1123,
+    "general": false,
+    "tabs": [
+      "Refund"
+    ],
+    "require": "any",
+    "en_question": "How do I review refund requests?"
+  },
+  {
     "section": "13. التقارير",
     "question": "تقرير الفواتير اليومية",
-    "line": 1115,
+    "line": 1136,
     "general": false,
     "tabs": [
       "Daily Invoices"
@@ -756,7 +778,7 @@
   {
     "section": "13. التقارير",
     "question": "تقرير خدمات الأقسام",
-    "line": 1123,
+    "line": 1144,
     "general": false,
     "tabs": [
       "Department Service End Of Day Report"
@@ -767,7 +789,7 @@
   {
     "section": "13. التقارير",
     "question": "تقرير نهاية اليوم لفترة",
-    "line": 1129,
+    "line": 1150,
     "general": false,
     "tabs": [
       "End Of Day Report"
@@ -778,7 +800,7 @@
   {
     "section": "14. التعريفات (البيانات الأساسية)",
     "question": "إزاي أضيف عنصر جديد في التعريفات؟",
-    "line": 1151,
+    "line": 1172,
     "general": false,
     "tabs": [
       "Department",
@@ -797,7 +819,7 @@
   {
     "section": "14. التعريفات (البيانات الأساسية)",
     "question": "إزاي أضيف موقع أو موقع فرعي؟",
-    "line": 1162,
+    "line": 1183,
     "general": false,
     "tabs": [
       "Location"
@@ -808,7 +830,7 @@
   {
     "section": "14. التعريفات (البيانات الأساسية)",
     "question": "إزاي أعدّل أو أوقف أو أمسح عنصر؟",
-    "line": 1172,
+    "line": 1193,
     "general": false,
     "tabs": [
       "Department",
@@ -827,7 +849,7 @@
   {
     "section": "15. المستخدمين",
     "question": "إزاي أضيف مستخدم جديد؟",
-    "line": 1191,
+    "line": 1212,
     "general": false,
     "tabs": [
       "Add User"
@@ -838,7 +860,7 @@
   {
     "section": "15. المستخدمين",
     "question": "إزاي ألاقي مستخدم أو أعدّله أو أوقفه؟",
-    "line": 1211,
+    "line": 1232,
     "general": false,
     "tabs": [
       "Manage Users"
@@ -849,7 +871,7 @@
   {
     "section": "15. المستخدمين",
     "question": "إزاي أبعت إيميل إعادة تعيين الباسورد؟",
-    "line": 1220,
+    "line": 1241,
     "general": false,
     "tabs": [
       "Manage Users"
@@ -858,9 +880,31 @@
     "en_question": "How do I send a password reset email to a user?"
   },
   {
+    "section": "15. المستخدمين",
+    "question": "إزاي أضيف مستخدم قانوني؟",
+    "line": 1251,
+    "general": false,
+    "tabs": [
+      "Add Legal Users"
+    ],
+    "require": "any",
+    "en_question": "How do I add a legal user?"
+  },
+  {
+    "section": "15. المستخدمين",
+    "question": "إزاي ألاقي مستخدم قانوني أو أعدّله؟",
+    "line": 1259,
+    "general": false,
+    "tabs": [
+      "Manage Legal Users"
+    ],
+    "require": "any",
+    "en_question": "How do I find or edit legal users?"
+  },
+  {
     "section": "16. الأدوار والصلاحيات",
     "question": "إزاي أعمل دور وأديله صلاحيات؟",
-    "line": 1232,
+    "line": 1269,
     "general": false,
     "tabs": [
       "Add Role"
@@ -871,7 +915,7 @@
   {
     "section": "16. الأدوار والصلاحيات",
     "question": "إزاي أعدّل دور أو أمسحه؟",
-    "line": 1246,
+    "line": 1283,
     "general": false,
     "tabs": [
       "Manage Roles"
@@ -882,7 +926,7 @@
   {
     "section": "16. الأدوار والصلاحيات",
     "question": "الدور ممكن ياخد أنهي موديولات وصلاحيات؟",
-    "line": 1262,
+    "line": 1299,
     "general": false,
     "tabs": [
       "Add Role",
@@ -894,7 +938,7 @@
   {
     "section": "16. الأدوار والصلاحيات",
     "question": "إزاي أدي حد صلاحية قراءة بس؟",
-    "line": 1324,
+    "line": 1361,
     "general": false,
     "tabs": [
       "Add Role",
@@ -906,7 +950,7 @@
   {
     "section": "16. الأدوار والصلاحيات",
     "question": "ليه مستخدم مش شايف قايمة أو زرار؟",
-    "line": 1328,
+    "line": 1365,
     "general": false,
     "tabs": [
       "Manage Roles"
@@ -917,7 +961,7 @@
   {
     "section": "17. مكتبة المستندات",
     "question": "إزاي ألاقي مستند اترفع على النظام؟",
-    "line": 1336,
+    "line": 1373,
     "general": false,
     "tabs": [
       "DocumentLibrary"
@@ -928,12 +972,91 @@
   {
     "section": "18. الإعدادات",
     "question": "إزاي أغيّر أوقات الـ SLA وباقي الإعدادات؟",
-    "line": 1357,
+    "line": 1394,
     "general": false,
     "tabs": [
       "Settings"
     ],
     "require": "any",
     "en_question": "How do I change SLA times and other system settings?"
+  },
+  {
+    "section": "حظر الوحدات",
+    "question": "إزاي أحظر وحدة (حظر مالي أو قانوني)؟",
+    "line": 1436,
+    "general": false,
+    "tabs": [
+      "Add Block"
+    ],
+    "require": "any",
+    "en_question": "How do I block a unit (finance or legal block)?"
+  },
+  {
+    "section": "حظر الوحدات",
+    "question": "إزاي ألاقي الوحدات المحظورة؟",
+    "line": 1449,
+    "general": false,
+    "tabs": [
+      "Search Block"
+    ],
+    "require": "any",
+    "en_question": "How do I find blocked units?"
+  },
+  {
+    "section": "حظر الوحدات",
+    "question": "إزاي أفك الحظر عن وحدة؟",
+    "line": 1460,
+    "general": false,
+    "tabs": [
+      "Search Block"
+    ],
+    "require": "any",
+    "en_question": "How do I unblock a unit?"
+  },
+  {
+    "section": "إدارة الملكية",
+    "question": "إزاي أضيف طلب ملكية؟",
+    "line": 1474,
+    "general": false,
+    "tabs": [
+      "Add Request"
+    ],
+    "require": "any",
+    "en_question": "How do I add an ownership request?"
+  },
+  {
+    "section": "إدارة الملكية",
+    "question": "إزاي ألاقي طلب ملكية أو أقفله أو ألغيه؟",
+    "line": 1484,
+    "general": false,
+    "tabs": [
+      "Search Request"
+    ],
+    "require": "any",
+    "en_question": "How do I find, close or invalidate an ownership request?"
+  },
+  {
+    "section": "الاستيراد",
+    "question": "إزاي أستورد عملاء أو أقارب أو وحدات من إكسل؟",
+    "line": 1498,
+    "general": false,
+    "tabs": [
+      "Import Customers",
+      "Import Relatives",
+      "Import Units"
+    ],
+    "require": "any",
+    "en_question": "How do I import customers, relatives or units from Excel?"
+  },
+  {
+    "section": "الاستيراد",
+    "question": "إزاي أتابع نتيجة الاستيراد؟",
+    "line": 1507,
+    "general": false,
+    "tabs": [
+      "Import History"
+    ],
+    "require": "any",
+    "en_question": "How do I check the result of an import?"
   }
 ]

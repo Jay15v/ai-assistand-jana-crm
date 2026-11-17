@@ -15,12 +15,12 @@ def by_q(chunks, q):
     return next(c for c in chunks if c.question_en == q)
 
 
-def test_all_87_questions_become_chunks(chunks):
-    assert len(chunks) == 87
-    assert len({c.id for c in chunks}) == 87  # unique ids
+def test_all_98_questions_become_chunks(chunks):
+    assert len(chunks) == 98
+    assert len({c.id for c in chunks}) == 98  # unique ids
 
 
-def test_85_have_arabic_twins_2_fall_back_to_english(chunks):
+def test_96_have_arabic_twins_2_fall_back_to_english(chunks):
     no_ar = sorted(c.question_en for c in chunks if c.text_ar is None)
     assert no_ar == [
         "How do I create a ticket from a customer's page?",
