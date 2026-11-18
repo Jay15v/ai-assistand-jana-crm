@@ -35,6 +35,12 @@ class Settings(BaseSettings):
     embedding_timeout_s: float = 30.0  # per API request
     embedding_max_retries: int = 4  # on rate limits (429), server errors (5xx) and network errors
 
+    # Chat memory. Production: set DATABASE_URL (Postgres) in .env and the checkpointer switches
+    # automatically; unset -> in-memory (history lost on restart; fine for dev and tests).
+    database_url: str | None = Field(default=None, validation_alias=AliasChoices("DATABASE_URL"))
+    history_keep_turns: int = 6  # turns kept verbatim after compaction
+    compact_after_turns: int = 8  # compact when history grows beyond this
+
     # Chat LLM (scope decision now, answer generation in step 3). Same Gemini key as embeddings.
     llm_model: str = "gemini-2.5-flash"
     llm_temperature: float = 0.0  # deterministic: same question -> same decision
@@ -46,6 +52,12 @@ class Settings(BaseSettings):
     # different scale, so re-measure with scripts/query_vector_db.py after the first Gemini build.
     retrieval_top_k: int = 5
     scope_min_score: float = 0.45
+
+    # Manual retrieval floor (crm_manual index): hits below this cosine similarity are dropped,
+    # so unanswerable questions route to the no-docs reply instead of feeding the generator a
+    # wrong-but-nearest section. Measured 2026-11-18 with gemini-embedding-2/3072: covered
+    # questions score >= 0.79, clearly-unrelated <= 0.70. Re-measure as the manual grows.
+    manual_min_score: float = 0.72
 
 
 @lru_cache

@@ -16,6 +16,7 @@
 ---
 
 ## Table of Contents
+<!-- tabs: general -->
 
 1. [Glossary](#1-glossary)
 2. [Introduction and System Overview](#2-introduction-and-system-overview)
@@ -45,6 +46,7 @@
 ---
 
 ## 1. Glossary
+<!-- tabs: general -->
 
 | Term | Meaning in this CRM |
 |---|---|
@@ -81,6 +83,7 @@
 ---
 
 ## 2. Introduction and System Overview
+<!-- tabs: general -->
 
 The Ability Tech CRM is the back-office system the community operations team uses to serve residents of a project (the header shows **PROJECT Ability**). It covers:
 
@@ -117,6 +120,7 @@ Records can come from the CRM, from the **MyPorto App** (resident mobile app), o
 ---
 
 ## 3. Getting Started
+<!-- tabs: general -->
 
 ### How do I log in to the CRM?
 
@@ -289,6 +293,7 @@ Most dropdowns are **searchable**: click the field, type in **Search options...*
 ---
 
 ### How do I file a new complaint?
+<!-- tabs: Add Complaint -->
 
 **Keywords:** add complaint, new complaint, register complaint, log complaint
 
@@ -339,6 +344,7 @@ Most dropdowns are **searchable**: click the field, type in **Search options...*
 ---
 
 ### How do I search for a complaint?
+<!-- tabs: Search Complaint -->
 
 **Keywords:** find complaint, complaint list, filter complaints, complaint ID
 
@@ -357,6 +363,7 @@ Most dropdowns are **searchable**: click the field, type in **Search options...*
 ---
 
 ### How do I view a complaint's attachments from the search list?
+<!-- tabs: Search Complaint -->
 
 1. In **Search Complaint**, click the paperclip icon (**View Attachments**) in the row.
 2. The **Attachments** dialog lists the files, or shows *"No attachments"*. Close it with **×**.
@@ -366,6 +373,7 @@ Most dropdowns are **searchable**: click the field, type in **Search options...*
 ---
 
 ### How do I open a complaint's details?
+<!-- tabs: Search Complaint -->
 
 **Keywords:** complaint details, view complaint, complaint history
 
@@ -381,6 +389,7 @@ Most dropdowns are **searchable**: click the field, type in **Search options...*
 ---
 
 ### How do I add a response to a complaint?
+<!-- tabs: Search Complaint -->
 
 **Keywords:** reply to complaint, respond, complaint comment, follow-up
 
@@ -396,6 +405,7 @@ Most dropdowns are **searchable**: click the field, type in **Search options...*
 ---
 
 ### How do I change a complaint's status (e.g. mark it Resolved)?
+<!-- tabs: Search Complaint -->
 
 **Keywords:** resolve complaint, close complaint, update status, in progress
 
@@ -416,6 +426,7 @@ Most dropdowns are **searchable**: click the field, type in **Search options...*
 ---
 
 ### How do I attach a document to a complaint?
+<!-- tabs: Search Complaint -->
 
 **Keywords:** upload file, attach, complaint attachment, evidence photo
 
@@ -437,6 +448,7 @@ Verified: after **Upload**, *"File uploaded successfully."* appears and the coun
 **Menu:** **Dashboard → Complaints / Statistics / Tickets** (also shown as tabs at the top).
 
 ### Where do I see all open (live) complaints?
+<!-- tabs: Complaints -->
 
 **Keywords:** live complaints, open complaints, dashboard complaints
 
@@ -451,6 +463,7 @@ Verified: after **Upload**, *"File uploaded successfully."* appears and the coun
 ---
 
 ### Where do I see live tickets and their SLA status?
+<!-- tabs: Tickets -->
 
 **Keywords:** live tickets, SLA, delayed tickets, urgent tickets
 
@@ -468,6 +481,7 @@ SLA and delay thresholds come from **Settings → Tickets SLA** and **Tickets De
 ---
 
 ### How do I view statistics charts?
+<!-- tabs: Statistics -->
 
 **Keywords:** statistics, charts, KPIs, daily weekly monthly
 
@@ -490,6 +504,7 @@ SLA and delay thresholds come from **Settings → Tickets SLA** and **Tickets De
 ---
 
 ### How do I create a new ticket?
+<!-- tabs: Add Ticket -->
 
 **Keywords:** add ticket, new service request, maintenance request, work order
 
@@ -533,6 +548,7 @@ SLA and delay thresholds come from **Settings → Tickets SLA** and **Tickets De
 ---
 
 ### How do I search for tickets?
+<!-- tabs: Search Tickets -->
 
 **Keywords:** find ticket, ticket list, filter tickets, ticket ID
 
@@ -548,6 +564,7 @@ SLA and delay thresholds come from **Settings → Tickets SLA** and **Tickets De
 ---
 
 ### What do the Status, SLA, Delayed and Urgent icons mean?
+<!-- tabs: Search Tickets -->
 
 **Keywords:** SLA icon, delayed ticket, urgent ticket, late tickets, seen
 
@@ -565,6 +582,7 @@ In **Search Tickets** and **Dashboard → Tickets**:
 ---
 
 ### How do I edit a ticket?
+<!-- tabs: Search Tickets -->
 
 **Keywords:** modify ticket, change services, update ticket
 
@@ -581,6 +599,7 @@ In **Search Tickets** and **Dashboard → Tickets**:
 ---
 
 ### How do I change a ticket's status?
+<!-- tabs: Search Tickets -->
 
 **Keywords:** update ticket status, confirm ticket, in progress, fulfilled, done, reject ticket
 
@@ -605,6 +624,7 @@ In **Search Tickets** and **Dashboard → Tickets**:
 ---
 
 ### How do I add a comment to a ticket?
+<!-- tabs: Search Tickets -->
 
 1. Open the ticket and scroll to **Comments**.
 2. Type in **Write a comment...** (up to 1000 characters).
@@ -615,6 +635,7 @@ In **Search Tickets** and **Dashboard → Tickets**:
 ---
 
 ### How do I attach documents to a ticket?
+<!-- tabs: Search Tickets -->
 
 1. Open the ticket and click **Upload Document**, choose the file, add a description, click **Upload** → *"File uploaded successfully."*
 2. The upload is logged in the **Timeline**. Click **Show Documents** to list the files.
@@ -624,12 +645,14 @@ In **Search Tickets** and **Dashboard → Tickets**:
 ---
 
 ### How do I print a ticket?
+<!-- tabs: Search Tickets -->
 
 - Click the printer icon in **Search Tickets**, or the printer icon on the ticket details page. The browser's print dialog opens (verified).
 
 ---
 
 ### How do I create a CTS record?
+<!-- tabs: Add CTS -->
 
 **Keywords:** CTS, annual fees, internet, IP TV, IP phone, satellite, SMA TV
 
@@ -656,6 +679,7 @@ In **Search Tickets** and **Dashboard → Tickets**:
 ---
 
 ### How do I search CTS records?
+<!-- tabs: Search CTS -->
 
 1. Go to **Tickets → Search CTS**, enter a **Unit Number**, click **Search**.
 2. **Edit record** (pencil) opens **Edit CTS Record #ID** (same fields; Invoice Types is not shown). Change values and click **Save** → *"Updated successfully."*
@@ -673,6 +697,7 @@ In **Search Tickets** and **Dashboard → Tickets**:
 **Menu:** **Inquiries → Add Inquiry / Search Inquiry**.
 
 ### How do I log a customer inquiry?
+<!-- tabs: Add Inquiry -->
 
 **Keywords:** add inquiry, customer question, record question
 
@@ -696,6 +721,7 @@ In **Search Tickets** and **Dashboard → Tickets**:
 ---
 
 ### How do I search inquiries?
+<!-- tabs: Search Inquiry -->
 
 1. Go to **Inquiries → Search Inquiry**.
 2. Filter by **Unit Number**, **Requester Name**, **Requester Mobile**, **Contact Channel**, **Date From**, **Date To**. Click **Search**.
@@ -709,6 +735,7 @@ In **Search Tickets** and **Dashboard → Tickets**:
 ---
 
 ## 8. Customers
+<!-- tabs: Search Customer -->
 
 **Purpose:** look up residents and everything linked to them: units, cars, documents, tickets.
 **Menu:** **Customers**.
@@ -770,6 +797,7 @@ In **Search Tickets** and **Dashboard → Tickets**:
 ---
 
 ### How do I create a ticket from a customer's page?
+<!-- tabs: Search Customer, Add Ticket | require: all -->
 
 1. Open the customer and click **Add Ticket**.
 2. Continue from step 3 of [How do I create a new ticket?](#how-do-i-create-a-new-ticket)
@@ -777,6 +805,7 @@ In **Search Tickets** and **Dashboard → Tickets**:
 ---
 
 ### How do I review a relative request (accept or reject)?
+<!-- tabs: Relative Requests -->
 
 **Keywords:** relative request, owner relative, accept relative, reject relative, family member
 
@@ -791,6 +820,7 @@ In **Search Tickets** and **Dashboard → Tickets**:
 ---
 
 ## 9. Unit
+<!-- tabs: Unit -->
 
 **Purpose:** search units and see everything about one unit: owners, invoices, tickets, debt, documents and location.
 **Menu:** **Unit**. Also from the header **Search → By Unit**.
@@ -922,6 +952,7 @@ In **Unit** search, set **Locked** = **Yes** and click **Search**. The results s
 **Menu:** **Services → Add Service / Service Search**.
 
 ### How do I add a new service?
+<!-- tabs: Add Service -->
 
 **Keywords:** create service, service price, service catalogue
 
@@ -952,6 +983,7 @@ In **Unit** search, set **Locked** = **Yes** and click **Search**. The results s
 ---
 
 ### How do I find, edit, activate or delete a service?
+<!-- tabs: Service Search -->
 
 1. Go to **Services → Service Search**. Filter by **Service ID**, **Service Name**, **Department**, **Start Date**, **Active** (Yes/No), **Show in Mobile** (Yes/No). Click **Search**.
 
@@ -981,6 +1013,7 @@ In **Unit** search, set **Locked** = **Yes** and click **Search**. The results s
 **Request statuses:** Pending · Accept · Reject (*Unit Reserved* also seen in the list).
 
 ### How do I add a rental reservation?
+<!-- tabs: Add Rental -->
 
 **Keywords:** add rental, book unit, reservation, tenant check-in
 
@@ -1034,6 +1067,7 @@ The toast *"Rental created successfully."* appears. The new rental has the statu
 ---
 
 ### How do I review a rental request (accept or reject)?
+<!-- tabs: Rental Requests -->
 
 **Keywords:** rental request, approve rental, reject rental, broker request
 
@@ -1062,6 +1096,7 @@ If the details page looks empty after **Accept**, go back to **Rental Requests**
 ---
 
 ### How do I edit a rental request before accepting it?
+<!-- tabs: Rental Requests -->
 
 1. Open the request and click **Edit**.
 2. Update **Assigned Unit**, **Assigned Rental Company**, tenant details, dates, **Total Tenants Count**, **Access Card Number (Optional)**, **Notes**; use **Add Relative** if needed.
@@ -1074,6 +1109,7 @@ If the details page looks empty after **Accept**, go back to **Rental Requests**
 ---
 
 ### How do I search rentals?
+<!-- tabs: Search Rentals -->
 
 1. Go to **Rental → Search Rentals**. Filter by **Unit Number**, **Tenant Name**, **Mobile Number**, **ID Number**, **Project**, **Status**, **Start Date**, **Check-out Date**. Click **Search**.
 
@@ -1084,6 +1120,7 @@ If the details page looks empty after **Accept**, go back to **Rental Requests**
 ---
 
 ### What is on a rental's details page?
+<!-- tabs: Search Rentals -->
 
 **Keywords:** rental details, RNT, rental page, tenant details, rental timeline
 
@@ -1113,6 +1150,7 @@ The page shows a hint such as *"Check-in becomes available on or after the rent 
 ---
 
 ### How do I edit a rental's details?
+<!-- tabs: Search Rentals -->
 
 1. Open the rental and click **Edit**.
 2. Change any of: **Tenant Name***, **Tenant Mobile***, **Email**, **ID Type***, **ID Number***, **Rent Start Date***, **End Date***, **Access Card Number**, **Notes**.
@@ -1125,6 +1163,7 @@ The page shows a hint such as *"Check-in becomes available on or after the rent 
 ---
 
 ### How do I extend a rental (Change Reservation)?
+<!-- tabs: Search Rentals -->
 
 **Keywords:** extend rental, change end date, change unit, change reservation
 
@@ -1139,6 +1178,7 @@ The page shows a hint such as *"Check-in becomes available on or after the rent 
 ---
 
 ### How do I issue an invoice on a rental?
+<!-- tabs: Search Rentals -->
 
 **Keywords:** rental invoice, penalty invoice, rental fees, rental file invoice
 
@@ -1161,6 +1201,7 @@ The page shows a hint such as *"Check-in becomes available on or after the rent 
 ---
 
 ### How do I check a tenant in?
+<!-- tabs: Search Rentals -->
 
 1. Open the rental. **Check-in** appears on or after the **Rent Start Date**.
 
@@ -1175,6 +1216,7 @@ The page shows a hint such as *"Check-in becomes available on or after the rent 
 ---
 
 ### How do I check a tenant out?
+<!-- tabs: Search Rentals -->
 
 **Keywords:** check-out, checkout, tenant rating, end of rental, penalty
 
@@ -1206,6 +1248,7 @@ The page shows a hint such as *"Check-in becomes available on or after the rent 
 ---
 
 ### How do I terminate a rental early?
+<!-- tabs: Search Rentals -->
 
 **Keywords:** terminate, cancel rental, end rental early, eviction
 
@@ -1225,6 +1268,7 @@ The page shows a hint such as *"Check-in becomes available on or after the rent 
 ---
 
 ### How do I print the rental contract (Print RC)?
+<!-- tabs: Search Rentals -->
 
 Open the rental and click **Print RC**. If no contract template is set up for the project, the message *"No print documents are configured for this project yet."* appears — ask the system administrator to configure the print documents.
 
@@ -1233,6 +1277,7 @@ Open the rental and click **Print RC**. If no contract template is set up for th
 ---
 
 ### How do I create a ticket for a tenant?
+<!-- tabs: Search Rentals, Add Ticket | require: all -->
 
 Open the rental and click **Create Ticket**. **Tickets - Create Ticket** opens with the tenant's name and mobile, unit type, unit number, area and location already filled. Continue as in [How do I create a new ticket?](#how-do-i-create-a-new-ticket).
 
@@ -1241,6 +1286,7 @@ Open the rental and click **Create Ticket**. **Tickets - Create Ticket** opens w
 ---
 
 ### What is the life cycle of a rental?
+<!-- tabs: Add Rental, Search Rentals -->
 
 | Step | Status after it | How |
 |---|---|---|
@@ -1255,6 +1301,7 @@ Open the rental and click **Create Ticket**. **Tickets - Create Ticket** opens w
 ---
 
 ### How do I upload broker rentals in bulk (Broker Attachments)?
+<!-- tabs: Broker Attachments -->
 
 1. Go to **Rental → Broker Attachments** (**Rentals Walk-In Upload**).
 2. Choose the **Rental Company**.
@@ -1296,6 +1343,7 @@ Each file must have at least one data row under the headers.
 **Types:** Utility Fees Payment · Annual Maintenance · Rental Penalty Invoice · Ticket Invoice · Rental File Invoice · Account Statement Payment (ticket invoices show *Service invoice*).
 
 ### How do I create a manual invoice?
+<!-- tabs: Add Invoice -->
 
 **Keywords:** add invoice, new invoice, charge customer, utility fees
 
@@ -1321,6 +1369,7 @@ Each file must have at least one data row under the headers.
 ---
 
 ### How do I search for an invoice?
+<!-- tabs: Search Invoices -->
 
 1. Go to **Invoices → Search Invoices**. Use any filters and click **Search**.
 2. Click a row to open the invoice, or **Print** in the row. **Print** is enabled only for **Collected** or **Void** invoices and opens the browser's print dialog.
@@ -1330,6 +1379,7 @@ Each file must have at least one data row under the headers.
 ---
 
 ### What is on the invoice details page?
+<!-- tabs: Search Invoices -->
 
 - Header: status, **Void Request**, **Void Invoice**, **Upload Document**, print icon.
 - **Invoice Details**, **Timeline**, **Services**, **Payment Methods**.
@@ -1339,6 +1389,7 @@ Each file must have at least one data row under the headers.
 ---
 
 ### How do I collect payment for a pending invoice?
+<!-- tabs: Search Invoices -->
 
 **Keywords:** collect invoice, payment method, cash, visa, instapay, pay invoice
 
@@ -1360,6 +1411,7 @@ Each file must have at least one data row under the headers.
 ---
 
 ### How do I request an invoice void?
+<!-- tabs: Search Invoices -->
 
 1. Open the invoice and click **Void Request**.
 2. Type the reason (the **Void Request** button stays disabled until you do).
@@ -1376,6 +1428,7 @@ Each file must have at least one data row under the headers.
 ---
 
 ### How do I void an invoice directly?
+<!-- tabs: Search Invoices -->
 
 1. Open the invoice and click **Void Invoice**.
 2. Read *"Are you sure you want to void this invoice? This action cannot be undone."* and type the reason.
@@ -1390,6 +1443,7 @@ Each file must have at least one data row under the headers.
 ---
 
 ### How do I review my End of Day?
+<!-- tabs: End Of Day -->
 
 **Keywords:** EOD, end of day, daily closing, cashier closing, settle
 
@@ -1427,6 +1481,7 @@ Each file must have at least one data row under the headers.
 ---
 
 ### How do I review the Full End of Day for all employees?
+<!-- tabs: Full End Of Day -->
 
 1. Go to **Invoices → Full End Of Day**. Choose the **Date** (required), optional **Safe** and **Employee**. Click **Search**.
 2. Review **Payment Statistics per Employee** and the invoice list.
@@ -1435,14 +1490,43 @@ Each file must have at least one data row under the headers.
 
 ---
 
+### How do I request a refund for an invoice?
+<!-- tabs: Refund -->
+
+**Keywords:** refund, refund request, money back, return payment, give the customer their money back
+
+1. Go to **Invoices → Refund**.
+2. Find the invoice: filter by **Invoice Number**, **Invoice Item Number**, **Status**, **ERP Reference**, **ERP Refund Reference**, **Date From**, **Date To**, and click **Search**.
+3. In the invoice's row, click **Refund Request** (shown for invoices that have not been refunded yet).
+4. The dialog asks *"Are you sure you want to submit a refund request for this invoice?"* — type the reason in **Enter the reason for requesting this invoice refund...**.
+5. Click **Refund Request** to submit, or **Cancel**.
+6. The row's **Refund Status** becomes **Refund Requested**, with your name in **Refund Requested By** and your reason in **Refund Request Reason**.
+
+---
+
+### How do I refund an invoice directly?
+<!-- tabs: Refund -->
+
+**Keywords:** refund, direct refund, money back, refund immediately
+
+1. Go to **Invoices → Refund**, find the invoice (see the question above) and click **Refund** in its row.
+2. Read *"Are you sure you want to refund this invoice? This action cannot be undone."* and type the reason in **Enter the reason for refunding this invoice...**.
+3. Click **Refund** to confirm, or **Cancel**.
+4. The row's **Refund Status** becomes **Refunded**, with your name in **Refunded By** and your reason in **Refund Reason**.
+
+⚠️ A direct refund cannot be undone. If the refund should be reviewed first, use **Refund Request** instead.
+
+---
+
 ### How do I review refund requests?
+<!-- tabs: Refund -->
 
 **Keywords:** refund, refund request, approve refund, reject refund, money back
 
 1. Go to **Invoices → Refund**.
 2. Filter by **Invoice Number**, **Invoice Item Number**, **Status**, **ERP Reference**, **ERP Refund Reference**, **Date From**, **Date To**. Click **Search**.
 3. Each row shows **Invoice Number**, **Invoice Item Number**, **Customer**, **Unit**, **Total Amount**, **Payment Type**, **ERP Reference**, **ERP Refund Reference**, **Refund Status**, **Refund Requested By**, **Refunded By**, **Refund Request Reason** and **Refund Reason**.
-4. Use the row actions to approve (**Refund**) or reject the request.
+4. The **Actions** column depends on the row's state: an invoice with no refund yet shows **Refund Request** and **Refund** (see the two questions above); for a pending request, the actions are **Accept Refund Request** and **Reject Refund Request** (the Refund tab's role permissions).
 
 The related invoice statuses are **Refund Requested**, **Refunded** and **Partially Refund** (see the invoice statuses at the start of this section).
 
@@ -1454,6 +1538,7 @@ The related invoice statuses are **Refund Requested**, **Refunded** and **Partia
 **Menu:** **Reports**.
 
 ### How do I run the Daily Invoices report?
+<!-- tabs: Daily Invoices -->
 
 1. Go to **Reports → Daily Invoices**.
 2. Enter **Date From** and **Date To** (required). Optionally **Department**, **Unit Number**, **Collected By**, **Invoice Type**.
@@ -1464,6 +1549,7 @@ The related invoice statuses are **Refund Requested**, **Refunded** and **Partia
 **Columns:** Invoice Number · Customer · Notes · Service · Department · Unit · Quantity · Price · Total Amount · Status · Payment Method · Collected By · Date · Source.
 
 ### How do I run the Departmental Services report?
+<!-- tabs: Department Service End Of Day Report -->
 
 1. Go to **Reports → Department Service End Of Day Report**.
 2. Enter **Date From**, **Date To** (required), optional **Department**. Click **Search**.
@@ -1472,6 +1558,7 @@ The related invoice statuses are **Refund Requested**, **Refunded** and **Partia
 ![Departmental Services report](images/13-report-departmental.png)
 
 ### How do I run the End Of Day report for a period?
+<!-- tabs: End Of Day Report -->
 
 1. Go to **Reports → End Of Day Report**.
 2. Enter **Date From** and **Date To**. Click **Search**.
@@ -1484,6 +1571,7 @@ The related invoice statuses are **Refund Requested**, **Refunded** and **Partia
 ---
 
 ## 14. Definition (Master Data)
+<!-- tabs: Department, ERP Codes, Invoice Types, Location, Location Type, Positions, Rental Companies, Sister Companies, Unit Block Categories -->
 
 **Purpose:** maintain lookup lists used everywhere else.
 **Menu:** **Definition**.
@@ -1516,6 +1604,7 @@ Other Add dialogs:
 ![Add Rental Company](images/14-definition-add-rental-company.png)
 
 ### How do I add a location or sub-location?
+<!-- tabs: Location -->
 
 1. Go to **Definition → Location**.
 2. Click **Add Root Location** for a top-level location, or expand a root (arrow) and click **Add Sub-Location** in its row.
@@ -1551,6 +1640,7 @@ Other Add dialogs:
 **Menu:** **Users → Add User / Manage Users**.
 
 ### How do I add a new user?
+<!-- tabs: Add User -->
 
 1. Go to **Users → Add User**.
 2. Fill the required fields (framed) and optional **Manager** and **Email**.
@@ -1576,6 +1666,7 @@ Other Add dialogs:
 > If **Add** shows *"Internal server error"*, check **Manage Users** before trying again; the user may already have been created.
 
 ### How do I find, edit or deactivate a user?
+<!-- tabs: Manage Users -->
 
 1. Go to **Users → Manage Users**. Filter by **Username**, **Role**, **Status**. Click **Search**.
 2. In the row: pencil = **Edit user**; switch = **Status**; key = **Send password reset email**.
@@ -1583,6 +1674,7 @@ Other Add dialogs:
 ![Manage Users](images/15-user-manage.png)
 
 ### How do I send a password reset email to a user?
+<!-- tabs: Manage Users -->
 
 - In **Manage Users**, click the key icon (**Send password reset email**).
 
@@ -1593,6 +1685,7 @@ Other Add dialogs:
 ---
 
 ### How do I add a legal user?
+<!-- tabs: Add Legal Users -->
 
 **Keywords:** legal user, add lawyer, legal employee
 
@@ -1603,6 +1696,7 @@ Other Add dialogs:
 ---
 
 ### How do I find or edit legal users?
+<!-- tabs: Manage Legal Users -->
 
 **Keywords:** manage legal users, edit lawyer, deactivate legal user
 
@@ -1618,6 +1712,7 @@ Other Add dialogs:
 **Menu:** **Roles → Add Role / Manage Roles**.
 
 ### How do I create a role and assign permissions?
+<!-- tabs: Add Role -->
 
 1. Go to **Roles → Add Role**. Enter **Role Name (English)** and **Role Name (Arabic)**.
 2. Choose a **Module**, then open **Permissions**. The options depend on the module (e.g. *Search Complaint* offers **All** and **Read**).
@@ -1632,6 +1727,7 @@ Other Add dialogs:
 **Messages:** *English role name is required* · *Arabic role name is required* · *At least one module with permissions is required*. After **Add**, *"Created successfully."* appears and you go to **Manage Roles** (verified).
 
 ### How do I edit or delete a role?
+<!-- tabs: Manage Roles -->
 
 1. Go to **Roles → Manage Roles**. Use the pencil (**Edit role**) or bin (**Delete role**).
 
@@ -1650,6 +1746,7 @@ Editing and **Save** → *"Updated successfully."* (verified).
 ---
 
 ### Which modules and permissions can a role have?
+<!-- tabs: Add Role, Manage Roles -->
 
 The **Module** list on **Add Role** has **All** plus the modules below. Each module offers **All** plus the permissions shown (read from the screen).
 
@@ -1707,21 +1804,24 @@ The **Module** list on **Add Role** has **All** plus the modules below. Each mod
 | Block History | Edit, Export, Read, UnBlock |
 | Search Logs | Export, Read |
 
-> Some modules (Legal Block Categories, SAP Z Codes, Relative Requests, Refund, Add/Manage Legal Users, Search/Add Request, Add/Search Block, Block History, Search Logs) have no menu entry for the account used for this manual, so their screens are not documented.
+> Some modules (Legal Block Categories, SAP Z Codes, Relative Requests, Add/Manage Legal Users, Search/Add Request, Add/Search Block, Block History, Search Logs) have no menu entry for the account used for this manual, so their screens are not documented. The Refund screen was documented later from super-admin screenshots (2026-11-18).
 
 ---
 
 ### How do I give someone read-only access?
+<!-- tabs: Add Role, Manage Roles -->
 
 Create a role and, for each module the person needs, choose only **Read** (and **Export** if they may download lists). Then select that role on the user (**Users → Manage Users → Edit**). The existing **Viewer** role can also be used.
 
 ### Why can't a user see a menu entry or a button?
+<!-- tabs: Manage Roles -->
 
 Their role does not include that module or permission (for example **Accept** on **Rental Requests**, or **Void** on **Search Invoices**). An administrator adds it in **Roles → Manage Roles → Edit**, or gives the user another role.
 
 ---
 
 ## 17. Document Library
+<!-- tabs: DocumentLibrary -->
 
 **Purpose:** find every file uploaded anywhere in the CRM.
 **Menu:** **DocumentLibrary**.
@@ -1746,6 +1846,7 @@ Their role does not include that module or permission (for example **Accept** on
 ---
 
 ## 18. Settings (System Configuration)
+<!-- tabs: Settings -->
 
 **Purpose:** system-wide parameters for SLA tracking, runner-cashier pricing and rental rules.
 **Menu:** **Settings**.
@@ -1795,6 +1896,7 @@ Their role does not include that module or permission (for example **Accept** on
 **Menu:** **Unit Blocks → Add Block / Search Block**.
 
 ### How do I block a unit (finance or legal block)?
+<!-- tabs: Add Block -->
 
 **Keywords:** block unit, lock unit, finance block, legal block, stop unit
 
@@ -1810,6 +1912,7 @@ Locked units then appear in **Unit → Search** with the **Locked** filter (see 
 ---
 
 ### How do I find blocked units?
+<!-- tabs: Search Block -->
 
 **Keywords:** search block, blocked units, block list, legal blocks, finance blocks
 
@@ -1829,6 +1932,7 @@ Locked units then appear in **Unit → Search** with the **Locked** filter (see 
 ---
 
 ### How do I unblock a unit?
+<!-- tabs: Search Block -->
 
 **Keywords:** unblock unit, lift block, remove block, release unit
 
@@ -1845,6 +1949,7 @@ Locked units then appear in **Unit → Search** with the **Locked** filter (see 
 **Menu:** **Ownership Management → Add Request / Search Request**.
 
 ### How do I add an ownership request?
+<!-- tabs: Add Request -->
 
 **Keywords:** ownership request, new ownership request, ownership transfer, unit ownership
 
@@ -1857,6 +1962,7 @@ Locked units then appear in **Unit → Search** with the **Locked** filter (see 
 ---
 
 ### How do I find, close or invalidate an ownership request?
+<!-- tabs: Search Request -->
 
 **Keywords:** search ownership request, close ownership request, invalid request, ownership status
 
@@ -1873,6 +1979,7 @@ Locked units then appear in **Unit → Search** with the **Locked** filter (see 
 **Menu:** **Imports → Import Customers / Import Relatives / Import Units / Import History**.
 
 ### How do I import customers, relatives or units from Excel?
+<!-- tabs: Import Customers, Import Relatives, Import Units -->
 
 **Keywords:** import excel, bulk upload, import customers, import relatives, import units, upload sheet
 
@@ -1884,6 +1991,7 @@ Locked units then appear in **Unit → Search** with the **Locked** filter (see 
 ---
 
 ### How do I check the result of an import?
+<!-- tabs: Import History -->
 
 **Keywords:** import history, import result, rejected rows, failed import
 
@@ -1893,7 +2001,23 @@ Locked units then appear in **Unit → Search** with the **Locked** filter (see 
 
 ---
 
+## Exporting Search Results
+
+### How do I export search results to Excel?
+<!-- tabs: Search Complaint, Search Tickets, Search Customer, Unit, Service Search, Search Rentals, Search Invoices, Manage Users, Manage Legal Users, Manage Roles, Search Request, Search Block, Invoice Types -->
+
+**Keywords:** export, excel, download results, spreadsheet, export to excel, download the list
+
+1. Run a search so the **Results** list shows the rows you want.
+2. Click **Export to Excel** (shown next to **Search** / **Clear** when your role has the **Export** permission).
+3. The browser downloads the results as an Excel file named `crm-export.xlsx` (verified).
+
+The button works the same on every search/list page that shows it (tickets, invoices, customers, units, services, rentals, complaints, users, roles...). **Columns** changes which columns the list shows.
+
+---
+
 ## 19. Troubleshooting and FAQ
+<!-- tabs: general -->
 
 **I can't see a menu or button a colleague has.** Your role's permissions differ. Ask an administrator to check **Roles → Manage Roles**.
 
@@ -1946,6 +2070,7 @@ Locked units then appear in **Unit → Search** with the **Locked** filter (see 
 ---
 
 ## 20. Appendix A — Validation Messages Reference
+<!-- tabs: general -->
 
 | Screen | Message | Fix |
 |---|---|---|
@@ -1971,10 +2096,11 @@ Locked units then appear in **Unit → Search** with the **Locked** filter (see 
 ---
 
 ## 21. Appendix B — Verification Status
+<!-- tabs: general -->
 
 **Verified end-to-end (development environment, 12–13 Nov 2026):** login validation, navigation, header search (phone and unit), notifications, language and user menus; complaints (create, search, view, attachments, response, status, upload); tickets (create with **Add** and **Create & Collect**, edit and save, full status path to **Done**, **Rejected** with reason, comments, upload, print); CTS (create, edit, print); inquiries; customer edit validation and document upload; unit details (show sections, **Assign Location**, **Enable/Disable Rent**, upload); services (add, edit, deactivate, delete); Definition (add, edit, deactivate, delete); invoices (manual create, collect via **Add Payment Method**, **Void Request**, **Reject Void Request**, **Void Invoice**, print, **Export to Excel**); EOD/Full EOD and all reports; users (add, edit, activate/deactivate, reset email attempt); roles (add, edit, delete); Settings validation; rental reservation save; rental request **Accept**/**Reject**; broker upload validation; EOD **Settle**; **Change Password** validation; **Logout**; wrong-password login message (14 Nov 2026); rental details page, **Edit**, **Change Reservation**, **Issue Invoice** and collection, **Check-in**, **Terminate**, **Print RC**, **Create Ticket** from a rental, **Check-out** attempt, rental eligibility in **Add Rental**, locked-unit filter, **Ownership History**, customer **Ownership** filter, ticket status icons, full role module/permission list (15 Nov 2026).
 
-**Not available to the account used:** Legal and block screens (Add/Search Block, Block History, Legal Block Categories, Legal Users), Refund screen, Relative Requests, Ownership Requests (Search/Add Request), Search Logs, SAP Z Codes.
+**Not available to the account used:** Legal and block screens (Add/Search Block, Block History, Legal Block Categories, Legal Users), Relative Requests, Ownership Requests (Search/Add Request), Search Logs, SAP Z Codes. The Refund screen was later documented from super-admin screenshots (2026-11-18).
 
 **Not run on purpose:**
 - A real password change (it would lock out the test account).
@@ -2005,6 +2131,7 @@ Locked units then appear in **Unit → Search** with the **Locked** filter (see 
 ---
 
 ## 22. Appendix C — Observations for the Product Team
+<!-- tabs: general -->
 
 These were found in the **development environment**. "Likely cause" says whether each one is expected to appear in production:
 - **Code:** the behaviour comes from the application itself, so it is expected in production too.
@@ -2049,19 +2176,24 @@ These were found in the **development environment**. "Likely cause" says whether
 ---
 
 ## 23. Appendix D — English ↔ Arabic UI Labels
+<!-- tabs: general -->
 
 Use this table when a user describes a screen in Arabic (or uses the Arabic interface). Labels were read directly from the Arabic interface (`/ar/`).
 
 | English label | Arabic label |
 |---|---|
+| Accept | قبول |
 | Active | نشطة |
 | Add | إضافة |
+| Add Block | إضافة حظر |
 | Add Comment | إضافة تعليق |
 | Add Complaint | إضافة شكوى |
 | Add CTS | نظام CTS |
 | Add Inquiry | إضافة استفسار |
 | Add Invoice | إنشاء فاتورة |
+| Add Legal Users | إضافة المستخدمين القانونيين |
 | Add Rental | اضافة مستإجر |
+| Add Request | إضافة طلب |
 | Add Response | إضافة رد |
 | Add Role | إضافة دور |
 | Add Root Location | إضافة موقع رئيسي |
@@ -2074,8 +2206,10 @@ Use this table when a user describes a screen in Arabic (or uses the Arabic inte
 | Arrival Time | وقت الوصول |
 | Assign Location | تعيين الموقع |
 | Attach Document | إرفاق مستند |
+| Block Unit | حظر الوحدة |
 | Broker Attachments | مستندات الوسيط |
 | Cancel | إلغاء |
+| Cancel (relative request) | إلغاء القبول |
 | Change Password | تغيير كلمة المرور |
 | Change Status | تغيير الحالة |
 | Clear | مسح |
@@ -2110,25 +2244,41 @@ Use this table when a user describes a screen in Arabic (or uses the Arabic inte
 | End Of Day | نهاية اليوم |
 | End of Day | نهاية اليوم |
 | End Of Day Report | تقرير نهاية اليوم |
+| ERP Codes | اكواد الساب |
 | Exact Match | مطابقة تامة |
 | Export to Excel | تصدير إلى إكسل |
+| Finance (block type) | مالي |
 | Full End Of Day | نهاية اليوم الكاملة |
+| Import Customers | استيراد العملاء |
+| Import History | سجل الاستيراد |
+| Import Relatives | استيراد الأقارب |
+| Import Units | استيراد الوحدات |
+| Imports | الاستيراد |
 | Inactive | غير نشط |
 | Inquiries | الاستفسارات |
 | Invoice Types | أنواع الفواتير |
 | Invoices | الفواتير |
+| Legal (block type) | قانوني |
 | Location | الموقع |
 | Location Type | نوع الموقع |
 | Login | تسجيل الدخول |
 | Logout | تسجيل الخروج |
+| Manage Legal Users | إدارة المستخدمين القانونيين |
 | Manage Roles | إدارة الأدوار |
 | Manage Users | إدارة المستخدمين |
 | New Password | كلمة المرور الجديدة |
 | Notes | ملاحظات |
+| Notifications | الإشعارات |
 | Ownership History | سجل الملكية |
+| Ownership Managment | إدارة الملكية |
 | Password | كلمة المرور |
 | Positions | الوظائف |
 | Print | طباعة |
+| Refresh | تحديث |
+| Refund | استرداد |
+| Refund Request | طلب استرداد |
+| Reject | رفض |
+| Relative Requests | صلة القرابة |
 | Rental | التأجير |
 | Rental Companies | شركات التأجير |
 | Rental Company | شركة الإيجار |
@@ -2139,28 +2289,36 @@ Use this table when a user describes a screen in Arabic (or uses the Arabic inte
 | Roles | الأدوار |
 | Runner Cashier | كاشير متنقل |
 | Save | حفظ |
+| Save Changes | حفظ التغييرات |
 | Search | بحث |
+| Search Block | بحث عن حظر |
 | Search Complaint | بحث شكوى |
 | Search CTS | بحث نظام CTS |
 | Search Inquiry | بحث استفسار |
 | Search Invoices | بحث الفواتير |
 | Search Rentals | بحث الإيجارات |
+| Search Request | البحث عن طلب |
 | Search Tickets | بحث التذاكر |
 | Select Services | اختر الخدمات |
 | Service Search | بحث خدمة |
 | Services | الخدمات |
 | Settings | الاعدادات |
 | Settle | تسوية |
+| Show Attachments | عرض المرفقات |
 | Show Documents | عرض المستندات |
 | Show Invoices | عرض الفواتير |
+| Show Media | عرض الوسائط |
 | Show Tickets | عرض التذاكر |
 | Sister Companies | الشركات الشقيقة |
 | Statistics | الإحصائيات |
 | Submit | إرسال |
 | Tickets | التذاكر |
 | Unit | الوحدة |
+| Unit Block Categories | فئات حظر الوحدات |
+| Unit Blocks | حظر الوحدات |
 | Unit Number | رقم الوحدة |
 | Units Excel File | ملف إكسل الوحدات |
+| Upload | رفع |
 | Upload Document | رفع مستند |
 | Urgent | عاجل |
 | Users | المستخدمين |
@@ -2170,6 +2328,7 @@ Use this table when a user describes a screen in Arabic (or uses the Arabic inte
 ---
 
 ## 24. Appendix E — Statuses and List Values
+<!-- tabs: general -->
 
 Use this table to explain any status or dropdown value a user sees (values read from the screens).
 

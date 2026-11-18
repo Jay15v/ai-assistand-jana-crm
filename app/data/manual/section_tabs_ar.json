@@ -755,8 +755,30 @@
   },
   {
     "section": "12. الفواتير",
-    "question": "إزاي أراجع طلبات الاسترداد؟",
+    "question": "إزاي أطلب استرداد (Refund) لفاتورة؟",
     "line": 1123,
+    "general": false,
+    "tabs": [
+      "Refund"
+    ],
+    "require": "any",
+    "en_question": "How do I request a refund for an invoice?"
+  },
+  {
+    "section": "12. الفواتير",
+    "question": "إزاي أعمل استرداد مباشر لفاتورة؟",
+    "line": 1134,
+    "general": false,
+    "tabs": [
+      "Refund"
+    ],
+    "require": "any",
+    "en_question": "How do I refund an invoice directly?"
+  },
+  {
+    "section": "12. الفواتير",
+    "question": "إزاي أراجع طلبات الاسترداد؟",
+    "line": 1145,
     "general": false,
     "tabs": [
       "Refund"
@@ -767,7 +789,7 @@
   {
     "section": "13. التقارير",
     "question": "تقرير الفواتير اليومية",
-    "line": 1136,
+    "line": 1158,
     "general": false,
     "tabs": [
       "Daily Invoices"
@@ -778,7 +800,7 @@
   {
     "section": "13. التقارير",
     "question": "تقرير خدمات الأقسام",
-    "line": 1144,
+    "line": 1166,
     "general": false,
     "tabs": [
       "Department Service End Of Day Report"
@@ -789,7 +811,7 @@
   {
     "section": "13. التقارير",
     "question": "تقرير نهاية اليوم لفترة",
-    "line": 1150,
+    "line": 1172,
     "general": false,
     "tabs": [
       "End Of Day Report"
@@ -800,7 +822,7 @@
   {
     "section": "14. التعريفات (البيانات الأساسية)",
     "question": "إزاي أضيف عنصر جديد في التعريفات؟",
-    "line": 1172,
+    "line": 1194,
     "general": false,
     "tabs": [
       "Department",
@@ -819,7 +841,7 @@
   {
     "section": "14. التعريفات (البيانات الأساسية)",
     "question": "إزاي أضيف موقع أو موقع فرعي؟",
-    "line": 1183,
+    "line": 1205,
     "general": false,
     "tabs": [
       "Location"
@@ -830,7 +852,7 @@
   {
     "section": "14. التعريفات (البيانات الأساسية)",
     "question": "إزاي أعدّل أو أوقف أو أمسح عنصر؟",
-    "line": 1193,
+    "line": 1215,
     "general": false,
     "tabs": [
       "Department",
@@ -849,7 +871,7 @@
   {
     "section": "15. المستخدمين",
     "question": "إزاي أضيف مستخدم جديد؟",
-    "line": 1212,
+    "line": 1234,
     "general": false,
     "tabs": [
       "Add User"
@@ -860,7 +882,7 @@
   {
     "section": "15. المستخدمين",
     "question": "إزاي ألاقي مستخدم أو أعدّله أو أوقفه؟",
-    "line": 1232,
+    "line": 1254,
     "general": false,
     "tabs": [
       "Manage Users"
@@ -871,7 +893,7 @@
   {
     "section": "15. المستخدمين",
     "question": "إزاي أبعت إيميل إعادة تعيين الباسورد؟",
-    "line": 1241,
+    "line": 1263,
     "general": false,
     "tabs": [
       "Manage Users"
@@ -882,7 +904,7 @@
   {
     "section": "15. المستخدمين",
     "question": "إزاي أضيف مستخدم قانوني؟",
-    "line": 1251,
+    "line": 1273,
     "general": false,
     "tabs": [
       "Add Legal Users"
@@ -893,7 +915,7 @@
   {
     "section": "15. المستخدمين",
     "question": "إزاي ألاقي مستخدم قانوني أو أعدّله؟",
-    "line": 1259,
+    "line": 1281,
     "general": false,
     "tabs": [
       "Manage Legal Users"
@@ -904,7 +926,7 @@
   {
     "section": "16. الأدوار والصلاحيات",
     "question": "إزاي أعمل دور وأديله صلاحيات؟",
-    "line": 1269,
+    "line": 1291,
     "general": false,
     "tabs": [
       "Add Role"
@@ -915,7 +937,7 @@
   {
     "section": "16. الأدوار والصلاحيات",
     "question": "إزاي أعدّل دور أو أمسحه؟",
-    "line": 1283,
+    "line": 1305,
     "general": false,
     "tabs": [
       "Manage Roles"
@@ -926,7 +948,7 @@
   {
     "section": "16. الأدوار والصلاحيات",
     "question": "الدور ممكن ياخد أنهي موديولات وصلاحيات؟",
-    "line": 1299,
+    "line": 1321,
     "general": false,
     "tabs": [
       "Add Role",
@@ -938,7 +960,7 @@
   {
     "section": "16. الأدوار والصلاحيات",
     "question": "إزاي أدي حد صلاحية قراءة بس؟",
-    "line": 1361,
+    "line": 1383,
     "general": false,
     "tabs": [
       "Add Role",
@@ -950,7 +972,7 @@
   {
     "section": "16. الأدوار والصلاحيات",
     "question": "ليه مستخدم مش شايف قايمة أو زرار؟",
-    "line": 1365,
+    "line": 1387,
     "general": false,
     "tabs": [
       "Manage Roles"
@@ -961,7 +983,7 @@
   {
     "section": "17. مكتبة المستندات",
     "question": "إزاي ألاقي مستند اترفع على النظام؟",
-    "line": 1373,
+    "line": 1395,
     "general": false,
     "tabs": [
       "DocumentLibrary"
@@ -972,7 +994,7 @@
   {
     "section": "18. الإعدادات",
     "question": "إزاي أغيّر أوقات الـ SLA وباقي الإعدادات؟",
-    "line": 1394,
+    "line": 1416,
     "general": false,
     "tabs": [
       "Settings"
@@ -983,7 +1005,7 @@
   {
     "section": "حظر الوحدات",
     "question": "إزاي أحظر وحدة (حظر مالي أو قانوني)؟",
-    "line": 1436,
+    "line": 1458,
     "general": false,
     "tabs": [
       "Add Block"
@@ -994,7 +1016,7 @@
   {
     "section": "حظر الوحدات",
     "question": "إزاي ألاقي الوحدات المحظورة؟",
-    "line": 1449,
+    "line": 1471,
     "general": false,
     "tabs": [
       "Search Block"
@@ -1005,7 +1027,7 @@
   {
     "section": "حظر الوحدات",
     "question": "إزاي أفك الحظر عن وحدة؟",
-    "line": 1460,
+    "line": 1482,
     "general": false,
     "tabs": [
       "Search Block"
@@ -1016,7 +1038,7 @@
   {
     "section": "إدارة الملكية",
     "question": "إزاي أضيف طلب ملكية؟",
-    "line": 1474,
+    "line": 1496,
     "general": false,
     "tabs": [
       "Add Request"
@@ -1027,7 +1049,7 @@
   {
     "section": "إدارة الملكية",
     "question": "إزاي ألاقي طلب ملكية أو أقفله أو ألغيه؟",
-    "line": 1484,
+    "line": 1506,
     "general": false,
     "tabs": [
       "Search Request"
@@ -1038,7 +1060,7 @@
   {
     "section": "الاستيراد",
     "question": "إزاي أستورد عملاء أو أقارب أو وحدات من إكسل؟",
-    "line": 1498,
+    "line": 1520,
     "general": false,
     "tabs": [
       "Import Customers",
@@ -1051,12 +1073,35 @@
   {
     "section": "الاستيراد",
     "question": "إزاي أتابع نتيجة الاستيراد؟",
-    "line": 1507,
+    "line": 1529,
     "general": false,
     "tabs": [
       "Import History"
     ],
     "require": "any",
     "en_question": "How do I check the result of an import?"
+  },
+  {
+    "section": "تصدير نتائج البحث",
+    "question": "إزاي أصدّر نتايج البحث لإكسل؟",
+    "line": 1539,
+    "general": false,
+    "tabs": [
+      "Search Complaint",
+      "Search Tickets",
+      "Search Customer",
+      "Unit",
+      "Service Search",
+      "Search Rentals",
+      "Search Invoices",
+      "Manage Users",
+      "Manage Legal Users",
+      "Manage Roles",
+      "Search Request",
+      "Search Block",
+      "Invoice Types"
+    ],
+    "require": "any",
+    "en_question": "How do I export search results to Excel?"
   }
 ]

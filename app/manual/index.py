@@ -92,7 +92,10 @@ class ManualIndex:
         return len(ids)
 
     def search(self, query: str, allowed_names: set[str], top_k: int = 3) -> list[tuple[ManualChunk, float]]:
-        """Best eligible chunks for this query, (chunk, cosine similarity), best first."""
+        """Best eligible chunks for this query, (chunk, cosine similarity), best first.
+
+        Hits scoring below settings.manual_min_score are dropped: an empty result means the
+        manual has no section close enough, and the graph routes to the no-docs reply."""
         t0 = time.perf_counter()
         col = self.collection()
         res = col.query(
@@ -108,6 +111,8 @@ class ManualIndex:
                 best[cid] = (score, meta)
         hits: list[tuple[ManualChunk, float]] = []
         for score, meta in sorted(best.values(), key=lambda x: x[0], reverse=True):
+            if score < self.settings.manual_min_score:
+                break  # sorted best-first: everything after this is weaker
             chunk = ManualChunk.model_validate_json(meta["chunk_json"])
             if eligible(chunk, allowed_names):
                 hits.append((chunk, score))

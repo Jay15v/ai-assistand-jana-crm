@@ -1,0 +1,18 @@
+Goal
+A bilingual (EN/Arabic) chatbot that answers "how do I…?" questions about the Ability CRM — but only for the screens each user is actually allowed to use, and only from the official manual (never invented).
+
+The knowledge, built offline
+Crawl → ability_crm_vector_docs.json: a snapshot of the live CRM — the 54 tabs, their EN/AR names, buttons and fields. Defines what exists.
+MD manuals (EN + AR twin) → the single source of truth for what you can do and how. Each ### section is one task, and now carries its own <!-- tabs: ... --> tag naming which tab(s) it belongs to.
+Two generated artifacts from the MD: section_tabs.json (headings + tags, via tag_manual.py) and the crm_manual vector index (full sections embedded, via build_manual_index.py).
+The pipeline, per message (LangGraph)
+Step 1 — permissions (no AI): the user's NestJS menu JSON is matched against the tab catalog → two lists: allowed tabs / not-allowed tabs.
+
+Step 2 — scope (LLM, reads text): Gemini gets the manual's questions grouped under those two lists, plus the conversation history, and decides:
+
+allowed (+ rewrites follow-ups into a standalone question),
+partial (splits a half-allowed question in two),
+not_allowed, or off_topic. Fail-closed: any LLM failure → error reply, never a guess.
+Step 3 — answer (vector search + LLM): only for allowed/partial. The (rewritten) question is embedded and searched against the manual index — permission-filtered, top 2 sections, and anything scoring below the 0.72 floor is dropped. Found sections → Gemini writes numbered steps from those excerpts only, in the user's language; nothing found → honest "no instructions for this yet". Partial answers get the blocked-half notice appended by code.
+
+Memory: every answered turn is recorded per session (in-memory dev / Postgres prod), old turns compacted into a summary — that's what makes "and how do I edit it?" work.

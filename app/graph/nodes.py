@@ -7,6 +7,7 @@ the graph is built - nothing is loaded per message.
 import logging
 from collections.abc import Callable
 
+from app.graph.history import history_text
 from app.graph.state import ChatState
 from app.manual.generate import AnswerError, generate_answer
 from app.scope.decide import ScopeDecisionError, decide_scope
@@ -80,18 +81,29 @@ def make_check_scope(get_llm: Callable[[], object], descriptions: dict[str, str]
                 state["allowed_tabs"],
                 state["not_allowed_tabs"],
                 descriptions,
+                history_text=history_text(state),
             )
         except ScopeDecisionError as exc:
             log.error("%s", exc)
             return {"error": str(exc)}
         return {
             "scope": d.decision,
+            "standalone_question": d.standalone_question,
             "allowed_question": d.allowed_question,
             "not_allowed_question": d.not_allowed_question,
             "scope_reason": d.reason,
         }
 
     return check_scope
+
+
+def search_query(state: ChatState) -> str:
+    """What retrieval and generation work from. Partial: the allowed part only. Allowed: the
+    scope LLM's self-contained rewrite ('edit it' -> 'edit a ticket'), falling back to the raw
+    message if the rewrite is missing."""
+    if state["scope"] == "partial":
+        return state["allowed_question"]
+    return state.get("standalone_question") or state["message"]
 
 
 def make_retrieve_section(get_index: Callable[[], object]) -> Callable[[ChatState], dict]:
@@ -105,7 +117,7 @@ def make_retrieve_section(get_index: Callable[[], object]) -> Callable[[ChatStat
     def retrieve_section(state: ChatState) -> dict:
         if not cache:
             cache.append(get_index())
-        query = state["allowed_question"] if state["scope"] == "partial" else state["message"]
+        query = search_query(state)
         allowed_names = {t.name_en for t in state["allowed_tabs"]}
         hits = cache[0].search(query, allowed_names, top_k=RETRIEVE_TOP_K)
         return {"sections": [c for c, _ in hits]}
@@ -122,22 +134,26 @@ def make_generate_steps(get_llm: Callable[[], object]) -> Callable[[ChatState], 
         if not cache:
             cache.append(get_llm())
         lang = state["ui_lang"]
-        query = state["allowed_question"] if state["scope"] == "partial" else state["message"]
         try:
-            answer = generate_answer(cache[0], query, state["sections"], lang)
+            answer = generate_answer(
+                cache[0], search_query(state), state["sections"], lang, history_text(state)
+            )
         except AnswerError as exc:
             log.error("%s", exc)
             return {"error": str(exc)}
         if state["scope"] == "partial":
             answer += PARTIAL_NOTICES[lang].format(blocked=state["not_allowed_question"])
-        return {"answer": answer}
+        return {"answer": answer, "answered": True}
 
     return generate_steps
 
 
 def no_docs_reply(state: ChatState) -> dict:
-    """Allowed, but no manual section exists for the user's tabs (coverage gap, e.g. Imports)."""
-    return {"answer": NO_DOCS_MESSAGES[state["ui_lang"]]}
+    """Allowed, but no manual section matches close enough (coverage gap or weak retrieval)."""
+    answer = NO_DOCS_MESSAGES[state["ui_lang"]]
+    if state["scope"] == "partial":
+        answer += PARTIAL_NOTICES[state["ui_lang"]].format(blocked=state["not_allowed_question"])
+    return {"answer": answer}
 
 
 def error_reply(state: ChatState) -> dict:

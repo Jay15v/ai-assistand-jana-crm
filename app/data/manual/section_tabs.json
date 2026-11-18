@@ -2,7 +2,7 @@
   {
     "section": "2. Introduction and System Overview",
     "question": "Main navigation map",
-    "line": 95,
+    "line": 98,
     "general": true,
     "tabs": [],
     "require": "any"
@@ -10,7 +10,7 @@
   {
     "section": "3. Getting Started",
     "question": "How do I log in to the CRM?",
-    "line": 121,
+    "line": 125,
     "general": true,
     "tabs": [],
     "require": "any"
@@ -18,7 +18,7 @@
   {
     "section": "3. Getting Started",
     "question": "How is the screen laid out?",
-    "line": 151,
+    "line": 155,
     "general": true,
     "tabs": [],
     "require": "any"
@@ -26,7 +26,7 @@
   {
     "section": "3. Getting Started",
     "question": "How do I quickly find a customer by phone number?",
-    "line": 163,
+    "line": 167,
     "general": true,
     "tabs": [],
     "require": "any"
@@ -34,7 +34,7 @@
   {
     "section": "3. Getting Started",
     "question": "How do I quickly find a unit?",
-    "line": 178,
+    "line": 182,
     "general": true,
     "tabs": [],
     "require": "any"
@@ -42,7 +42,7 @@
   {
     "section": "3. Getting Started",
     "question": "How do I view notifications?",
-    "line": 191,
+    "line": 195,
     "general": true,
     "tabs": [],
     "require": "any"
@@ -50,7 +50,7 @@
   {
     "section": "3. Getting Started",
     "question": "How do I switch the interface language?",
-    "line": 200,
+    "line": 204,
     "general": true,
     "tabs": [],
     "require": "any"
@@ -58,7 +58,7 @@
   {
     "section": "3. Getting Started",
     "question": "How do I change my password or log out?",
-    "line": 211,
+    "line": 215,
     "general": true,
     "tabs": [],
     "require": "any"
@@ -66,7 +66,7 @@
   {
     "section": "3. Getting Started",
     "question": "How do the search and list pages work?",
-    "line": 253,
+    "line": 257,
     "general": true,
     "tabs": [],
     "require": "any"
@@ -74,7 +74,7 @@
   {
     "section": "4. Complaints & Suggestions",
     "question": "How do I file a new complaint?",
-    "line": 291,
+    "line": 295,
     "general": false,
     "tabs": [
       "Add Complaint"
@@ -84,7 +84,7 @@
   {
     "section": "4. Complaints & Suggestions",
     "question": "How do I search for a complaint?",
-    "line": 341,
+    "line": 346,
     "general": false,
     "tabs": [
       "Search Complaint"
@@ -94,7 +94,7 @@
   {
     "section": "4. Complaints & Suggestions",
     "question": "How do I view a complaint's attachments from the search list?",
-    "line": 359,
+    "line": 365,
     "general": false,
     "tabs": [
       "Search Complaint"
@@ -104,7 +104,7 @@
   {
     "section": "4. Complaints & Suggestions",
     "question": "How do I open a complaint's details?",
-    "line": 368,
+    "line": 375,
     "general": false,
     "tabs": [
       "Search Complaint"
@@ -114,7 +114,7 @@
   {
     "section": "4. Complaints & Suggestions",
     "question": "How do I add a response to a complaint?",
-    "line": 383,
+    "line": 391,
     "general": false,
     "tabs": [
       "Search Complaint"
@@ -124,7 +124,7 @@
   {
     "section": "4. Complaints & Suggestions",
     "question": "How do I change a complaint's status (e.g. mark it Resolved)?",
-    "line": 398,
+    "line": 407,
     "general": false,
     "tabs": [
       "Search Complaint"
@@ -134,7 +134,7 @@
   {
     "section": "4. Complaints & Suggestions",
     "question": "How do I attach a document to a complaint?",
-    "line": 418,
+    "line": 428,
     "general": false,
     "tabs": [
       "Search Complaint"
@@ -144,7 +144,7 @@
   {
     "section": "5. Dashboard",
     "question": "Where do I see all open (live) complaints?",
-    "line": 439,
+    "line": 450,
     "general": false,
     "tabs": [
       "Complaints"
@@ -154,7 +154,7 @@
   {
     "section": "5. Dashboard",
     "question": "Where do I see live tickets and their SLA status?",
-    "line": 453,
+    "line": 465,
     "general": false,
     "tabs": [
       "Tickets"
@@ -164,7 +164,7 @@
   {
     "section": "5. Dashboard",
     "question": "How do I view statistics charts?",
-    "line": 470,
+    "line": 483,
     "general": false,
     "tabs": [
       "Statistics"
@@ -174,7 +174,7 @@
   {
     "section": "6. Tickets (including CTS)",
     "question": "How do I create a new ticket?",
-    "line": 492,
+    "line": 506,
     "general": false,
     "tabs": [
       "Add Ticket"
@@ -184,16 +184,6 @@
   {
     "section": "6. Tickets (including CTS)",
     "question": "How do I search for tickets?",
-    "line": 535,
-    "general": false,
-    "tabs": [
-      "Search Tickets"
-    ],
-    "require": "any"
-  },
-  {
-    "section": "6. Tickets (including CTS)",
-    "question": "What do the Status, SLA, Delayed and Urgent icons mean?",
     "line": 550,
     "general": false,
     "tabs": [
@@ -203,8 +193,18 @@
   },
   {
     "section": "6. Tickets (including CTS)",
+    "question": "What do the Status, SLA, Delayed and Urgent icons mean?",
+    "line": 566,
+    "general": false,
+    "tabs": [
+      "Search Tickets"
+    ],
+    "require": "any"
+  },
+  {
+    "section": "6. Tickets (including CTS)",
     "question": "How do I edit a ticket?",
-    "line": 567,
+    "line": 584,
     "general": false,
     "tabs": [
       "Search Tickets"
@@ -214,7 +214,7 @@
   {
     "section": "6. Tickets (including CTS)",
     "question": "How do I change a ticket's status?",
-    "line": 583,
+    "line": 601,
     "general": false,
     "tabs": [
       "Search Tickets"
@@ -224,26 +224,6 @@
   {
     "section": "6. Tickets (including CTS)",
     "question": "How do I add a comment to a ticket?",
-    "line": 607,
-    "general": false,
-    "tabs": [
-      "Search Tickets"
-    ],
-    "require": "any"
-  },
-  {
-    "section": "6. Tickets (including CTS)",
-    "question": "How do I attach documents to a ticket?",
-    "line": 617,
-    "general": false,
-    "tabs": [
-      "Search Tickets"
-    ],
-    "require": "any"
-  },
-  {
-    "section": "6. Tickets (including CTS)",
-    "question": "How do I print a ticket?",
     "line": 626,
     "general": false,
     "tabs": [
@@ -253,8 +233,28 @@
   },
   {
     "section": "6. Tickets (including CTS)",
+    "question": "How do I attach documents to a ticket?",
+    "line": 637,
+    "general": false,
+    "tabs": [
+      "Search Tickets"
+    ],
+    "require": "any"
+  },
+  {
+    "section": "6. Tickets (including CTS)",
+    "question": "How do I print a ticket?",
+    "line": 647,
+    "general": false,
+    "tabs": [
+      "Search Tickets"
+    ],
+    "require": "any"
+  },
+  {
+    "section": "6. Tickets (including CTS)",
     "question": "How do I create a CTS record?",
-    "line": 632,
+    "line": 654,
     "general": false,
     "tabs": [
       "Add CTS"
@@ -264,7 +264,7 @@
   {
     "section": "6. Tickets (including CTS)",
     "question": "How do I search CTS records?",
-    "line": 658,
+    "line": 681,
     "general": false,
     "tabs": [
       "Search CTS"
@@ -274,7 +274,7 @@
   {
     "section": "7. Inquiries",
     "question": "How do I log a customer inquiry?",
-    "line": 675,
+    "line": 699,
     "general": false,
     "tabs": [
       "Add Inquiry"
@@ -284,7 +284,7 @@
   {
     "section": "7. Inquiries",
     "question": "How do I search inquiries?",
-    "line": 698,
+    "line": 723,
     "general": false,
     "tabs": [
       "Search Inquiry"
@@ -294,7 +294,7 @@
   {
     "section": "8. Customers",
     "question": "How do I find a customer?",
-    "line": 716,
+    "line": 743,
     "general": false,
     "tabs": [
       "Search Customer"
@@ -304,7 +304,7 @@
   {
     "section": "8. Customers",
     "question": "What is on the customer details page?",
-    "line": 728,
+    "line": 755,
     "general": false,
     "tabs": [
       "Search Customer"
@@ -314,7 +314,7 @@
   {
     "section": "8. Customers",
     "question": "How do I edit a customer's contact details?",
-    "line": 737,
+    "line": 764,
     "general": false,
     "tabs": [
       "Search Customer"
@@ -324,7 +324,7 @@
   {
     "section": "8. Customers",
     "question": "How do I upload or view a customer's documents?",
-    "line": 753,
+    "line": 780,
     "general": false,
     "tabs": [
       "Search Customer"
@@ -334,7 +334,7 @@
   {
     "section": "8. Customers",
     "question": "How do I list all renters, owners or owner relatives?",
-    "line": 763,
+    "line": 790,
     "general": false,
     "tabs": [
       "Search Customer"
@@ -344,7 +344,7 @@
   {
     "section": "8. Customers",
     "question": "How do I create a ticket from a customer's page?",
-    "line": 772,
+    "line": 799,
     "general": false,
     "tabs": [
       "Search Customer",
@@ -355,7 +355,7 @@
   {
     "section": "8. Customers",
     "question": "How do I review a relative request (accept or reject)?",
-    "line": 779,
+    "line": 807,
     "general": false,
     "tabs": [
       "Relative Requests"
@@ -365,7 +365,7 @@
   {
     "section": "9. Unit",
     "question": "How do I search for units?",
-    "line": 798,
+    "line": 828,
     "general": false,
     "tabs": [
       "Unit"
@@ -375,7 +375,7 @@
   {
     "section": "9. Unit",
     "question": "What can I do on the Unit Details page?",
-    "line": 812,
+    "line": 842,
     "general": false,
     "tabs": [
       "Unit"
@@ -385,7 +385,7 @@
   {
     "section": "9. Unit",
     "question": "How do I mark a unit as eligible (or not) for rent?",
-    "line": 847,
+    "line": 877,
     "general": false,
     "tabs": [
       "Unit"
@@ -395,7 +395,7 @@
   {
     "section": "9. Unit",
     "question": "Why can't I add a rental to a unit?",
-    "line": 862,
+    "line": 892,
     "general": false,
     "tabs": [
       "Unit"
@@ -405,7 +405,7 @@
   {
     "section": "9. Unit",
     "question": "How do I find locked (blocked) units?",
-    "line": 875,
+    "line": 905,
     "general": false,
     "tabs": [
       "Unit"
@@ -415,7 +415,7 @@
   {
     "section": "9. Unit",
     "question": "How do I see a unit's previous owners or renters?",
-    "line": 885,
+    "line": 915,
     "general": false,
     "tabs": [
       "Unit"
@@ -425,7 +425,7 @@
   {
     "section": "9. Unit",
     "question": "How do I upload a document to a unit?",
-    "line": 894,
+    "line": 924,
     "general": false,
     "tabs": [
       "Unit"
@@ -435,7 +435,7 @@
   {
     "section": "9. Unit",
     "question": "How do I assign a location to a unit?",
-    "line": 907,
+    "line": 937,
     "general": false,
     "tabs": [
       "Unit"
@@ -445,7 +445,7 @@
   {
     "section": "10. Services",
     "question": "How do I add a new service?",
-    "line": 924,
+    "line": 954,
     "general": false,
     "tabs": [
       "Add Service"
@@ -455,7 +455,7 @@
   {
     "section": "10. Services",
     "question": "How do I find, edit, activate or delete a service?",
-    "line": 954,
+    "line": 985,
     "general": false,
     "tabs": [
       "Service Search"
@@ -465,7 +465,7 @@
   {
     "section": "11. Rental",
     "question": "How do I add a rental reservation?",
-    "line": 983,
+    "line": 1015,
     "general": false,
     "tabs": [
       "Add Rental"
@@ -475,7 +475,7 @@
   {
     "section": "11. Rental",
     "question": "How do I review a rental request (accept or reject)?",
-    "line": 1036,
+    "line": 1069,
     "general": false,
     "tabs": [
       "Rental Requests"
@@ -485,7 +485,7 @@
   {
     "section": "11. Rental",
     "question": "How do I edit a rental request before accepting it?",
-    "line": 1064,
+    "line": 1098,
     "general": false,
     "tabs": [
       "Rental Requests"
@@ -495,7 +495,7 @@
   {
     "section": "11. Rental",
     "question": "How do I search rentals?",
-    "line": 1076,
+    "line": 1111,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -505,7 +505,7 @@
   {
     "section": "11. Rental",
     "question": "What is on a rental's details page?",
-    "line": 1086,
+    "line": 1122,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -515,7 +515,7 @@
   {
     "section": "11. Rental",
     "question": "How do I edit a rental's details?",
-    "line": 1115,
+    "line": 1152,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -525,7 +525,7 @@
   {
     "section": "11. Rental",
     "question": "How do I extend a rental (Change Reservation)?",
-    "line": 1127,
+    "line": 1165,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -535,7 +535,7 @@
   {
     "section": "11. Rental",
     "question": "How do I issue an invoice on a rental?",
-    "line": 1141,
+    "line": 1180,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -545,7 +545,7 @@
   {
     "section": "11. Rental",
     "question": "How do I check a tenant in?",
-    "line": 1163,
+    "line": 1203,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -555,7 +555,7 @@
   {
     "section": "11. Rental",
     "question": "How do I check a tenant out?",
-    "line": 1177,
+    "line": 1218,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -565,7 +565,7 @@
   {
     "section": "11. Rental",
     "question": "How do I terminate a rental early?",
-    "line": 1208,
+    "line": 1250,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -575,7 +575,7 @@
   {
     "section": "11. Rental",
     "question": "How do I print the rental contract (Print RC)?",
-    "line": 1227,
+    "line": 1270,
     "general": false,
     "tabs": [
       "Search Rentals"
@@ -585,7 +585,7 @@
   {
     "section": "11. Rental",
     "question": "How do I create a ticket for a tenant?",
-    "line": 1235,
+    "line": 1279,
     "general": false,
     "tabs": [
       "Search Rentals",
@@ -596,7 +596,7 @@
   {
     "section": "11. Rental",
     "question": "What is the life cycle of a rental?",
-    "line": 1243,
+    "line": 1288,
     "general": false,
     "tabs": [
       "Add Rental",
@@ -607,7 +607,7 @@
   {
     "section": "11. Rental",
     "question": "How do I upload broker rentals in bulk (Broker Attachments)?",
-    "line": 1257,
+    "line": 1303,
     "general": false,
     "tabs": [
       "Broker Attachments"
@@ -617,7 +617,7 @@
   {
     "section": "12. Invoices",
     "question": "How do I create a manual invoice?",
-    "line": 1298,
+    "line": 1345,
     "general": false,
     "tabs": [
       "Add Invoice"
@@ -627,7 +627,7 @@
   {
     "section": "12. Invoices",
     "question": "How do I search for an invoice?",
-    "line": 1323,
+    "line": 1371,
     "general": false,
     "tabs": [
       "Search Invoices"
@@ -637,7 +637,7 @@
   {
     "section": "12. Invoices",
     "question": "What is on the invoice details page?",
-    "line": 1332,
+    "line": 1381,
     "general": false,
     "tabs": [
       "Search Invoices"
@@ -647,7 +647,7 @@
   {
     "section": "12. Invoices",
     "question": "How do I collect payment for a pending invoice?",
-    "line": 1341,
+    "line": 1391,
     "general": false,
     "tabs": [
       "Search Invoices"
@@ -657,7 +657,7 @@
   {
     "section": "12. Invoices",
     "question": "How do I request an invoice void?",
-    "line": 1362,
+    "line": 1413,
     "general": false,
     "tabs": [
       "Search Invoices"
@@ -667,7 +667,7 @@
   {
     "section": "12. Invoices",
     "question": "How do I void an invoice directly?",
-    "line": 1378,
+    "line": 1430,
     "general": false,
     "tabs": [
       "Search Invoices"
@@ -677,7 +677,7 @@
   {
     "section": "12. Invoices",
     "question": "How do I review my End of Day?",
-    "line": 1392,
+    "line": 1445,
     "general": false,
     "tabs": [
       "End Of Day"
@@ -687,7 +687,7 @@
   {
     "section": "12. Invoices",
     "question": "How do I review the Full End of Day for all employees?",
-    "line": 1429,
+    "line": 1483,
     "general": false,
     "tabs": [
       "Full End Of Day"
@@ -696,8 +696,28 @@
   },
   {
     "section": "12. Invoices",
+    "question": "How do I request a refund for an invoice?",
+    "line": 1493,
+    "general": false,
+    "tabs": [
+      "Refund"
+    ],
+    "require": "any"
+  },
+  {
+    "section": "12. Invoices",
+    "question": "How do I refund an invoice directly?",
+    "line": 1507,
+    "general": false,
+    "tabs": [
+      "Refund"
+    ],
+    "require": "any"
+  },
+  {
+    "section": "12. Invoices",
     "question": "How do I review refund requests?",
-    "line": 1438,
+    "line": 1521,
     "general": false,
     "tabs": [
       "Refund"
@@ -707,7 +727,7 @@
   {
     "section": "13. Reports",
     "question": "How do I run the Daily Invoices report?",
-    "line": 1456,
+    "line": 1540,
     "general": false,
     "tabs": [
       "Daily Invoices"
@@ -717,7 +737,7 @@
   {
     "section": "13. Reports",
     "question": "How do I run the Departmental Services report?",
-    "line": 1466,
+    "line": 1551,
     "general": false,
     "tabs": [
       "Department Service End Of Day Report"
@@ -727,7 +747,7 @@
   {
     "section": "13. Reports",
     "question": "How do I run the End Of Day report for a period?",
-    "line": 1474,
+    "line": 1560,
     "general": false,
     "tabs": [
       "End Of Day Report"
@@ -737,7 +757,7 @@
   {
     "section": "14. Definition (Master Data)",
     "question": "How do I add a new Definition item (e.g. a Department)?",
-    "line": 1505,
+    "line": 1593,
     "general": false,
     "tabs": [
       "Department",
@@ -755,7 +775,7 @@
   {
     "section": "14. Definition (Master Data)",
     "question": "How do I add a location or sub-location?",
-    "line": 1518,
+    "line": 1606,
     "general": false,
     "tabs": [
       "Location"
@@ -765,7 +785,7 @@
   {
     "section": "14. Definition (Master Data)",
     "question": "How do I delete a Definition item?",
-    "line": 1529,
+    "line": 1618,
     "general": false,
     "tabs": [
       "Department",
@@ -783,7 +803,7 @@
   {
     "section": "14. Definition (Master Data)",
     "question": "How do I edit or deactivate a Definition item?",
-    "line": 1537,
+    "line": 1626,
     "general": false,
     "tabs": [
       "Department",
@@ -801,7 +821,7 @@
   {
     "section": "15. Users",
     "question": "How do I add a new user?",
-    "line": 1553,
+    "line": 1642,
     "general": false,
     "tabs": [
       "Add User"
@@ -811,7 +831,7 @@
   {
     "section": "15. Users",
     "question": "How do I find, edit or deactivate a user?",
-    "line": 1578,
+    "line": 1668,
     "general": false,
     "tabs": [
       "Manage Users"
@@ -821,7 +841,7 @@
   {
     "section": "15. Users",
     "question": "How do I send a password reset email to a user?",
-    "line": 1585,
+    "line": 1676,
     "general": false,
     "tabs": [
       "Manage Users"
@@ -831,7 +851,7 @@
   {
     "section": "15. Users",
     "question": "How do I add a legal user?",
-    "line": 1595,
+    "line": 1687,
     "general": false,
     "tabs": [
       "Add Legal Users"
@@ -841,7 +861,7 @@
   {
     "section": "15. Users",
     "question": "How do I find or edit legal users?",
-    "line": 1605,
+    "line": 1698,
     "general": false,
     "tabs": [
       "Manage Legal Users"
@@ -851,7 +871,7 @@
   {
     "section": "16. Roles",
     "question": "How do I create a role and assign permissions?",
-    "line": 1620,
+    "line": 1714,
     "general": false,
     "tabs": [
       "Add Role"
@@ -861,7 +881,7 @@
   {
     "section": "16. Roles",
     "question": "How do I edit or delete a role?",
-    "line": 1634,
+    "line": 1729,
     "general": false,
     "tabs": [
       "Manage Roles"
@@ -871,7 +891,7 @@
   {
     "section": "16. Roles",
     "question": "Which modules and permissions can a role have?",
-    "line": 1652,
+    "line": 1748,
     "general": false,
     "tabs": [
       "Add Role",
@@ -882,7 +902,7 @@
   {
     "section": "16. Roles",
     "question": "How do I give someone read-only access?",
-    "line": 1714,
+    "line": 1811,
     "general": false,
     "tabs": [
       "Add Role",
@@ -893,7 +913,7 @@
   {
     "section": "16. Roles",
     "question": "Why can't a user see a menu entry or a button?",
-    "line": 1718,
+    "line": 1816,
     "general": false,
     "tabs": [
       "Manage Roles"
@@ -903,7 +923,7 @@
   {
     "section": "17. Document Library",
     "question": "How do I find an uploaded document?",
-    "line": 1729,
+    "line": 1829,
     "general": false,
     "tabs": [
       "DocumentLibrary"
@@ -913,7 +933,7 @@
   {
     "section": "18. Settings (System Configuration)",
     "question": "How do I change SLA times and other system settings?",
-    "line": 1753,
+    "line": 1854,
     "general": false,
     "tabs": [
       "Settings"
@@ -923,7 +943,7 @@
   {
     "section": "Unit Blocks",
     "question": "How do I block a unit (finance or legal block)?",
-    "line": 1797,
+    "line": 1898,
     "general": false,
     "tabs": [
       "Add Block"
@@ -933,7 +953,7 @@
   {
     "section": "Unit Blocks",
     "question": "How do I find blocked units?",
-    "line": 1812,
+    "line": 1914,
     "general": false,
     "tabs": [
       "Search Block"
@@ -943,7 +963,7 @@
   {
     "section": "Unit Blocks",
     "question": "How do I unblock a unit?",
-    "line": 1831,
+    "line": 1934,
     "general": false,
     "tabs": [
       "Search Block"
@@ -953,7 +973,7 @@
   {
     "section": "Ownership Management",
     "question": "How do I add an ownership request?",
-    "line": 1847,
+    "line": 1951,
     "general": false,
     "tabs": [
       "Add Request"
@@ -963,7 +983,7 @@
   {
     "section": "Ownership Management",
     "question": "How do I find, close or invalidate an ownership request?",
-    "line": 1859,
+    "line": 1964,
     "general": false,
     "tabs": [
       "Search Request"
@@ -973,7 +993,7 @@
   {
     "section": "Imports",
     "question": "How do I import customers, relatives or units from Excel?",
-    "line": 1875,
+    "line": 1981,
     "general": false,
     "tabs": [
       "Import Customers",
@@ -985,10 +1005,32 @@
   {
     "section": "Imports",
     "question": "How do I check the result of an import?",
-    "line": 1886,
+    "line": 1993,
     "general": false,
     "tabs": [
       "Import History"
+    ],
+    "require": "any"
+  },
+  {
+    "section": "Exporting Search Results",
+    "question": "How do I export search results to Excel?",
+    "line": 2006,
+    "general": false,
+    "tabs": [
+      "Search Complaint",
+      "Search Tickets",
+      "Search Customer",
+      "Unit",
+      "Service Search",
+      "Search Rentals",
+      "Search Invoices",
+      "Manage Users",
+      "Manage Legal Users",
+      "Manage Roles",
+      "Search Request",
+      "Search Block",
+      "Invoice Types"
     ],
     "require": "any"
   }

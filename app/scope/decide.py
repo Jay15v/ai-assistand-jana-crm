@@ -24,6 +24,9 @@ class ScopeDecision(BaseModel):
     # Field order matters: the LLM fills `reason` first, so it reasons BEFORE it decides.
     reason: str = ""  # for logs/debugging, never shown to the user
     decision: Literal["allowed", "partial", "not_allowed", "off_topic"]
+    # "allowed" only: the message rewritten self-contained using the conversation
+    # ("and how do I edit it?" -> "How do I edit a ticket?"). Retrieval searches with this.
+    standalone_question: str | None = None
     allowed_question: str | None = None  # partial only: the part the user may ask
     not_allowed_question: str | None = None  # partial only: the part outside their permissions
 
@@ -34,6 +37,8 @@ class ScopeDecision(BaseModel):
         if self.decision != "partial":
             self.allowed_question = None
             self.not_allowed_question = None
+        if self.decision != "allowed":
+            self.standalone_question = None
         return self
 
 
@@ -43,11 +48,12 @@ def decide_scope(
     allowed: list[Tab],
     not_allowed: list[Tab],
     descriptions: dict[str, str],
+    history_text: str = "",
 ) -> ScopeDecision:
     t0 = time.perf_counter()
     messages = [
         ("system", SCOPE_SYSTEM_PROMPT),
-        ("human", scope_user_prompt(question, allowed, not_allowed, descriptions)),
+        ("human", scope_user_prompt(question, allowed, not_allowed, descriptions, history_text)),
     ]
     try:
         decision = llm.with_structured_output(ScopeDecision).invoke(messages)

@@ -15,9 +15,9 @@ def by_q(chunks, q):
     return next(c for c in chunks if c.question_en == q)
 
 
-def test_all_98_questions_become_chunks(chunks):
-    assert len(chunks) == 98
-    assert len({c.id for c in chunks}) == 98  # unique ids
+def test_all_101_questions_become_chunks(chunks):
+    assert len(chunks) == 101
+    assert len({c.id for c in chunks}) == 101  # unique ids
 
 
 def test_96_have_arabic_twins_2_fall_back_to_english(chunks):

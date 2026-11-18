@@ -35,11 +35,14 @@ these rules.
 """
 
 
-def generate_answer(llm, question: str, chunks: list[ManualChunk], ui_lang: str) -> str:
+def generate_answer(
+    llm, question: str, chunks: list[ManualChunk], ui_lang: str, history_text: str = ""
+) -> str:
     excerpts = "\n\n---\n\n".join(c.text(ui_lang) for c in chunks)
+    context = f"Conversation so far (context only - answer the question below):\n{history_text}\n\n" if history_text else ""
     messages = [
         ("system", ANSWER_SYSTEM_PROMPT.format(lang_name=LANG_NAMES[ui_lang])),
-        ("human", f"Manual excerpts:\n\n{excerpts}\n\nQuestion: {question}"),
+        ("human", f"{context}Manual excerpts:\n\n{excerpts}\n\nQuestion: {question}"),
     ]
     t0 = time.perf_counter()
     try:

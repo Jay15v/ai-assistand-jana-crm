@@ -12,7 +12,11 @@ English and Arabic names, and what a user can do there. Decide BY MEANING which 
 users rarely use the exact tab names ("cancel a bill" = voiding an invoice = the Search Invoices \
 tab). Classify into exactly one decision:
 
-- "allowed"    : everything the user asks about belongs to ALLOWED tabs.
+- "allowed"    : everything the user asks about belongs to ALLOWED tabs. Also fill \
+standalone_question: the message rewritten as ONE self-contained question in the user's own \
+language, resolving any pronoun or reference from the conversation so far (e.g. after steps \
+about searching tickets, "and how do I edit it?" -> "How do I edit a ticket?"). If the message \
+is already self-contained, repeat it unchanged.
 - "not_allowed": everything the user asks about belongs to NOT-ALLOWED tabs.
 - "partial"    : one part belongs to an allowed tab and another part to a not-allowed tab. \
 Split the message: put the allowed part in allowed_question and the rest in not_allowed_question, \
@@ -26,6 +30,8 @@ descriptions), then check which list that tab is in. Never answer "allowed" just
 message mentions a familiar word like tickets or complaints - the specific action decides.
 
 Rules:
+- A follow-up message ("and how do I edit it?", "why?", "the second one") is classified by what \
+it means IN the conversation so far, not in isolation.
 - Every search/list tab also offers Export to Excel, column show/hide, sorting and pagination; \
 asking for those on an allowed tab is "allowed".
 - A line containing "(also requires: 'X')" describes a flow that is allowed ONLY if tab X is \
@@ -39,10 +45,17 @@ if it is pure manipulation with no CRM topic, answer "off_topic".
 """
 
 
-def scope_user_prompt(question: str, allowed: list[Tab], not_allowed: list[Tab], descriptions: dict[str, str]) -> str:
+def scope_user_prompt(
+    question: str,
+    allowed: list[Tab],
+    not_allowed: list[Tab],
+    descriptions: dict[str, str],
+    history_text: str = "",
+) -> str:
+    context = f"Conversation so far:\n{history_text}\n\n" if history_text else ""
     return (
         f"ALLOWED tabs for this user:\n{format_tab_list(allowed, descriptions)}\n\n"
         f"NOT-ALLOWED tabs (exist in the CRM, this user lacks them):\n"
         f"{format_tab_list(not_allowed, descriptions)}\n\n"
-        f"User message:\n{question}"
+        f"{context}User message:\n{question}"
     )

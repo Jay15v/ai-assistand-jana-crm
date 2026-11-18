@@ -17,7 +17,7 @@ def catalog() -> TabCatalog:
 
 @pytest.fixture(scope="module")
 def descriptions(catalog) -> dict[str, str]:
-    return build_descriptions(catalog, get_settings())
+    return build_descriptions(catalog)
 
 
 def by_name(catalog, name):
@@ -35,9 +35,9 @@ def test_manual_questions_describe_what_the_tab_does(catalog, descriptions):
     assert "void an invoice directly" in d  # from the manual, not the crawl
     assert "collect payment" in d
 
-def test_fallback_tab_uses_the_crawled_screen_text(catalog, descriptions):
-    # Import Units has no manual section; its description comes from the vector DB.
-    assert descriptions[by_name(catalog, "Import Units").doc_id]
+def test_tab_without_manual_section_falls_back_to_its_name(catalog, descriptions):
+    # Notifications is the only tab with no manual section yet: bare name, nothing invented.
+    assert descriptions[by_name(catalog, "Notifications").doc_id] == "Notifications"
 
 def test_require_all_flow_names_the_other_tab(catalog, descriptions):
     d = descriptions[by_name(catalog, "Search Customer").doc_id]

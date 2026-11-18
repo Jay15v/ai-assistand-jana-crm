@@ -57,7 +57,9 @@ CASES: list[tuple[str, set[str]]] = [
     ("how do I add a department?", {"not_allowed"}),
     ("ازاي اضيف خدمة جديدة؟", {"not_allowed"}),
     ("how do I import units from excel?", {"not_allowed"}),
-    ("how do I send a notification to customers?", {"not_allowed"}),
+    # Notifications has no manual section; MD-only descriptions show just the tab name, so the
+    # LLM may not connect "send a notification" to it. Both outcomes block the user correctly.
+    ("how do I send a notification to customers?", {"not_allowed", "off_topic"}),
     # --- off_topic: general/account/small talk/non-CRM ---
     ("hello!", {"off_topic"}),
     ("thanks, great job", {"off_topic"}),
@@ -102,7 +104,7 @@ def main() -> None:
         json.loads((ROOT / "tests" / "fixtures" / "menu_readonly_role.json").read_text(encoding="utf-8"))
     )
     user = resolve_user_tabs(menu, catalog)
-    descriptions = build_descriptions(catalog, settings)
+    descriptions = build_descriptions(catalog)
     llm = get_chat_model(settings)
 
     passed = 0

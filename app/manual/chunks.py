@@ -1,8 +1,9 @@
 """Parse the EN + AR user manuals into answer chunks (one per ### question).
 
 Each chunk carries the English section text, its Arabic twin's text (when the AR manual has one),
-and the tags from app/data/manual/section_tabs(.ar).json. Image lines are stripped - screenshots
-are internal reference material and never reach the index or the user.
+and the tags from app/data/manual/section_tabs(.ar).json. Image lines and HTML comment lines
+(the <!-- tabs: ... --> tags that tag_manual.py parses) are stripped - both are internal
+reference material and never reach the index or the user.
 """
 
 import json
@@ -20,6 +21,7 @@ AR_TAGS = ROOT_DIR / "app" / "data" / "manual" / "section_tabs_ar.json"
 
 _IMAGE_LINE = re.compile(r"^\s*!\[[^\]]*\]\([^)]*\)\s*$")
 _INLINE_IMAGE = re.compile(r"!\[[^\]]*\]\([^)]*\)")
+_COMMENT_LINE = re.compile(r"^\s*<!--.*-->\s*$")
 
 
 class ManualChunk(BaseModel):
@@ -43,7 +45,10 @@ class ManualChunk(BaseModel):
 
 
 def _strip_images(body: str) -> str:
-    lines = [ln for ln in body.splitlines() if not _IMAGE_LINE.match(ln)]
+    lines = [
+        ln for ln in body.splitlines()
+        if not _IMAGE_LINE.match(ln) and not _COMMENT_LINE.match(ln)
+    ]
     return _INLINE_IMAGE.sub("", "\n".join(lines)).strip()
 
 

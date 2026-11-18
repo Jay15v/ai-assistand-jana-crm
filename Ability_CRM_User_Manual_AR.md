@@ -1120,12 +1120,34 @@
 
 ---
 
+### إزاي أطلب استرداد (Refund) لفاتورة؟
+
+1. ادخل **الفواتير** ← **استرداد**.
+2. دوّر على الفاتورة: فلتر برقم الفاتورة أو رقم البند أو الحالة أو مراجع الـ ERP أو التواريخ، واضغط **بحث**.
+3. في صف الفاتورة اضغط **Refund Request** (بيظهر للفواتير اللي لسه متستردتش).
+4. هيسألك *"Are you sure you want to submit a refund request for this invoice?"* — اكتب السبب في خانة السبب.
+5. اضغط **Refund Request** للتأكيد، أو **Cancel**.
+6. حالة الاسترداد في الصف بتبقى **Refund Requested**، واسمك بيظهر في **Refund Requested By** وسببك في **Refund Request Reason**.
+
+---
+
+### إزاي أعمل استرداد مباشر لفاتورة؟
+
+1. ادخل **الفواتير** ← **استرداد**، دوّر على الفاتورة واضغط **Refund** في صفها.
+2. اقرا *"Are you sure you want to refund this invoice? This action cannot be undone."* واكتب السبب.
+3. اضغط **Refund** للتأكيد، أو **Cancel**.
+4. حالة الاسترداد بتبقى **Refunded**، واسمك في **Refunded By** وسببك في **Refund Reason**.
+
+⚠️ الاسترداد المباشر مش بيترجع. لو الاسترداد محتاج مراجعة الأول، استخدم **Refund Request**.
+
+---
+
 ### إزاي أراجع طلبات الاسترداد؟
 
 1. ادخل **الفواتير** ← **استرداد**.
 2. فلتر بـ رقم الفاتورة، رقم بند الفاتورة، الحالة، ERP Reference، ERP Refund Reference، من تاريخ، إلى تاريخ. اضغط **بحث**.
 3. كل صف فيه رقم الفاتورة، رقم البند، العميل، الوحدة، المبلغ، طريقة الدفع، مراجع الـ ERP، حالة الاسترداد، طلبه مين، نفّذه مين، سبب الطلب، وسبب الاسترداد.
-4. استخدم إجراءات الصف عشان توافق (**Refund**) أو ترفض الطلب.
+4. عمود **Actions** بيختلف حسب حالة الصف: فاتورة لسه متستردتش بيظهرلها **Refund Request** و **Refund** (شوف السؤالين اللي فوق)؛ وطلب الاسترداد المعلّق إجراءاته **Accept Refund Request** و **Reject Refund Request** (صلاحيات تبويب الاسترداد).
 
 حالات الفاتورة المرتبطة: **Refund Requested** و **Refunded** و **Partially Refund**.
 
@@ -1512,6 +1534,18 @@
 
 ---
 
+## تصدير نتائج البحث
+
+### إزاي أصدّر نتايج البحث لإكسل؟
+
+1. اعمل بحث الأول عشان ليستة **النتائج** تعرض الصفوف اللي عايزها.
+2. اضغط **تصدير إلى إكسل** (بيظهر جنب **بحث** / **مسح** لو دورك فيه صلاحية **Export**).
+3. المتصفح بينزّل ملف إكسل اسمه `crm-export.xlsx` فيه النتايج.
+
+الزرار بيشتغل بنفس الطريقة في كل صفحات البحث اللي بيظهر فيها (التذاكر، الفواتير، العملاء، الوحدات، الخدمات، الإيجارات، الشكاوى، المستخدمين، الأدوار...). و**الأعمدة** بتغيّر الأعمدة اللي الليستة بتعرضها.
+
+---
+
 ## 19. حل المشكلات والأسئلة الشائعة
 
 | المشكلة | الحل |
@@ -1646,14 +1680,18 @@
 
 | الاسم في الواجهة الإنجليزية | الاسم في الواجهة العربية |
 |---|---|
+| Accept | قبول |
 | Active | نشطة |
 | Add | إضافة |
+| Add Block | إضافة حظر |
 | Add Comment | إضافة تعليق |
 | Add Complaint | إضافة شكوى |
 | Add CTS | نظام CTS |
 | Add Inquiry | إضافة استفسار |
 | Add Invoice | إنشاء فاتورة |
+| Add Legal Users | إضافة المستخدمين القانونيين |
 | Add Rental | اضافة مستإجر |
+| Add Request | إضافة طلب |
 | Add Response | إضافة رد |
 | Add Role | إضافة دور |
 | Add Root Location | إضافة موقع رئيسي |
@@ -1666,8 +1704,10 @@
 | Arrival Time | وقت الوصول |
 | Assign Location | تعيين الموقع |
 | Attach Document | إرفاق مستند |
+| Block Unit | حظر الوحدة |
 | Broker Attachments | مستندات الوسيط |
 | Cancel | إلغاء |
+| Cancel (relative request) | إلغاء القبول |
 | Change Password | تغيير كلمة المرور |
 | Change Status | تغيير الحالة |
 | Clear | مسح |
@@ -1702,25 +1742,41 @@
 | End Of Day | نهاية اليوم |
 | End of Day | نهاية اليوم |
 | End Of Day Report | تقرير نهاية اليوم |
+| ERP Codes | اكواد الساب |
 | Exact Match | مطابقة تامة |
 | Export to Excel | تصدير إلى إكسل |
+| Finance (block type) | مالي |
 | Full End Of Day | نهاية اليوم الكاملة |
+| Import Customers | استيراد العملاء |
+| Import History | سجل الاستيراد |
+| Import Relatives | استيراد الأقارب |
+| Import Units | استيراد الوحدات |
+| Imports | الاستيراد |
 | Inactive | غير نشط |
 | Inquiries | الاستفسارات |
 | Invoice Types | أنواع الفواتير |
 | Invoices | الفواتير |
+| Legal (block type) | قانوني |
 | Location | الموقع |
 | Location Type | نوع الموقع |
 | Login | تسجيل الدخول |
 | Logout | تسجيل الخروج |
+| Manage Legal Users | إدارة المستخدمين القانونيين |
 | Manage Roles | إدارة الأدوار |
 | Manage Users | إدارة المستخدمين |
 | New Password | كلمة المرور الجديدة |
 | Notes | ملاحظات |
+| Notifications | الإشعارات |
 | Ownership History | سجل الملكية |
+| Ownership Managment | إدارة الملكية |
 | Password | كلمة المرور |
 | Positions | الوظائف |
 | Print | طباعة |
+| Refresh | تحديث |
+| Refund | استرداد |
+| Refund Request | طلب استرداد |
+| Reject | رفض |
+| Relative Requests | صلة القرابة |
 | Rental | التأجير |
 | Rental Companies | شركات التأجير |
 | Rental Company | شركة الإيجار |
@@ -1731,28 +1787,36 @@
 | Roles | الأدوار |
 | Runner Cashier | كاشير متنقل |
 | Save | حفظ |
+| Save Changes | حفظ التغييرات |
 | Search | بحث |
+| Search Block | بحث عن حظر |
 | Search Complaint | بحث شكوى |
 | Search CTS | بحث نظام CTS |
 | Search Inquiry | بحث استفسار |
 | Search Invoices | بحث الفواتير |
 | Search Rentals | بحث الإيجارات |
+| Search Request | البحث عن طلب |
 | Search Tickets | بحث التذاكر |
 | Select Services | اختر الخدمات |
 | Service Search | بحث خدمة |
 | Services | الخدمات |
 | Settings | الاعدادات |
 | Settle | تسوية |
+| Show Attachments | عرض المرفقات |
 | Show Documents | عرض المستندات |
 | Show Invoices | عرض الفواتير |
+| Show Media | عرض الوسائط |
 | Show Tickets | عرض التذاكر |
 | Sister Companies | الشركات الشقيقة |
 | Statistics | الإحصائيات |
 | Submit | إرسال |
 | Tickets | التذاكر |
 | Unit | الوحدة |
+| Unit Block Categories | فئات حظر الوحدات |
+| Unit Blocks | حظر الوحدات |
 | Unit Number | رقم الوحدة |
 | Units Excel File | ملف إكسل الوحدات |
+| Upload | رفع |
 | Upload Document | رفع مستند |
 | Urgent | عاجل |
 | Users | المستخدمين |
