@@ -12,6 +12,9 @@ class ChatRequest(BaseModel):
 
     user_id: str = Field(min_length=1)
     session_id: str = Field(min_length=1)
+    # Optional display name (e.g. the CRM user_name) shown next to the user in the admin
+    # tracing UI. Not used anywhere in the pipeline itself.
+    user_name: str | None = None
     message: str = Field(min_length=1, max_length=2000)
     # Current value of the CRM's EN / Arabic switch at the moment the message is sent.
     # Decides the reply language AND which label (en/ar) is used for tab names.

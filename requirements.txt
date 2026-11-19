@@ -5,3 +5,4 @@ google-genai>=3.3
 langgraph>=1.2
 langchain-google-genai>=4.5
 langgraph-checkpoint-postgres>=3
+langfuse>=3

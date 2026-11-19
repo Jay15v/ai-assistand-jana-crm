@@ -5,4 +5,5 @@ __pycache__/
 .env
 # empty CRM upload templates downloaded during the crawl (kept locally, not versioned)
 *.xlsx
-last_run.txt
+# output logs written by scripts/chat.py, run_graph.py and the eval scripts
+*_run.txt

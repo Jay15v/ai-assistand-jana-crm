@@ -18,8 +18,8 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from app.graph.build import build_graph, get_checkpointer  # noqa: E402
-from app.graph.state import initial_state  # noqa: E402
 from app.models.chat import ChatRequest  # noqa: E402
+from app.tracing import flush, run_chat  # noqa: E402
 
 
 def main() -> None:
@@ -48,8 +48,10 @@ def main() -> None:
             session = str(uuid.uuid4())[:8]
             print(f"-- new session {session} (history forgotten)\n")
             continue
-        req = ChatRequest(user_id="cli", session_id=session, message=message, ui_lang=ui_lang, menu=menu)
-        out = graph.invoke(initial_state(req), config={"configurable": {"thread_id": session}})
+        req = ChatRequest(
+            user_id="cli", user_name="CLI tester", session_id=session, message=message, ui_lang=ui_lang, menu=menu
+        )
+        out = run_chat(graph, req)
         line = (
             f"[{out.get('scope') or 'error'}"
             + (f" | q: {out['standalone_question']}" if out.get("standalone_question") else "")
@@ -58,6 +60,7 @@ def main() -> None:
         print(f"\n{line}\nbot > {out.get('answer') or '(no reply text)'}\n")
         with log_path.open("a", encoding="utf-8") as f:
             f.write(f"you > {message}\n{line}\nbot > {out.get('answer', '')}\n\n")
+    flush()  # push any queued Langfuse events before the process exits
 
 
 if __name__ == "__main__":

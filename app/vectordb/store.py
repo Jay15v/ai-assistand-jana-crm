@@ -171,13 +171,6 @@ class VectorStore:
             seen.setdefault(meta["doc_id"], CrmDoc.model_validate_json(meta["doc_json"]))
         return [seen[i] for i in doc_ids if i in seen]
 
-    def children(self, parent_id: str) -> list[CrmDoc]:
-        """Tabs / forms / detail views that belong to a screen."""
-        res = self.collection().get(
-            where={"$and": [{"parent": parent_id}, {"lang": "en"}, {"kind": "full"}]}, include=["metadatas"]
-        )
-        return [CrmDoc.model_validate_json(m["doc_json"]) for m in res["metadatas"]]
-
 
 def _where(allowed_hrefs: list[str] | None, types: list[str] | None) -> dict | None:
     clauses = []

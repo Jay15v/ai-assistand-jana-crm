@@ -47,6 +47,15 @@ class Settings(BaseSettings):
     llm_timeout_s: float = 20.0
     llm_max_retries: int = 2
 
+    # Admin-only chat tracing (Langfuse). Set BOTH keys in .env to turn it on; unset -> no
+    # tracing at all (dev/tests/CI unaffected). Only the admin sees traces, in the Langfuse UI.
+    langfuse_public_key: SecretStr | None = None
+    langfuse_secret_key: SecretStr | None = None
+    langfuse_host: str = "https://cloud.langfuse.com"
+    # Keeps dev/test traces out of production dashboards. Set LANGFUSE_ENVIRONMENT=production
+    # on the deployed service.
+    langfuse_environment: str = "development"
+
     # Retrieval + scope gate. Score = Gemini cosine similarity only (no bonuses).
     # NOTE: 0.45 was measured with the previous local model (MiniLM). Gemini scores sit on a
     # different scale, so re-measure with scripts/query_vector_db.py after the first Gemini build.

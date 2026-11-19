@@ -6,9 +6,8 @@ nothing is translated or invented. Where an Arabic label was not captured, it is
 
     python vector_docs/build_vector_docs.py
 
-Outputs (next to this file):
+Output (next to this file):
     ability_crm_vector_docs.json   - list of documents (pretty)
-    ability_crm_vector_docs.jsonl  - one document per line (for loaders)
 """
 
 import json
@@ -862,7 +861,4 @@ meta = {
 }
 (OUT / "ability_crm_vector_docs.json").write_text(
     json.dumps({"meta": meta, "documents": docs}, ensure_ascii=False, indent=2), encoding="utf-8")
-with (OUT / "ability_crm_vector_docs.jsonl").open("w", encoding="utf-8") as fh:
-    for d in docs:
-        fh.write(json.dumps(d, ensure_ascii=False) + "\n")
 print(json.dumps(meta, ensure_ascii=False, indent=2))
