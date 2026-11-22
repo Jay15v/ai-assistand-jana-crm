@@ -3,10 +3,15 @@
 import pytest
 from pydantic import ValidationError
 
-from app.config import get_settings
-from app.scope.decide import ScopeDecision, ScopeDecisionError, decide_scope
-from app.scope.descriptions import build_descriptions, format_tab_list
-from app.scope.tabs import TabCatalog
+from app.core.config import get_settings
+from app.features.agent.repositories.tabs import TabCatalog
+from app.features.agent.services.scope import (
+    ScopeDecision,
+    ScopeDecisionError,
+    build_descriptions,
+    decide_scope,
+    format_tab_list,
+)
 from tests.conftest import FakeLLM
 
 

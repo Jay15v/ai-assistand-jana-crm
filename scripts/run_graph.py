@@ -16,9 +16,9 @@ from pydantic import ValidationError
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from app.graph.build import build_graph  # noqa: E402
-from app.graph.state import initial_state  # noqa: E402
-from app.models.chat import ChatRequest  # noqa: E402
+from app.features.agent.schemas import ChatRequest  # noqa: E402
+from app.features.agent.services.graph import build_graph  # noqa: E402
+from app.features.agent.services.state import initial_state  # noqa: E402
 
 
 def main() -> None:

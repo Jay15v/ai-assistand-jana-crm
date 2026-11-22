@@ -5,9 +5,9 @@ from pathlib import Path
 
 import pytest
 
-from app.config import get_settings
-from app.models.menu import MenuResponse
-from app.scope.tabs import MenuUnavailableError, TabCatalog, resolve_user_tabs
+from app.core.config import get_settings
+from app.features.agent.repositories.tabs import MenuUnavailableError, TabCatalog, resolve_user_tabs
+from app.features.agent.schemas import MenuResponse
 
 FIXTURES = Path(__file__).parent / "fixtures"
 

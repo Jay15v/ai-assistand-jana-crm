@@ -6,21 +6,21 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
-from app.config import get_settings
-from app.graph import build as build_module
-from app.graph.build import build_graph
-from app.graph.nodes import (
+from app.core.config import get_settings
+from app.features.agent.repositories.manual import load_chunks
+from app.features.agent.repositories.tabs import TabCatalog
+from app.features.agent.schemas import ChatRequest
+from app.features.agent.services import graph as build_module
+from app.features.agent.services.graph import build_graph
+from app.features.agent.services.nodes import (
     ERROR_MESSAGES,
     NO_DOCS_MESSAGES,
     NOT_ALLOWED_MESSAGES,
     OFF_TOPIC_MESSAGES,
     PARTIAL_NOTICES,
 )
-from app.graph.state import initial_state
-from app.manual.chunks import load_chunks
-from app.models.chat import ChatRequest
-from app.scope.decide import ScopeDecision
-from app.scope.tabs import TabCatalog
+from app.features.agent.services.scope import ScopeDecision
+from app.features.agent.services.state import initial_state
 from tests.conftest import FakeIndex, FakeLLM
 
 FIXTURES = Path(__file__).parent / "fixtures"

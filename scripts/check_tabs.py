@@ -12,9 +12,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from app.config import get_settings  # noqa: E402
-from app.models.menu import MenuResponse  # noqa: E402
-from app.scope.tabs import MenuUnavailableError, TabCatalog, resolve_user_tabs  # noqa: E402
+from app.core.config import get_settings  # noqa: E402
+from app.features.agent.repositories.tabs import (  # noqa: E402
+    MenuUnavailableError,
+    TabCatalog,
+    resolve_user_tabs,
+)
+from app.features.agent.schemas import MenuResponse  # noqa: E402
 
 
 def main() -> None:

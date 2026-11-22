@@ -5,10 +5,10 @@ import math
 
 import pytest
 
-from app.config import Settings
-from app.lang.normalize import search_tokens
-from app.vectordb.schema import CrmDoc, href_from_url, title_text
-from app.vectordb.store import VectorStore, load_docs
+from app.core.config import Settings
+from app.core.normalize import search_tokens
+from app.features.agent.repositories.vector_store import VectorStore, load_docs
+from app.features.agent.schemas import CrmDoc, href_from_url, title_text
 
 
 class FakeEmbedder:

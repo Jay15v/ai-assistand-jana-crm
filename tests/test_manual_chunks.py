@@ -2,8 +2,7 @@
 
 import pytest
 
-from app.manual.chunks import load_chunks
-from app.manual.index import eligible
+from app.features.agent.repositories.manual import eligible, load_chunks
 
 
 @pytest.fixture(scope="module")

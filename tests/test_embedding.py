@@ -5,10 +5,10 @@ from types import SimpleNamespace
 import pytest
 from google.genai import errors
 
-from app.config import Settings
-from app.vectordb.embedding import DOCUMENT_TEMPLATE, QUERY_TEMPLATE, EmbeddingError, GeminiEmbedder
-from app.vectordb.schema import CrmDoc
-from app.vectordb.store import VectorStore
+from app.core.config import Settings
+from app.core.embeddings import DOCUMENT_TEMPLATE, QUERY_TEMPLATE, EmbeddingError, GeminiEmbedder
+from app.features.agent.repositories.vector_store import VectorStore
+from app.features.agent.schemas import CrmDoc
 
 DIM = 4
 

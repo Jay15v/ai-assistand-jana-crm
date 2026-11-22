@@ -3,8 +3,8 @@
 import pytest
 from pydantic import ValidationError
 
-from app.lang.locale import parse_ui_lang
-from app.models.chat import ChatRequest
+from app.core.locale import parse_ui_lang
+from app.features.agent.schemas import ChatRequest
 
 
 @pytest.mark.parametrize(

@@ -1,4 +1,4 @@
-"""Build the ChromaDB vector store in app/data/chroma from the crawled CRM documents.
+"""Build the ChromaDB vector store in data/chroma from the crawled CRM documents.
 
     python scripts/build_vector_db.py
 
@@ -12,9 +12,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from app.config import get_settings  # noqa: E402
-from app.vectordb.embedding import EmbeddingError  # noqa: E402
-from app.vectordb.store import VectorStore, load_docs  # noqa: E402
+from app.core.config import get_settings  # noqa: E402
+from app.core.embeddings import EmbeddingError  # noqa: E402
+from app.features.agent.repositories.vector_store import VectorStore, load_docs  # noqa: E402
 
 
 def main() -> int:

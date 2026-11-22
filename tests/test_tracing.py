@@ -7,11 +7,12 @@ from pathlib import Path
 
 import pytest
 
-from app.config import Settings
-from app.models.chat import ChatRequest
-from app.tracing import TRACE_NAME, _make_tracer, run_chat
+from app.core.config import Settings
+from app.core.tracing import TRACE_NAME, _make_tracer, run_chat
+from app.features.agent.schemas import ChatRequest
 
 FIXTURES = Path(__file__).parent / "fixtures"
+THREAD = "36:749dcb00-aaaa-bbbb-cccc-000000000001:sess-42"  # memory_key: user + session
 
 
 @pytest.fixture(autouse=True)
@@ -54,7 +55,7 @@ def test_no_keys_means_plain_invoke():
     assert out["answer"] == "THE ANSWER"
     state, config = graph.calls[0]
     assert state["message"] == "how do I add a ticket?"
-    assert config == {"configurable": {"thread_id": "sess-42"}}
+    assert config == {"configurable": {"thread_id": THREAD}}
 
 
 def test_one_key_alone_is_not_enough():
@@ -69,7 +70,7 @@ def test_keys_turn_on_the_callback_and_keep_the_thread():
     s = settings(langfuse_public_key="pk-lf-x", langfuse_secret_key="sk-lf-x")
     run_chat(graph, request(), s)
     _, config = graph.calls[0]
-    assert config["configurable"] == {"thread_id": "sess-42"}
+    assert config["configurable"] == {"thread_id": THREAD}
     assert len(config["callbacks"]) == 1
 
 
@@ -108,11 +109,11 @@ def test_tracer_is_reused_across_turns():
 
 
 def test_tracer_init_failure_falls_back_to_plain_invoke(monkeypatch):
-    import app.tracing as tracing
+    import app.core.tracing as tracing
 
     monkeypatch.setattr(tracing, "_make_tracer", lambda *a: None)
     graph = FakeGraph()
     s = settings(langfuse_public_key="pk-lf-x", langfuse_secret_key="sk-lf-x")
     out = run_chat(graph, request(), s)
     assert out["answer"] == "THE ANSWER"
-    assert graph.calls[0][1] == {"configurable": {"thread_id": "sess-42"}}
+    assert graph.calls[0][1] == {"configurable": {"thread_id": THREAD}}

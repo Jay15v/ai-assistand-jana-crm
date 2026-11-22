@@ -1,6 +1,6 @@
 """Pair every ### question of the ARABIC manual with its English twin and inherit its tags.
 
-    python scripts/tag_manual_ar.py   # writes app/data/manual/section_tabs_ar.json + prints the table
+    python scripts/tag_manual_ar.py   # writes data/manual/section_tabs_ar.json + prints the table
 
 Pairing is positional (section i, question j in both manuals), which holds everywhere except the
 two differences encoded in SKIP_EN below (EN questions with no Arabic twin - those sections are
@@ -17,8 +17,8 @@ sys.path.insert(0, str(ROOT))
 
 EN_MANUAL = ROOT / "Ability_CRM_User_Manual.md"
 AR_MANUAL = ROOT / "Ability_CRM_User_Manual_AR.md"
-EN_TAGS = ROOT / "app" / "data" / "manual" / "section_tabs.json"
-OUT = ROOT / "app" / "data" / "manual" / "section_tabs_ar.json"
+EN_TAGS = ROOT / "data" / "manual" / "section_tabs.json"
+OUT = ROOT / "data" / "manual" / "section_tabs_ar.json"
 
 # EN questions that have NO Arabic twin (checked by hand 2026-11-16). They are skipped during
 # positional pairing of their section; ui_lang=ar answers for them come from the English chunk.

@@ -1,0 +1,1 @@
+invalid type: string "{\"id\":\"detail.unit.details\",\"type\":\"detail_view\",\"group\":{\"en\":\"Unit\",\"ar\":\"الوحدة\"},\"screen\":{\"en\":\"Unit Details\",\"ar\":\"تفاصيل الوحدة\"},\"path\":{\"en\":\"Unit > Unit Details\",\"ar\":\"الوحدة > تفاصيل الوحدة\"},\"url\":\"https://app.ability-tech.com/en/units/{unit_id}\",\"parent\":\"screen.unit.search\",\"�����

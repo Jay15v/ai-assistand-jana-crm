@@ -1,6 +1,6 @@
 """Collect the tab tags of every ### question of the English manual FROM THE MANUAL ITSELF.
 
-    python scripts/tag_manual.py          # writes app/data/manual/section_tabs.json + prints the table
+    python scripts/tag_manual.py          # writes data/manual/section_tabs.json + prints the table
 
 The manual is the single source of truth: tags live in HTML comments inside the MD file and
 this script only parses, validates and exports them. Two comment forms, each on the first
@@ -30,11 +30,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from app.config import get_settings  # noqa: E402
-from app.scope.tabs import TabCatalog  # noqa: E402
+from app.core.config import get_settings  # noqa: E402
+from app.features.agent.repositories.tabs import TabCatalog  # noqa: E402
 
 MANUAL = ROOT / "Ability_CRM_User_Manual.md"
-OUT = ROOT / "app" / "data" / "manual" / "section_tabs.json"
+OUT = ROOT / "data" / "manual" / "section_tabs.json"
 
 TAG_COMMENT = re.compile(r"^\s*<!--\s*tabs:\s*(.+?)\s*-->\s*$")
 

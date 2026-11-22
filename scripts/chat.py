@@ -17,9 +17,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from app.graph.build import build_graph, get_checkpointer  # noqa: E402
-from app.models.chat import ChatRequest  # noqa: E402
-from app.tracing import flush, run_chat  # noqa: E402
+from app.core.tracing import flush, run_chat  # noqa: E402
+from app.features.agent.schemas import ChatRequest  # noqa: E402
+from app.features.agent.services.graph import build_graph  # noqa: E402
+from app.features.conversation.repositories.checkpointer import get_checkpointer  # noqa: E402
 
 
 def main() -> None:

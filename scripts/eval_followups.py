@@ -10,9 +10,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from app.graph.build import build_graph, get_checkpointer  # noqa: E402
-from app.graph.state import initial_state  # noqa: E402
-from app.models.chat import ChatRequest  # noqa: E402
+from app.features.agent.schemas import ChatRequest  # noqa: E402
+from app.features.agent.services.graph import build_graph  # noqa: E402
+from app.features.agent.services.state import initial_state  # noqa: E402
+from app.features.conversation.repositories.checkpointer import get_checkpointer  # noqa: E402
 
 MENU = json.loads((ROOT / "tests" / "fixtures" / "menu_readonly_role.json").read_text(encoding="utf-8"))
 

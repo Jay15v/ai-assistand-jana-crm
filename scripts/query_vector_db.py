@@ -9,8 +9,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from app.config import get_settings  # noqa: E402
-from app.vectordb.store import VectorStore  # noqa: E402
+from app.core.config import get_settings  # noqa: E402
+from app.features.agent.repositories.vector_store import VectorStore  # noqa: E402
 
 SAMPLES = [
     "how do I add a new department",

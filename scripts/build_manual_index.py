@@ -9,9 +9,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from app.config import get_settings  # noqa: E402
-from app.manual.chunks import load_chunks  # noqa: E402
-from app.manual.index import ManualIndex  # noqa: E402
+from app.core.config import get_settings  # noqa: E402
+from app.features.agent.repositories.manual import ManualIndex, load_chunks  # noqa: E402
 
 
 def main() -> None:

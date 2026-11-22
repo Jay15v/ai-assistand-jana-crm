@@ -15,9 +15,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from app.config import get_settings  # noqa: E402
-from app.manual.index import ManualIndex  # noqa: E402
-from app.scope.tabs import TabCatalog  # noqa: E402
+from app.core.config import get_settings  # noqa: E402
+from app.features.agent.repositories.manual import ManualIndex  # noqa: E402
+from app.features.agent.repositories.tabs import TabCatalog  # noqa: E402
 
 COVERED = [
     "how do I search for tickets?",

@@ -15,12 +15,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from app.config import get_settings  # noqa: E402
-from app.llm import get_chat_model  # noqa: E402
-from app.models.menu import MenuResponse  # noqa: E402
-from app.scope.decide import ScopeDecisionError, decide_scope  # noqa: E402
-from app.scope.descriptions import build_descriptions  # noqa: E402
-from app.scope.tabs import TabCatalog, resolve_user_tabs  # noqa: E402
+from app.core.config import get_settings  # noqa: E402
+from app.core.llm import get_chat_model  # noqa: E402
+from app.features.agent.repositories.tabs import TabCatalog, resolve_user_tabs  # noqa: E402
+from app.features.agent.schemas import MenuResponse  # noqa: E402
+from app.features.agent.services.scope import (  # noqa: E402
+    ScopeDecisionError,
+    build_descriptions,
+    decide_scope,
+)
 
 # (question, acceptable decisions)
 CASES: list[tuple[str, set[str]]] = [
