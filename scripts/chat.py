@@ -24,7 +24,10 @@ from app.core.tracing import flush  # noqa: E402
 from app.features.agent.schemas import ChatRequest  # noqa: E402
 from app.features.agent.services.graph import build_graph  # noqa: E402
 from app.features.conversation.repositories.checkpointer import get_checkpointer  # noqa: E402
-from app.features.conversation.repositories.history import ChatHistoryRepository  # noqa: E402
+from app.features.conversation.repositories.history import (  # noqa: E402
+    BackgroundHistoryWriter,
+    ChatHistoryRepository,
+)
 from app.features.conversation.services.chat_service import ChatService  # noqa: E402
 
 
@@ -37,9 +40,20 @@ def main() -> None:
     ui_lang = sys.argv[2] if len(sys.argv) > 2 else "en"
     settings = get_settings()
     pool = open_pool(settings) if settings.database_url else None
-    history = ChatHistoryRepository(pool, settings.db_schema) if pool else None
-    graph = build_graph(settings=settings, checkpointer=get_checkpointer(settings, pool))
-    chat = ChatService(graph, settings, history)
+    # Same wiring as the app: history rows are written in the background.
+    history = BackgroundHistoryWriter(ChatHistoryRepository(pool, settings.db_schema)) if pool else None
+    try:
+        graph = build_graph(settings=settings, checkpointer=get_checkpointer(settings, pool))
+        chat_loop(ChatService(graph, settings, history), menu, ui_lang)
+    finally:  # also when a turn crashes: the waiting turns are written, the pool closes cleanly
+        flush()  # push any queued Langfuse events before the process exits
+        if history is not None:
+            history.close()
+        if pool is not None:
+            pool.close()
+
+
+def chat_loop(chat: ChatService, menu: dict, ui_lang: str) -> None:
     session = str(uuid.uuid4())[:8]
     log_path = ROOT / "last_run.txt"
     log_path.write_text("", encoding="utf-8")
@@ -70,9 +84,6 @@ def main() -> None:
         print(f"\n{line}\nbot > {out.get('answer') or '(no reply text)'}\n")
         with log_path.open("a", encoding="utf-8") as f:
             f.write(f"you > {message}\n{line}\nbot > {out.get('answer', '')}\n\n")
-    flush()  # push any queued Langfuse events before the process exits
-    if pool is not None:
-        pool.close()
 
 
 if __name__ == "__main__":

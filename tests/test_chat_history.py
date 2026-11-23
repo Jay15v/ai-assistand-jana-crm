@@ -11,6 +11,7 @@ Each Postgres test drops and recreates the ai_assisstant schema from sql/chat_hi
 import json
 import os
 import threading
+import time
 from pathlib import Path
 
 import pytest
@@ -21,10 +22,15 @@ from app.core.config import ROOT_DIR, Settings, get_settings
 from app.core.database import open_pool, to_libpq_url
 from app.features.agent.repositories.manual import load_chunks
 from app.features.agent.repositories.tabs import TabCatalog
+from app.features.agent.schemas import ChatRequest
 from app.features.agent.services.graph import build_graph
 from app.features.agent.services.scope import ScopeDecision
 from app.features.conversation.repositories.checkpointer import get_checkpointer
-from app.features.conversation.repositories.history import ChatHistoryRepository, Turn
+from app.features.conversation.repositories.history import (
+    BackgroundHistoryWriter,
+    ChatHistoryRepository,
+    Turn,
+)
 from app.features.conversation.services.chat_service import ChatService
 from app.main import create_app
 from tests.conftest import FakeIndex, FakeLLM
@@ -125,16 +131,67 @@ def test_database_failure_does_not_break_the_chat(catalog, chunk):
 
 def test_crashed_turn_is_logged_as_error_then_raised():
     class Boom:
-        def invoke(self, *a, **k):
+        def stream(self, *a, **k):
             raise RuntimeError("graph crashed")
 
     history = FakeHistory()
     service = ChatService(Boom(), NO_TRACING, history)
-    from app.features.agent.schemas import ChatRequest
 
     with pytest.raises(RuntimeError):
         service.send(ChatRequest(**body()))
-    assert [t.scope for t in history.turns] == ["error"]
+    (turn,) = history.turns
+    assert (turn.scope, turn.user_message, turn.answer) == ("error", "how do I search for tickets?", "")
+    assert turn.standalone_question is None
+
+
+class CrashingIndex(FakeIndex):
+    """A manual search that breaks from the Nth search on (an error no graph step handles)."""
+
+    def __init__(self, hits, crash_from: int = 1):
+        super().__init__(hits)
+        self.crash_from = crash_from
+
+    def search(self, query, allowed_names, top_k=3):
+        if len(self.searches) + 1 >= self.crash_from:
+            raise RuntimeError("vector store down")
+        return super().search(query, allowed_names, top_k)
+
+
+def test_turn_that_crashes_halfway_keeps_what_the_finished_steps_produced(catalog, chunk):
+    """The scope step finished, the search crashed: the row keeps the scope step's output."""
+    history = FakeHistory()
+    graph = build_graph(catalog, llm=allowed_llm(), index=CrashingIndex([(chunk, 0.9)]),
+                        checkpointer=InMemorySaver())
+    service = ChatService(graph, NO_TRACING, history)
+
+    with pytest.raises(RuntimeError, match="vector store down"):
+        service.send(ChatRequest(**body()))
+    (turn,) = history.turns
+    assert turn.user_message == "how do I search for tickets?"
+    assert turn.standalone_question == "How do I search for tickets?"
+    assert turn.scope_reason == "ok"
+    assert (turn.scope, turn.answer) == ("error", "")  # marked crashed; no answer was written
+    assert turn.latency_ms >= 0
+
+
+def test_crashed_turn_carries_nothing_over_from_the_turn_before(catalog, chunk):
+    """Same chat, turn 1 answered, turn 2 crashes: row 2 holds turn 2's own data only."""
+    history = FakeHistory()
+    llm = allowed_llm()
+    graph = build_graph(catalog, llm=llm, index=CrashingIndex([(chunk, 0.9)], crash_from=2),
+                        checkpointer=InMemorySaver())
+    service = ChatService(graph, NO_TRACING, history)
+
+    service.send(ChatRequest(**body()))
+    llm.result = ScopeDecision(decision="allowed", reason="second", standalone_question="How do I print a ticket?")
+    with pytest.raises(RuntimeError):
+        service.send(ChatRequest(**body(message="and how do I print one?")))
+
+    first, second = history.turns
+    assert (first.scope, first.answer) == ("allowed", "FAKE STEPS")
+    assert second.user_message == "and how do I print one?"
+    assert second.standalone_question == "How do I print a ticket?"
+    assert (second.scope, second.scope_reason, second.answer) == ("error", "second", "")
 
 
 def test_invalid_request_is_not_logged(catalog, chunk):
@@ -142,6 +199,106 @@ def test_invalid_request_is_not_logged(catalog, chunk):
     with client_for(catalog, chunk, allowed_llm(), history) as client:
         client.post("/chat", json=body(message=""))
     assert history.turns == []
+
+
+def test_chat_memory_survives_a_crashed_turn(catalog, chunk):
+    """Memory is saved once per turn. A turn that crashes must neither lose the chat so far
+    nor get into it: the next turn still remembers turn 1, and only turn 1."""
+    index = CrashingIndex([(chunk, 0.9)], crash_from=2)
+    graph = build_graph(catalog, llm=allowed_llm(), index=index, checkpointer=InMemorySaver())
+    service = ChatService(graph, NO_TRACING, FakeHistory())
+
+    service.run(ChatRequest(**body()))
+    with pytest.raises(RuntimeError):
+        service.run(ChatRequest(**body(message="this one crashes")))
+    index.crash_from = 99  # the search works again
+    out = service.run(ChatRequest(**body(message="and how do I print one?")))
+
+    assert [t["user"] for t in out["history"]] == ["how do I search for tickets?", "and how do I print one?"]
+
+
+# ---------------------------------------------------------------- the background writer
+
+class GatedHistory(FakeHistory):
+    """A slow database: every write waits until the test opens the gate."""
+
+    def __init__(self):
+        super().__init__()
+        self.gate = threading.Event()
+
+    def log_turn(self, turn: Turn) -> int:
+        assert self.gate.wait(5)
+        return super().log_turn(turn)
+
+
+def test_background_writer_writes_every_turn_in_order_by_the_time_it_closes():
+    repo = FakeHistory()
+    writer = BackgroundHistoryWriter(repo)
+    for i in range(20):
+        writer.log_turn(turn(user_message=f"m{i}"))
+    writer.close()
+    assert [t.user_message for t in repo.turns] == [f"m{i}" for i in range(20)]
+
+
+def test_background_writer_does_not_wait_for_the_database():
+    repo = GatedHistory()
+    writer = BackgroundHistoryWriter(repo)
+    writer.log_turn(turn())  # returns although the write itself is still blocked
+    assert repo.turns == []
+    repo.gate.set()
+    writer.close()
+    assert len(repo.turns) == 1
+
+
+def test_background_writer_carries_on_after_a_failed_write(caplog):
+    class FailsOnBad(FakeHistory):
+        def log_turn(self, turn: Turn) -> int:
+            if turn.user_message == "bad":
+                raise RuntimeError("database down")
+            return super().log_turn(turn)
+
+    repo = FailsOnBad()
+    writer = BackgroundHistoryWriter(repo)
+    writer.log_turn(turn(user_message="bad"))
+    writer.log_turn(turn(user_message="good"))
+    writer.close()
+    assert [t.user_message for t in repo.turns] == ["good"]
+    assert "chat history write failed" in caplog.text
+
+
+def test_background_writer_drops_new_turns_when_too_many_are_waiting(caplog):
+    repo = GatedHistory()
+    writer = BackgroundHistoryWriter(repo, max_pending=2)
+    for i in range(5):
+        writer.log_turn(turn(user_message=f"m{i}"))  # never blocks, never raises
+    repo.gate.set()
+    writer.close()
+    assert [t.user_message for t in repo.turns] == ["m0", "m1"]
+    assert caplog.text.count("backlog is full") == 3
+
+
+def test_background_writer_close_does_not_hang_on_a_stuck_database(caplog):
+    repo = GatedHistory()
+    writer = BackgroundHistoryWriter(repo)
+    writer.log_turn(turn())
+    writer.log_turn(turn())
+    started = time.perf_counter()
+    writer.close(timeout=0.2)
+    assert time.perf_counter() - started < 2
+    assert "2 turn(s) not written" in caplog.text
+    repo.gate.set()  # let the worker thread go
+    writer.log_turn(turn())  # after close: dropped with a log line, never an exception
+    assert "writer is closed" in caplog.text
+
+
+def test_chat_through_the_background_writer_logs_the_turn(catalog, chunk):
+    repo = FakeHistory()
+    writer = BackgroundHistoryWriter(repo)
+    with client_for(catalog, chunk, allowed_llm(), writer) as client:
+        res = client.post("/chat", json=body())
+    writer.close()
+    assert res.json()["answer"] == "FAKE STEPS"
+    assert [(t.scope, t.answer) for t in repo.turns] == [("allowed", "FAKE STEPS")]
 
 
 # ---------------------------------------------------------------- part 2: real Postgres
@@ -217,6 +374,17 @@ def test_messages_sent_at_the_same_moment_get_different_numbers(pool):
 
 
 @needs_db
+def test_background_writer_writes_real_rows_in_order(pool):
+    writer = BackgroundHistoryWriter(ChatHistoryRepository(pool, SCHEMA))
+    for i in range(1, 6):
+        writer.log_turn(turn(user_message=f"m{i}"))
+    writer.close()
+    msgs = rows(pool, "SELECT turn_no, user_message FROM ai_assisstant.chat_messages ORDER BY id")
+    assert [(m["turn_no"], m["user_message"]) for m in msgs] == [(i, f"m{i}") for i in range(1, 6)]
+    assert rows(pool, "SELECT turn_count FROM ai_assisstant.chat_sessions")[0]["turn_count"] == 5
+
+
+@needs_db
 def test_a_rejected_row_leaves_nothing_half_written(pool):
     repo = ChatHistoryRepository(pool, SCHEMA)
     repo.log_turn(turn())
@@ -233,6 +401,18 @@ def test_memory_tables_go_into_the_bot_schema_not_public(pool):
                        "WHERE table_name LIKE 'checkpoint%%' ORDER BY table_name")
     assert {r["table_schema"] for r in found} == {SCHEMA}
     assert {r["table_name"] for r in found} >= {"checkpoints", "checkpoint_blobs", "checkpoint_writes"}
+
+
+@needs_db
+def test_chat_memory_is_saved_once_per_turn(pool, catalog, chunk):
+    """One checkpoint row per turn (it was one per graph step), and the memory still works."""
+    llm = allowed_llm()
+    with client_for(catalog, chunk, llm, None, get_checkpointer(NO_TRACING, pool)) as client:
+        client.post("/chat", json=body())
+        assert rows(pool, "SELECT count(*) AS n FROM ai_assisstant.checkpoints")[0]["n"] == 1
+        client.post("/chat", json=body(message="and how do I print one?"))
+        assert rows(pool, "SELECT count(*) AS n FROM ai_assisstant.checkpoints")[0]["n"] == 2
+    assert "FAKE STEPS" in str(llm.calls[1])  # turn 2's prompt carried turn 1's answer
 
 
 @needs_db

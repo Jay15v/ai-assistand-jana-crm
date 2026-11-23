@@ -67,13 +67,39 @@ def memory_key(request: ChatRequest) -> str:
     return f"{len(request.user_id)}:{request.user_id}:{request.session_id}"
 
 
-def run_chat(graph, request: ChatRequest, settings: Settings | None = None) -> dict:
-    """Run one chat turn through the graph, traced when Langfuse is configured."""
+def _run_graph(graph, request: ChatRequest, config: dict, progress: dict | None) -> dict:
+    """Run the graph step by step and return its final state (what graph.invoke returns: invoke
+    is this same loop inside LangGraph).
+
+    After every step the full state so far is copied into `progress`, so when a step raises,
+    the caller still holds everything the earlier steps produced.
+
+    durability="exit": the chat memory is saved to the checkpointer once, when the turn ends
+    (also when it ends in an error), instead of after every step. Nothing ever resumes a turn
+    halfway, so the per-step saves were only extra database writes."""
+    out: dict = {}
+    for state in graph.stream(
+        initial_state(request), config=config, stream_mode="values", durability="exit"
+    ):
+        out = state
+        if progress is not None:
+            progress.clear()
+            progress.update(state)
+    return out
+
+
+def run_chat(
+    graph, request: ChatRequest, settings: Settings | None = None, progress: dict | None = None
+) -> dict:
+    """Run one chat turn through the graph, traced when Langfuse is configured.
+
+    `progress` (optional, one fresh dict per turn) is kept up to date with the turn's state
+    after each step; it is how a turn that crashes halfway can still be logged."""
     settings = settings or get_settings()
     config: dict = {"configurable": {"thread_id": memory_key(request)}}
     tracer = _get_tracer(settings)
     if tracer is None:
-        return graph.invoke(initial_state(request), config=config)
+        return _run_graph(graph, request, config, progress)
 
     client, handler = tracer
     from langfuse import propagate_attributes
@@ -91,9 +117,7 @@ def run_chat(graph, request: ChatRequest, settings: Settings | None = None) -> d
         with client.start_as_current_observation(
             name=TRACE_NAME, as_type="span", input=request.message
         ) as span:
-            out = graph.invoke(
-                initial_state(request), config={**config, "callbacks": [handler]}
-            )
+            out = _run_graph(graph, request, {**config, "callbacks": [handler]}, progress)
             span.update(output=out.get("answer") or "")
             try:
                 # Post-hoc label (docs: use scores, not tags, for labels known after the run).

@@ -23,14 +23,18 @@ def fresh_tracer_cache():
 
 
 class FakeGraph:
-    """Records the (state, config) of each invoke and returns an answered state."""
+    """Records the (state, config) of each run and yields the state after each "step": first
+    as received, then answered (run_chat streams the graph and returns the last state)."""
 
     def __init__(self):
         self.calls: list = []
 
-    def invoke(self, state, config=None):
+    def stream(self, state, config=None, stream_mode=None, durability=None):
+        assert stream_mode == "values"
+        assert durability == "exit"  # chat memory is saved once per turn, not after every step
         self.calls.append((state, config))
-        return {**state, "answer": "THE ANSWER", "scope": "allowed"}
+        yield dict(state)
+        yield {**state, "answer": "THE ANSWER", "scope": "allowed"}
 
 
 def request() -> ChatRequest:
@@ -56,6 +60,27 @@ def test_no_keys_means_plain_invoke():
     state, config = graph.calls[0]
     assert state["message"] == "how do I add a ticket?"
     assert config == {"configurable": {"thread_id": THREAD}}
+
+
+def test_progress_follows_the_turn_step_by_step():
+    """The caller's dict holds the latest state, so a crash keeps what earlier steps produced."""
+
+    class CrashesAfterScope:
+        def stream(self, state, config=None, **kwargs):
+            yield dict(state)
+            yield {**state, "standalone_question": "How do I add a ticket?"}
+            raise RuntimeError("search crashed")
+
+    progress: dict = {"left over": "from nowhere"}
+    with pytest.raises(RuntimeError):
+        run_chat(CrashesAfterScope(), request(), settings(), progress)
+    assert progress["standalone_question"] == "How do I add a ticket?"
+    assert progress["message"] == "how do I add a ticket?"
+    assert "left over" not in progress
+
+    done: dict = {}
+    out = run_chat(FakeGraph(), request(), settings(), done)
+    assert done == out
 
 
 def test_one_key_alone_is_not_enough():
