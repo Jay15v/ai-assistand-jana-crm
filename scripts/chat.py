@@ -6,7 +6,8 @@
 Commands inside the chat:  /new  start a fresh session (forgets everything)
                            /exit quit
 Every exchange is appended to last_run.txt (open it in VSCode to read Arabic).
-History is in memory for this run (production uses Postgres via DATABASE_URL).
+With DATABASE_URL in .env, memory is in Postgres and every turn is logged to the history
+tables (chat_sessions / chat_messages); without it, memory is in RAM and nothing is logged.
 """
 
 import json
@@ -17,10 +18,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from app.core.tracing import flush, run_chat  # noqa: E402
+from app.core.config import get_settings  # noqa: E402
+from app.core.database import open_pool  # noqa: E402
+from app.core.tracing import flush  # noqa: E402
 from app.features.agent.schemas import ChatRequest  # noqa: E402
 from app.features.agent.services.graph import build_graph  # noqa: E402
 from app.features.conversation.repositories.checkpointer import get_checkpointer  # noqa: E402
+from app.features.conversation.repositories.history import ChatHistoryRepository  # noqa: E402
+from app.features.conversation.services.chat_service import ChatService  # noqa: E402
 
 
 def main() -> None:
@@ -30,7 +35,11 @@ def main() -> None:
         return
     menu = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
     ui_lang = sys.argv[2] if len(sys.argv) > 2 else "en"
-    graph = build_graph(checkpointer=get_checkpointer())
+    settings = get_settings()
+    pool = open_pool(settings) if settings.database_url else None
+    history = ChatHistoryRepository(pool, settings.db_schema) if pool else None
+    graph = build_graph(settings=settings, checkpointer=get_checkpointer(settings, pool))
+    chat = ChatService(graph, settings, history)
     session = str(uuid.uuid4())[:8]
     log_path = ROOT / "last_run.txt"
     log_path.write_text("", encoding="utf-8")
@@ -52,7 +61,7 @@ def main() -> None:
         req = ChatRequest(
             user_id="cli", user_name="CLI tester", session_id=session, message=message, ui_lang=ui_lang, menu=menu
         )
-        out = run_chat(graph, req)
+        out = chat.run(req)
         line = (
             f"[{out.get('scope') or 'error'}"
             + (f" | q: {out['standalone_question']}" if out.get("standalone_question") else "")
@@ -62,6 +71,8 @@ def main() -> None:
         with log_path.open("a", encoding="utf-8") as f:
             f.write(f"you > {message}\n{line}\nbot > {out.get('answer', '')}\n\n")
     flush()  # push any queued Langfuse events before the process exits
+    if pool is not None:
+        pool.close()
 
 
 if __name__ == "__main__":

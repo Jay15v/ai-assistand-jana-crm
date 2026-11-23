@@ -38,6 +38,10 @@ class Settings(BaseSettings):
     # Chat memory. Production: set DATABASE_URL (Postgres) in .env and the checkpointer switches
     # automatically; unset -> in-memory (history lost on restart; fine for dev and tests).
     database_url: str | None = Field(default=None, validation_alias=AliasChoices("DATABASE_URL"))
+    # The schema in the CRM database that holds everything the bot writes: the chat history
+    # tables (created by hand, see sql/chat_history.sql) and LangGraph's checkpoint tables.
+    db_schema: str = "ai_assisstant"
+    db_pool_max_size: int = 5
     history_keep_turns: int = 6  # turns kept verbatim after compaction
     compact_after_turns: int = 8  # compact when history grows beyond this
 

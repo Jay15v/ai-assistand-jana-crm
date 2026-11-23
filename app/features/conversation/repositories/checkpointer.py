@@ -18,17 +18,21 @@ def _serde():
     ])
 
 
-def get_checkpointer(settings: Settings | None = None):
+def get_checkpointer(settings: Settings | None = None, pool=None):
     """Postgres when DATABASE_URL is set (production); otherwise in-memory (dev: history is
-    kept per session while the process runs, lost on restart)."""
+    kept per session while the process runs, lost on restart).
+
+    The app passes its shared pool. Scripts pass nothing and get a pool of their own.
+    setup() creates LangGraph's tables (in settings.db_schema) on first start, then only
+    runs LangGraph's own migrations when its version needs them."""
     settings = settings or get_settings()
-    if settings.database_url:
+    if pool is not None or settings.database_url:
         from langgraph.checkpoint.postgres import PostgresSaver
 
-        saver_cm = PostgresSaver.from_conn_string(settings.database_url)
-        saver = saver_cm.__enter__()  # kept open for the process lifetime
+        from app.core.database import open_pool
+
+        saver = PostgresSaver(pool if pool is not None else open_pool(settings), serde=_serde())
         saver.setup()
-        saver.serde = _serde()
         return saver
     from langgraph.checkpoint.memory import InMemorySaver
 
