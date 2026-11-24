@@ -23,7 +23,7 @@ INVOICES = ROOT / "tests" / "fixtures" / "menu_invoices_only.json"
 # (menu file, question, ui_lang, expected path end, expected retrieved question, words in answer)
 CASES = [
     (READONLY, "how do I mark a ticket as resolved?", "en", "generate_steps",
-     "How do I change a ticket's status?", ["status"]),
+     "How do I change a ticket's status?", ["status", "Done"]),  # "resolved" = the CRM's Done
     (READONLY, "ازاي اقفل التذكرة؟", "ar", "generate_steps",
      "How do I change a ticket's status?", ["Timeline"]),
     (READONLY, "how do I reply to a complaint?", "en", "generate_steps",

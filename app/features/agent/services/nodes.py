@@ -135,7 +135,8 @@ def make_generate_steps(get_llm: Callable[[], object]) -> Callable[[ChatState], 
         lang = state["ui_lang"]
         try:
             answer = generate_answer(
-                cache[0], search_query(state), state["sections"], lang, history_text(state)
+                cache[0], search_query(state), state["sections"], lang, history_text(state),
+                allowed_tabs=state["allowed_tabs"],
             )
         except AnswerError as exc:
             log.error("%s", exc)
