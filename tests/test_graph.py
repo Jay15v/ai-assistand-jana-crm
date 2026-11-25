@@ -147,6 +147,29 @@ def test_answer_llm_failure_fails_closed(catalog, ticket_chunk, ui_lang):
     assert out["error"]
     assert out["answer"] == ERROR_MESSAGES[ui_lang]
 
+
+def test_gemini3_block_list_reply_becomes_the_answer(catalog, ticket_chunk):
+    """Gemini 3.x returns content as a list of blocks; only the text blocks are the answer."""
+    blocks = [
+        {"type": "thinking", "thinking": "internal"},
+        {"type": "text", "text": "1. Open Tickets.\n", "extras": {"signature": "sig"}},
+        {"type": "text", "text": "2. Click Add. "},
+    ]
+    fake = FakeLLM(ScopeDecision(decision="allowed", reason="ok"), answer=blocks)
+    out = run(build_graph(catalog, llm=fake, index=FakeIndex(hits=[(ticket_chunk, 0.9)])),
+              menu_json("menu_readonly_role.json"))
+    assert out["answer"] == "1. Open Tickets.\n2. Click Add."
+
+
+def test_block_list_with_no_text_fails_closed(catalog, ticket_chunk):
+    fake = FakeLLM(ScopeDecision(decision="allowed", reason="ok"),
+                   answer=[{"type": "thinking", "thinking": "only thoughts"}])
+    out = run(build_graph(catalog, llm=fake, index=FakeIndex(hits=[(ticket_chunk, 0.9)])),
+              menu_json("menu_readonly_role.json"))
+    assert out["error"]
+    assert out["answer"] == ERROR_MESSAGES["en"]
+
+
 @pytest.mark.parametrize("ui_lang", ["en", "ar"])
 def test_scope_llm_failure_fails_closed(catalog, ui_lang):
     fake = FakeLLM(exc=TimeoutError("gemini down"))

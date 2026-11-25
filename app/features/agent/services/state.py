@@ -5,6 +5,7 @@ from collections.abc import Callable
 from typing import TypedDict
 
 from app.core.config import Settings
+from app.core.llm import reply_text
 from app.core.locale import Lang
 from app.features.agent.repositories.tabs import Tab
 from app.features.agent.schemas import ChatRequest, MenuResponse
@@ -136,7 +137,7 @@ def make_compact_history(get_llm: Callable[[], object], settings: Settings) -> C
             if not cache:
                 cache.append(get_llm())
             reply = cache[0].invoke([("human", prompt)])
-            summary = (getattr(reply, "content", None) or "").strip()
+            summary = reply_text(reply)
             if not summary:
                 raise ValueError("empty summary")
         except Exception as exc:  # noqa: BLE001 - fail OPEN: compaction must never break a turn

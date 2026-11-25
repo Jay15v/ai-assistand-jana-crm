@@ -39,6 +39,7 @@ def test_scope_returns_the_decision(catalog):
         res = client.post("/agent/scope", json=body())
     assert res.status_code == 200
     assert res.json() == {
+        "checks": [],  # the scope model's per-action reasoning, kept in the reply for tracing
         "reason": "invoices are not in this role",
         "decision": "not_allowed",
         "standalone_question": None,

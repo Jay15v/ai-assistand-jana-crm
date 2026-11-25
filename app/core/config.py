@@ -46,10 +46,21 @@ class Settings(BaseSettings):
     compact_after_turns: int = 8  # compact when history grows beyond this
 
     # Chat LLM (scope decision now, answer generation in step 3). Same Gemini key as embeddings.
-    llm_model: str = "gemini-2.5-flash"
-    llm_temperature: float = 0.0  # deterministic: same question -> same decision
-    llm_timeout_s: float = 20.0
+    llm_model: str = "gemini-3.1-flash-lite"
+    # Gemini 3 guidance (prompting guide, 2026): keep sampling at the default 1.0; lower values
+    # "may lead to unexpected behavior, looping, or degraded performance". The permission gate
+    # is kept deterministic by apply_checks() in scope.py (code re-checks the lists), not by
+    # the temperature.
+    llm_temperature: float = 1.0
+    # Worst measured call on gemini-3.1-flash-lite is ~1.5 s; 10 s means a stuck call fails
+    # fast instead of holding a reply for 20 s per attempt.
+    llm_timeout_s: float = 10.0
     llm_max_retries: int = 2
+    # Gemini 3 thinking level: minimal / low / medium / high. None = the model's own default
+    # (gemini-3.1-flash-lite: minimal). The scope prompt is written so NO thinking is needed:
+    # the model reasons in the structured `checks` field instead (visible, fast). Raise this
+    # only if evals show a reasoning gap, and re-measure latency.
+    llm_thinking_level: str | None = None
 
     # Admin-only chat tracing (Langfuse). Set BOTH keys in .env to turn it on; unset -> no
     # tracing at all (dev/tests/CI unaffected). Only the admin sees traces, in the Langfuse UI.

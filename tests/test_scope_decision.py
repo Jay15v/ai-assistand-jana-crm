@@ -6,8 +6,10 @@ from pydantic import ValidationError
 from app.core.config import get_settings
 from app.features.agent.repositories.tabs import TabCatalog
 from app.features.agent.services.scope import (
+    ActionCheck,
     ScopeDecision,
     ScopeDecisionError,
+    apply_checks,
     build_descriptions,
     decide_scope,
     format_tab_list,
@@ -89,3 +91,64 @@ def test_partial_must_carry_both_parts():
 def test_non_partial_drops_stray_parts():
     d = ScopeDecision(decision="allowed", allowed_question="noise", not_allowed_question="noise")
     assert d.allowed_question is None and d.not_allowed_question is None
+
+
+# --- apply_checks: code re-checks the model's tab look-ups (fail closed, never loosens) -------
+
+def check(question, tab, found_in="ALLOWED"):
+    return ActionCheck(question=question, tab=tab, found_in=found_in)
+
+
+def test_allowed_with_a_blocked_tab_is_corrected_to_partial(catalog):
+    allowed, not_allowed = tabs_split(catalog)
+    d = ScopeDecision(  # the model looked up 'Add Complaint' wrongly and said allowed
+        checks=[check("How do I search for tickets?", "Search Tickets"),
+                check("How do I add a complaint?", "Add Complaint")],
+        reason="r", decision="allowed", standalone_question="both")
+    out = apply_checks(d, allowed, not_allowed)
+    assert out.decision == "partial"
+    assert out.allowed_question == "How do I search for tickets?"
+    assert out.not_allowed_question == "How do I add a complaint?"
+    assert "[corrected" in out.reason
+
+def test_allowed_with_only_blocked_tabs_is_corrected_to_not_allowed(catalog):
+    allowed, not_allowed = tabs_split(catalog)
+    d = ScopeDecision(checks=[check("How do I void an invoice?", "Search Invoices")],
+                      reason="r", decision="allowed", standalone_question="q")
+    out = apply_checks(d, allowed, not_allowed)
+    assert out.decision == "not_allowed"
+
+def test_model_tab_name_shapes_still_resolve(catalog):
+    allowed, not_allowed = tabs_split(catalog)
+    ar_name = by_name(catalog, "Add Complaint").name_ar
+    for tab_text in ("Invoices > Search Invoices", "'Search Invoices'",
+                     f"Add Complaint ({ar_name})", ar_name):
+        d = ScopeDecision(checks=[check("q?", tab_text)], reason="r",
+                          decision="allowed", standalone_question="q")
+        assert apply_checks(d, allowed, not_allowed).decision == "not_allowed", tab_text
+
+def test_never_loosens_a_restrictive_decision(catalog):
+    allowed, not_allowed = tabs_split(catalog)
+    # model said not_allowed (e.g. an "(also requires: ...)" flow) though the checked tab is allowed
+    d = ScopeDecision(checks=[check("q?", "Search Tickets")], reason="r", decision="not_allowed")
+    assert apply_checks(d, allowed, not_allowed) is d
+
+def test_unknown_tab_name_is_left_to_the_model(catalog):
+    allowed, not_allowed = tabs_split(catalog)
+    d = ScopeDecision(checks=[check("q?", "Imaginary Tab"), check("q2?", "none")],
+                      reason="r", decision="allowed", standalone_question="q")
+    assert apply_checks(d, allowed, not_allowed) is d
+
+def test_partial_with_all_tabs_blocked_is_corrected_to_not_allowed(catalog):
+    allowed, not_allowed = tabs_split(catalog)
+    d = ScopeDecision(checks=[check("a?", "Search Invoices"), check("b?", "Add Complaint")],
+                      reason="r", decision="partial",
+                      allowed_question="a?", not_allowed_question="b?")
+    assert apply_checks(d, allowed, not_allowed).decision == "not_allowed"
+
+def test_decide_scope_runs_the_check(catalog, descriptions):
+    allowed, not_allowed = tabs_split(catalog)
+    fake = FakeLLM(ScopeDecision(checks=[check("How do I add a complaint?", "Add Complaint")],
+                                 reason="r", decision="allowed", standalone_question="q"))
+    d = decide_scope(fake, "how do I add a complaint?", allowed, not_allowed, descriptions)
+    assert d.decision == "not_allowed"  # corrected inside decide_scope, not only in the graph

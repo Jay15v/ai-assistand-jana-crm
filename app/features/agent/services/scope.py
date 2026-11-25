@@ -95,9 +95,19 @@ each rewritten as a self-contained question in the user's own language.
 small talk, logging in, passwords, changing the interface language, notifications bell, and \
 anything outside the CRM.
 
-Decide in two steps: first identify which tab the user's ACTION belongs to (from the tab \
-descriptions), then check which list that tab is in. Never answer "allowed" just because the \
-message mentions a familiar word like tickets or complaints - the specific action decides.
+Fill `checks` FIRST - it is your reasoning, done in the open. One check per distinct action in \
+the message (two different actions -> two checks), resolving pronouns and references from the \
+conversation so far:
+- question: that action alone, as ONE self-contained question in the user's own language.
+- tab: the tab whose description covers the action, its name copied EXACTLY from the lists. \
+Search BOTH lists in full before writing "none" - most tabs are in the NOT-ALLOWED list, and \
+a tab the user lacks still gets its check (with found_in: NOT-ALLOWED), never "none".
+- found_in: the list whose lines actually contain that tab. Look it up, never assume from \
+the action itself.
+The decision then follows from the checks: every check ALLOWED -> "allowed"; every check \
+NOT-ALLOWED -> "not_allowed"; some of each -> "partial"; no check matched any tab -> \
+"off_topic". Never answer "allowed" just because the message mentions a familiar word like \
+tickets or complaints - the specific action decides.
 
 Rules:
 - A follow-up message ("and how do I edit it?", "why?", "the second one") is classified by what \
@@ -147,8 +157,22 @@ class ScopeDecisionError(RuntimeError):
     """The scope LLM could not produce a usable decision."""
 
 
+class ActionCheck(BaseModel):
+    """One action from the user's message mapped to a tab: the model's reasoning, in the open.
+
+    flash-lite models run at minimal thinking, so this list is WHERE the scope model works
+    through the question (silent thinking would cost seconds). apply_checks() then re-checks
+    `found_in` against the real lists - the model names the tab, code verifies the permission."""
+
+    question: str  # the action alone, as one self-contained question in the user's language
+    tab: str  # the tab's name copied from the lists; "none" when no tab fits
+    found_in: Literal["ALLOWED", "NOT-ALLOWED", "none"]
+
+
 class ScopeDecision(BaseModel):
-    # Field order matters: the LLM fills `reason` first, so it reasons BEFORE it decides.
+    # Field order matters: the LLM fills `checks` and `reason` first, so it reasons BEFORE it
+    # decides - in the output itself, because a minimal-thinking model reasons nowhere else.
+    checks: list[ActionCheck] = []
     reason: str = ""  # for logs/debugging, never shown to the user
     decision: Literal["allowed", "partial", "not_allowed", "off_topic"]
     # "allowed" only: the message rewritten self-contained using the conversation
@@ -167,6 +191,57 @@ class ScopeDecision(BaseModel):
         if self.decision != "allowed":
             self.standalone_question = None
         return self
+
+
+def _tab_membership(allowed: list[Tab], not_allowed: list[Tab]) -> dict[str, str]:
+    """{normalized tab name (EN and AR) -> "ALLOWED" / "NOT-ALLOWED"} for look-up by apply_checks."""
+    members: dict[str, str] = {}
+    for tabs, label in ((allowed, "ALLOWED"), (not_allowed, "NOT-ALLOWED")):
+        for t in tabs:
+            members[t.name_en.strip().casefold()] = label
+            members[t.name_ar.strip().casefold()] = label
+    return members
+
+
+def _real_list(tab_text: str, members: dict[str, str]) -> str | None:
+    """Which list a check's `tab` really belongs to; None when the name matches no tab.
+
+    Tolerates the shapes the model writes: 'Search Invoices', 'Invoices > Search Invoices',
+    'Search Invoices (بحث الفواتير)', quotes."""
+    name = tab_text.split(">")[-1].strip().strip("'\"").casefold()
+    if name in members:
+        return members[name]
+    bare = name.split("(")[0].strip()  # drop a trailing '(arabic name)'
+    return members.get(bare)
+
+
+def apply_checks(decision: ScopeDecision, allowed: list[Tab], not_allowed: list[Tab]) -> ScopeDecision:
+    """Fail-closed verification of the model's checks: code looks up each named tab in the REAL
+    lists and RESTRICTS the decision when the model misread them. It never loosens one - a
+    "not_allowed"/"off_topic" stands, and so does a restriction the model applied for an
+    "(also requires: ...)" flow. A check whose tab matches no list is left to the model's own
+    judgement (no evidence either way)."""
+    if decision.decision not in ("allowed", "partial") or not decision.checks:
+        return decision
+    members = _tab_membership(allowed, not_allowed)
+    ok: list[ActionCheck] = []
+    blocked: list[ActionCheck] = []
+    for c in decision.checks:
+        (blocked if _real_list(c.tab, members) == "NOT-ALLOWED" else ok).append(c)
+    if not blocked:
+        return decision
+    reason = f"{decision.reason} [corrected: {len(blocked)} checked tab(s) are NOT-ALLOWED]"
+    if decision.decision == "partial":
+        if ok:
+            return decision  # mixed, as the model said; its split stands
+        return ScopeDecision(checks=decision.checks, reason=reason, decision="not_allowed")
+    # decision == "allowed", yet >= 1 checked tab is really NOT-ALLOWED
+    ok_q = "; ".join(q for c in ok if (q := c.question.strip()))
+    blocked_q = "; ".join(q for c in blocked if (q := c.question.strip()))
+    if ok_q and blocked_q:
+        return ScopeDecision(checks=decision.checks, reason=reason, decision="partial",
+                             allowed_question=ok_q, not_allowed_question=blocked_q)
+    return ScopeDecision(checks=decision.checks, reason=reason, decision="not_allowed")
 
 
 def decide_scope(
@@ -188,6 +263,11 @@ def decide_scope(
         raise ScopeDecisionError(f"scope LLM failed: {exc}") from exc
     if not isinstance(decision, ScopeDecision):  # e.g. None when the model returns nothing usable
         raise ScopeDecisionError(f"scope LLM returned no decision: {decision!r}")
+    verified = apply_checks(decision, allowed, not_allowed)
+    if verified is not decision:
+        log.warning("scope corrected %s -> %s (a checked tab is really NOT-ALLOWED) q=%r",
+                    decision.decision, verified.decision, question)
+        decision = verified
     log.info(
         "scope q=%r -> %s (%s) in %.0f ms",
         question, decision.decision, decision.reason, (time.perf_counter() - t0) * 1000,

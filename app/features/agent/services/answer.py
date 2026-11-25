@@ -7,6 +7,7 @@ import logging
 import time
 from collections.abc import Sequence
 
+from app.core.llm import reply_text
 from app.features.agent.repositories.manual import ManualChunk
 from app.features.agent.repositories.tabs import Tab
 
@@ -93,7 +94,7 @@ def generate_answer(
         reply = llm.invoke(messages)
     except Exception as exc:  # noqa: BLE001 - fail closed
         raise AnswerError(f"answer LLM failed: {exc}") from exc
-    text = (getattr(reply, "content", None) or "").strip() if reply is not None else ""
+    text = reply_text(reply)
     if not text:
         raise AnswerError("answer LLM returned empty content")
     log.info("answer q=%r from=%s in %.0f ms", question, [c.id for c in chunks], (time.perf_counter() - t0) * 1000)

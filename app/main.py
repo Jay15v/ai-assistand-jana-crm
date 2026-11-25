@@ -52,6 +52,12 @@ def create_app(chat_service: ChatService | None = None, scope_service: ScopeServ
             pool.close()
 
     app = FastAPI(title="Ability CRM assistant", lifespan=lifespan)
+
+    @app.get("/ai/aws/health-check")
+    def health_check() -> dict:
+        """Liveness probe for the AWS load balancer and the Docker HEALTHCHECK."""
+        return {"status": "ok"}
+
     app.include_router(chat_router)
     app.include_router(agent_router)
     return app

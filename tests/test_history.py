@@ -113,6 +113,13 @@ def test_compaction_folds_old_turns_into_summary(catalog, ticket_chunk):
     assert "q0" in prompt and "q3" in prompt  # the folded-away turns went to the summarizer
 
 
+def test_compaction_reads_gemini3_block_list_reply():
+    fake = allowed_fake(answer=[{"type": "text", "text": "SUMMARY", "extras": {"signature": "s"}}])
+    node = make_compact_history(lambda: fake, get_settings())
+    history = [{"user": f"q{i}", "assistant": f"a{i}"} for i in range(10)]
+    assert node({"history": history, "summary": ""})["summary"] == "SUMMARY"
+
+
 def test_compaction_is_skipped_below_threshold():
     node = make_compact_history(lambda: FakeLLM(), get_settings())
     assert node({"history": [{"user": "q", "assistant": "a"}] * 3, "summary": ""}) == {}
