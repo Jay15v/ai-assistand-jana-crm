@@ -1,0 +1,26 @@
+# Secrets: passed at run time with --env-file, never copied into the image.
+.env
+.env.*
+
+.git
+.gitignore
+.claude
+.venv
+.pytest_cache
+**/__pycache__
+**/*.pyc
+
+# Not needed at run time
+tests
+scripts
+docs
+sql
+manual_drafts
+images_ar
+*.html
+*_run.txt
+*.xlsx
+real_menu.json
+short description for the project.txt
+Dockerfile
+.dockerignore
