@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends, Request
 from app.features.agent.schemas import ChatRequest, ChatResponse
 from app.features.conversation.services.chat_service import ChatService
 
-router = APIRouter(tags=["conversation"])
+router = APIRouter(prefix="/ai", tags=["conversation"])
 
 
 def get_chat_service(request: Request) -> ChatService:
